@@ -65,7 +65,13 @@ class ExampleModel {
     'Cookie Dough',
     'Whipped Cream',
     'Marshmallow',
-    'Nuts'
+    'Nuts',
+    'Heath Bar',
+    'Butterscotch',
+    "m&m's",
+    "Coconut",
+    "Gummy worms",
+    "Fruit",
   ];
   List<String> selectedIceCreamToppings = <String>[
     'Hot Fudge',

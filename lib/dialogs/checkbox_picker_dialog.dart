@@ -1,15 +1,9 @@
 // Copyright (c) 2018, codegrue. All rights reserved. Use of this source code
 // is governed by the MIT license that can be found in the LICENSE file.
 
+import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:flutter_material_pickers/pickers/checkbox_picker.dart';
 import 'package:flutter/material.dart';
-
-// Constants
-const double _kPickerHeaderPortraitHeight = 80.0;
-const double _kPickerHeaderLandscapeWidth = 168.0;
-const double _kPickerPortraitWidth = 330.0;
-const double _kPickerLandscapeWidth = 400.0;
-const double _kDialogActionBarHeight = 52.0;
 
 /// This is a support widget that returns an Dialog with checkboxes as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
@@ -58,48 +52,62 @@ class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
   @override
   Widget build(BuildContext context) {
     assert(context != null);
-    final Widget actions = Container(
-      height: _kDialogActionBarHeight,
-      child: ButtonBar(
-        children: <Widget>[
-          FlatButton(
-            child: Text(localizations.cancelButtonLabel),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          FlatButton(
-            child: Text(localizations.okButtonLabel),
-            onPressed: () => Navigator.of(context).pop(selectedValues),
-          ),
-        ],
-      ),
-    );
+
+    Widget actions(double contentWidth) {
+      return Container(
+        width: contentWidth,
+        height: kDialogActionBarHeight,
+        child: ButtonBar(
+          children: <Widget>[
+            FlatButton(
+              child: Text(localizations.cancelButtonLabel),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            FlatButton(
+              child: Text(localizations.okButtonLabel),
+              onPressed: () => Navigator.of(context).pop(selectedValues),
+            ),
+          ],
+        ),
+      );
+    }
+
     return Dialog(
       child: OrientationBuilder(
         builder: (BuildContext context, Orientation orientation) {
           assert(orientation != null);
           assert(context != null);
 
+          const itemHeight = 40.0;
+
           var screenSize = MediaQuery.of(context).size;
+          var dialogWidth = screenSize.width - (kDialogMargin * 2);
+          var dialogHeight = screenSize.height - (kDialogMargin * 2);
+          var contentWidth = (orientation == Orientation.landscape)
+              ? dialogWidth - kPickerHeaderLandscapeWidth - 20.0
+              : dialogWidth;
+          var contentHeight = (orientation == Orientation.landscape)
+              ? dialogHeight - kDialogActionBarHeight
+              : dialogHeight -
+                  kDialogActionBarHeight -
+                  kPickerHeaderPortraitHeight;
 
           final Widget picker = CheckboxPicker(
             key: _pickerKey,
             items: widget.items,
             initialValues: selectedValues,
             onChanged: _handleValueChanged,
-            listViewWidth: (orientation == Orientation.portrait)
-                ? _kPickerPortraitWidth
-                : _kPickerLandscapeWidth,
-            numberOfVisibleItems:
-                (orientation == Orientation.portrait) ? 10 : 6,
+            listViewWidth: contentWidth,
+            numberOfVisibleItems: (contentHeight / itemHeight).floor(),
           );
 
           final Widget header = Container(
             color: theme.primaryColor,
             height: (orientation == Orientation.portrait)
-                ? _kPickerHeaderPortraitHeight
+                ? kPickerHeaderPortraitHeight
                 : null,
             width: (orientation == Orientation.landscape)
-                ? _kPickerHeaderLandscapeWidth
+                ? kPickerHeaderLandscapeWidth
                 : null,
             child: Center(
               child: Text(
@@ -116,7 +124,8 @@ class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
           switch (orientation) {
             case Orientation.portrait:
               return SizedBox(
-                width: _kPickerPortraitWidth,
+                width: dialogWidth,
+                height: dialogHeight,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -129,7 +138,7 @@ class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
                           picker,
-                          actions,
+                          actions(contentWidth),
                         ],
                       ),
                     ),
@@ -138,6 +147,8 @@ class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
               );
             case Orientation.landscape:
               return SizedBox(
+                width: dialogWidth,
+                height: dialogHeight,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -145,12 +156,12 @@ class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
                     header,
                     Container(
                       color: theme.dialogBackgroundColor,
-                      width: _kPickerLandscapeWidth,
+                      //width: dialogWidth,
                       child: Column(
                         children: <Widget>[
                           picker,
                           Expanded(child: Container()),
-                          actions,
+                          actions(contentWidth),
                         ],
                       ),
                     )

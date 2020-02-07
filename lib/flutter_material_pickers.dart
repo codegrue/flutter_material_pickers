@@ -16,6 +16,8 @@ export 'package:flutter_material_pickers/helpers/show_time_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_date_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_color_picker.dart';
 
-//TODO: Remove
-const double kPickerSheetHeight = 216.0;
-const double kPickerItemHeight = 32.0;
+// Constants
+const double kPickerHeaderPortraitHeight = 80.0;
+const double kPickerHeaderLandscapeWidth = 168.0;
+const double kDialogActionBarHeight = 52.0;
+const double kDialogMargin = 30.0;

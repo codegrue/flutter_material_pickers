@@ -23,6 +23,7 @@ void showMaterialNumberPicker({
       );
     },
   ).then((selection) {
-    if (onChanged != null) onChanged(intelligentCast<int>(selection));
+    if (onChanged != null && selection != null)
+      onChanged(intelligentCast<int>(selection));
   });
 }

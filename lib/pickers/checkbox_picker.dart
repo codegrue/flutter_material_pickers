@@ -43,11 +43,13 @@ class CheckboxPicker extends StatefulWidget {
 class CheckboxPickerState extends State<CheckboxPicker> {
   CheckboxPickerState(this.selectedValues);
 
-  final List<String> selectedValues;
+  List<String> selectedValues;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
+
+    if (selectedValues == null) selectedValues = List<String>();
 
     return _listView(themeData);
   }

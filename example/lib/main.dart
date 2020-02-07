@@ -10,7 +10,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new DynamicTheme(
+    return DynamicTheme(
         defaultBrightness: Brightness.light,
         data: (brightness) => ThemeData(
               primarySwatch: Colors.indigo,
@@ -54,7 +54,7 @@ class _TestPageState extends State<TestPage> {
       ),
       body: Container(
         margin: EdgeInsets.all(8.0),
-        child: Column(
+        child: ListView(
           children: <Widget>[
             Card(
               child: Column(

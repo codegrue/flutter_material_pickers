@@ -17,6 +17,6 @@ void showMaterialDatePicker({
     lastDate: lastDate,
     initialDate: selectedDate,
   ).then((selection) {
-    if (onChanged != null) onChanged(selection);
+    if (onChanged != null && selection != null) onChanged(selection);
   });
 }

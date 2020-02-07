@@ -1,13 +1,9 @@
 // Copyright (c) 2018, codegrue. All rights reserved. Use of this source code
 // is governed by the MIT license that can be found in the LICENSE file.
 
+import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:flutter_material_pickers/pickers/scroll_picker.dart';
 import 'package:flutter/material.dart';
-
-// Constants
-const double _kPickerHeaderPortraitHeight = 60.0;
-const double _kDialogActionBarHeight = 50.0;
-const double _kDialogMargin = 30.0;
 
 /// This is a support widget that returns an Dialog with a picker as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
@@ -64,12 +60,11 @@ class _ListPickerDialogState extends State<ListPickerDialog> {
 
           // calculate nunmber of items to show based on the vertical
           // space the picker will have
-          var height =
-              MediaQuery.of(context).size.height - (_kDialogMargin * 2);
+          var height = MediaQuery.of(context).size.height - (kDialogMargin * 2);
           double spaceForPicker = height -
-              _kDialogActionBarHeight -
+              kDialogActionBarHeight -
               ((orientation == Orientation.portrait)
-                  ? _kPickerHeaderPortraitHeight
+                  ? kPickerHeaderPortraitHeight
                   : 0);
           int numberOfItems =
               (spaceForPicker / ScrollPicker.defaultItemHeight).floor();

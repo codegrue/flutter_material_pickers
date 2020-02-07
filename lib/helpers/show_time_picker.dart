@@ -10,6 +10,6 @@ void showMaterialTimePicker({
     context: context,
     initialTime: selectedTime,
   ).then((selection) {
-    if (onChanged != null) onChanged(selection);
+    if (onChanged != null && selection != null) onChanged(selection);
   });
 }

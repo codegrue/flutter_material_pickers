@@ -1,0 +1,15 @@
+name: flutter_material_pickers_example
+description: A Flutter project that demonstrated the use of the flutter_material_pickers package.
+version: 1.0.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_material_pickers:
+    path: ../
+  dynamic_theme: ^1.0.0
+
+flutter:
+  uses-material-design: true

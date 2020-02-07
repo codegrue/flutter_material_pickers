@@ -1,0 +1,25 @@
+name: flutter_material_pickers
+description: A flutter package for displaying commonly used dialogs.
+version: 0.0.1
+homepage: https://github.com/codegrue/flutter_material_pickers
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_colorpicker: ^0.2.6
+  flutter_masked_text: ^0.8.0
+  intl: ^0.16.0
+  meta: ^1.1.6
+  auto_size_text: ^2.0.0
+  cupertino_icons: ^0.1.2
+  flutter_cupertino_settings: ^0.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+environment:
+  sdk: ">=2.0.0 <3.0.0"
+
+flutter:
+  uses-material-design: true

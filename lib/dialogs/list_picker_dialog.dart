@@ -128,8 +128,6 @@ class _ListPickerDialogState extends State<ListPickerDialog> {
               );
             case Orientation.landscape:
               return SizedBox(
-                //width: width,
-                //height: height,
                 child: Row(
                   children: <Widget>[
                     header,

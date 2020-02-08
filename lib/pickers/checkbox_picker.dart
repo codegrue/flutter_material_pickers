@@ -6,22 +6,19 @@ import 'package:flutter/rendering.dart';
 
 /// This helper widget manages a scrollable checkbox list inside a picker widget.
 class CheckboxPicker extends StatefulWidget {
-  CheckboxPicker(
-      {Key key,
-      @required this.items,
-      @required this.initialValues,
-      @required this.onChanged,
-      this.itemHeight = defaultItemHeight,
-      this.listViewWidth = defaultListviewWidth,
-      this.numberOfVisibleItems = defaultNumberOfVisibleItems})
-      : assert(items != null),
-        listViewHeight = numberOfVisibleItems * itemHeight,
+  CheckboxPicker({
+    Key key,
+    @required this.items,
+    @required this.initialValues,
+    @required this.onChanged,
+    @required this.height,
+    @required this.width,
+    this.itemHeight = defaultItemHeight,
+  })  : assert(items != null),
         super(key: key);
 
   // Constants
   static const double defaultItemHeight = 40.0;
-  static const double defaultListviewWidth = 100.0;
-  static const int defaultNumberOfVisibleItems = 10;
 
   // Events
   final ValueChanged<List<String>> onChanged;
@@ -29,9 +26,8 @@ class CheckboxPicker extends StatefulWidget {
   // Variables
   final List<String> items;
   final double itemHeight; // height of every list element in pixels
-  final double listViewHeight;
-  final int numberOfVisibleItems;
-  final double listViewWidth;
+  final double height;
+  final double width;
   final List<String> initialValues;
 
   @override
@@ -51,17 +47,13 @@ class CheckboxPickerState extends State<CheckboxPicker> {
 
     if (selectedValues == null) selectedValues = List<String>();
 
-    return _listView(themeData);
-  }
-
-  Widget _listView(ThemeData themeData) {
     TextStyle defaultStyle = themeData.textTheme.body1;
 
     int itemCount = widget.items.length;
 
     return Container(
-      height: widget.listViewHeight,
-      width: widget.listViewWidth,
+      height: widget.height,
+      width: widget.width,
       child: Scrollbar(
         child: ListView.builder(
           itemExtent: widget.itemHeight,

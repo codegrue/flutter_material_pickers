@@ -69,6 +69,8 @@ class _TestPageState extends State<TestPage> {
                     padding: EdgeInsets.all(8.0),
                     child: Column(
                       children: <Widget>[
+                        buildEmptyRow(context),
+                        Divider(),
                         buildListRow(context),
                         Divider(),
                         buildNumberRow(context),
@@ -107,6 +109,28 @@ class _TestPageState extends State<TestPage> {
           ],
         ),
       ),
+    );
+  }
+
+  Row buildEmptyRow(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Container(
+          width: 150.0,
+          child: RaisedButton(
+            child: Text("Empty Picker"),
+            onPressed: () => showMaterialEmptyPicker(
+              context: context,
+            ),
+          ),
+        ),
+        Expanded(
+          child: Text(
+            model.selectedUsState.toString(),
+            textAlign: TextAlign.right,
+          ),
+        ),
+      ],
     );
   }
 

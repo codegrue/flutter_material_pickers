@@ -2,9 +2,9 @@
 // is governed by the MIT license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_material_pickers/dialogs/checkbox_picker_dialog.dart';
+import 'package:flutter_material_pickers/dialogs/empty_content_dialog.dart';
 
-void showMaterialCheckboxPicker({
+void showMaterialEmptyPicker({
   BuildContext context,
   String title,
   List<String> items,
@@ -14,10 +14,9 @@ void showMaterialCheckboxPicker({
   showDialog<List<String>>(
     context: context,
     builder: (BuildContext context) {
-      return CheckboxPickerDialog(
+      return EmptyContentDialog(
+        context: context,
         title: title,
-        items: items,
-        initialItems: selectedItems,
       );
     },
   ).then((selection) {

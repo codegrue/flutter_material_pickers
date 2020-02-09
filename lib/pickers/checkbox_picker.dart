@@ -9,11 +9,11 @@ class CheckboxPicker extends StatefulWidget {
   CheckboxPicker({
     Key key,
     @required this.items,
-    @required this.initialValues,
+    @required this.initialItems,
     @required this.onChanged,
-    @required this.height,
-    @required this.width,
-    this.itemHeight = defaultItemHeight,
+    // @required this.height,
+    // @required this.width,
+    // this.itemHeight = defaultItemHeight,
   })  : assert(items != null),
         super(key: key);
 
@@ -25,14 +25,11 @@ class CheckboxPicker extends StatefulWidget {
 
   // Variables
   final List<String> items;
-  final double itemHeight; // height of every list element in pixels
-  final double height;
-  final double width;
-  final List<String> initialValues;
+  final List<String> initialItems;
 
   @override
   CheckboxPickerState createState() {
-    return CheckboxPickerState(initialValues);
+    return CheckboxPickerState(initialItems);
   }
 }
 
@@ -52,11 +49,8 @@ class CheckboxPickerState extends State<CheckboxPicker> {
     int itemCount = widget.items.length;
 
     return Container(
-      height: widget.height,
-      width: widget.width,
       child: Scrollbar(
         child: ListView.builder(
-          itemExtent: widget.itemHeight,
           itemCount: itemCount,
           itemBuilder: (BuildContext context, int index) {
             return CheckboxListTile(

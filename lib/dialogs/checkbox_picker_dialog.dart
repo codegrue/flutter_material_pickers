@@ -33,17 +33,6 @@ class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
 
   List<String> selectedItems;
 
-  void valueChanged(List<String> value) {
-    setState(() => selectedItems = value);
-  }
-
-  void dialogClosed(bool saveChanges) {
-    if (saveChanges)
-      Navigator.of(context).pop(selectedItems);
-    else
-      Navigator.of(context).pop();
-  }
-
   @override
   Widget build(BuildContext context) {
     assert(context != null);
@@ -53,9 +42,8 @@ class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
       child: CheckboxPicker(
         items: widget.items,
         initialItems: selectedItems,
-        onChanged: valueChanged,
       ),
-      dialogClosed: (value) => dialogClosed(value),
+      okPressed: () => Navigator.of(context).pop(selectedItems),
     );
   }
 }

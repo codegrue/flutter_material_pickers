@@ -10,10 +10,7 @@ class CheckboxPicker extends StatefulWidget {
     Key key,
     @required this.items,
     @required this.initialItems,
-    @required this.onChanged,
-    // @required this.height,
-    // @required this.width,
-    // this.itemHeight = defaultItemHeight,
+    //@required this.onChanged,
   })  : assert(items != null),
         super(key: key);
 
@@ -21,7 +18,7 @@ class CheckboxPicker extends StatefulWidget {
   static const double defaultItemHeight = 40.0;
 
   // Events
-  final ValueChanged<List<String>> onChanged;
+  //final ValueChanged<List<String>> onChanged;
 
   // Variables
   final List<String> items;

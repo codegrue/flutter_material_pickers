@@ -11,7 +11,8 @@ class EmptyContentDialog extends StatelessWidget {
     this.context,
     String title,
     Widget child,
-    this.dialogClosed,
+    this.okPressed,
+    this.cancelPressed,
   })  : title = title ?? "Title Here",
         child = child ?? Text("Content Here");
 
@@ -21,7 +22,8 @@ class EmptyContentDialog extends StatelessWidget {
   final Widget child;
 
   // Events
-  final ValueChanged<bool> dialogClosed;
+  final VoidCallback cancelPressed;
+  final VoidCallback okPressed;
 
   Widget header(BuildContext context, Orientation orientation) {
     var theme = Theme.of(context);
@@ -57,24 +59,18 @@ class EmptyContentDialog extends StatelessWidget {
         children: <Widget>[
           FlatButton(
             child: Text(localizations.cancelButtonLabel),
-            onPressed: () => closeDialog(false),
+            onPressed: () => (cancelPressed == null)
+                ? Navigator.of(context).pop()
+                : cancelPressed(),
           ),
           FlatButton(
             child: Text(localizations.okButtonLabel),
-            onPressed: () => closeDialog(true),
+            onPressed: () =>
+                (okPressed == null) ? Navigator.of(context).pop() : okPressed(),
           ),
         ],
       ),
     );
-  }
-
-  void closeDialog(bool okPressed) {
-    // if dialogClosed handler defined, call it, if not just pop
-    if (dialogClosed == null) {
-      Navigator.of(context).pop();
-    } else {
-      dialogClosed(okPressed);
-    }
   }
 
   @override

@@ -39,6 +39,7 @@ class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
 
     return EmptyContentDialog(
       context: context,
+      title: widget.title,
       child: CheckboxPicker(
         items: widget.items,
         initialItems: selectedItems,

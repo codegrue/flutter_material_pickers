@@ -6,111 +6,112 @@ import 'package:flutter/rendering.dart';
 
 /// This helper widget manages the scrollable content inside a picker widget.
 class ScrollPicker extends StatelessWidget {
-  ScrollPicker(
-      {Key key,
-      @required this.items,
-      @required String initialValue,
-      @required this.onChanged,
-      this.itemHeight = defaultItemHeight,
-      this.numberOfVisibleItems = defaultNumberOfVisibleItems})
-      : assert(items != null),
-        assert(numberOfVisibleItems % 2 != 0), // must be odd number
+  ScrollPicker({
+    Key key,
+    @required this.items,
+    @required String initialValue,
+    @required this.onChanged,
+  })  : assert(items != null),
         selectedValue = initialValue,
-        numberOfPaddingRows = ((numberOfVisibleItems - 1) ~/ 2),
         scrollController = ScrollController(
           initialScrollOffset: items.contains(initialValue)
-              ? items.indexOf(initialValue) * itemHeight
+              ? (items.indexOf(initialValue)) * itemHeight
               : 0.0,
         ),
-        listViewHeight = numberOfVisibleItems * itemHeight,
         super(key: key);
 
   // Constants
-  static const double defaultItemHeight = 50.0;
-  static const int defaultNumberOfVisibleItems = 7;
+  static const double itemHeight = 50.0;
 
   // Events
   final ValueChanged<String> onChanged;
 
   // Variables
   final List<String> items;
-  final double itemHeight; // height of every list element in pixels
-  final double listViewHeight;
-  final int numberOfVisibleItems;
-  final int numberOfPaddingRows;
 
-  ///width of list view in pixels
+  // Determined during build by the LayoutBuilder
+  double widgetHeight;
+  int numberOfVisibleItems;
+  int numberOfPaddingRows;
+  double visibleItemsHeight;
+
   final ScrollController scrollController;
 
-  ///ScrollController used for integer list
   final String selectedValue;
 
-  ///main widget
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
 
-    return _listView(themeData);
-  }
-
-  Widget _listView(ThemeData themeData) {
     TextStyle defaultStyle = themeData.textTheme.body1;
     TextStyle selectedStyle =
         themeData.textTheme.headline.copyWith(color: themeData.accentColor);
 
-    int itemCount = items.length + numberOfPaddingRows * 2;
-
     return NotificationListener(
-      child: SizedBox(
-        height: listViewHeight,
-        width: double.infinity,
-        child: Stack(
-          children: <Widget>[
-            ListView.builder(
-              controller: scrollController,
-              itemExtent: itemHeight,
-              itemCount: itemCount,
-              itemBuilder: (BuildContext context, int index) {
-                bool isPaddingRow = index < numberOfPaddingRows ||
-                    index >= itemCount - numberOfPaddingRows;
+      child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          widgetHeight = constraints.maxHeight;
+          numberOfVisibleItems = widgetHeight ~/ itemHeight;
+          numberOfPaddingRows = numberOfVisibleItems ~/ 2;
+          visibleItemsHeight = numberOfVisibleItems * itemHeight;
 
-                String value =
-                    (isPaddingRow) ? null : items[index - numberOfPaddingRows];
+          int itemCount = items.length + numberOfPaddingRows * 2;
 
-                //define special style for selected (middle) element
-                final TextStyle itemStyle =
-                    (value == selectedValue) ? selectedStyle : defaultStyle;
+          return Stack(
+            children: <Widget>[
+              Container(
+                child: ListView.builder(
+                  controller: scrollController,
+                  itemExtent: itemHeight,
+                  itemCount: itemCount,
+                  itemBuilder: (BuildContext context, int index) {
+                    bool isPaddingRow = index < numberOfPaddingRows ||
+                        index >= itemCount - numberOfPaddingRows;
 
-                return isPaddingRow
-                    ? Container() //empty items for padding rows
-                    : GestureDetector(
-                        onTap: () {
-                          _itemTapped(index);
-                        },
-                        child: Container(
-                          color: Colors
-                              .transparent, // seems to be necessary to allow touches outside the item text
-                          child: Center(
-                            child: Text(value, style: itemStyle),
-                          ),
-                        ),
-                      );
-              },
-            ),
-            Center(
-              child: Container(
-                height: defaultItemHeight,
-                decoration: BoxDecoration(
-                  border: Border(
-                    top: BorderSide(color: themeData.accentColor, width: 1.0),
-                    bottom:
-                        BorderSide(color: themeData.accentColor, width: 1.0),
-                  ),
+                    String value = (isPaddingRow)
+                        ? null
+                        : items[index - numberOfPaddingRows];
+
+                    //define special style for selected (middle) element
+                    final TextStyle itemStyle =
+                        (value == selectedValue) ? selectedStyle : defaultStyle;
+
+                    return isPaddingRow
+                        ? Container() //empty items for padding rows
+                        : GestureDetector(
+                            onTap: () {
+                              _itemTapped(index);
+                            },
+                            child: Container(
+                              color: Colors
+                                  .transparent, // seems to be necessary to allow touches outside the item text
+                              child: Center(
+                                child: Text(value, style: itemStyle),
+                              ),
+                            ),
+                          );
+                  },
                 ),
               ),
-            )
-          ],
-        ),
+              Container(
+                height: visibleItemsHeight,
+                child: Center(
+                  child: Container(
+                    height: itemHeight,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        top: BorderSide(
+                            color: themeData.accentColor, width: 1.0),
+                        bottom: BorderSide(
+                            color: themeData.accentColor, width: 1.0),
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          );
+        },
       ),
       onNotification: _onNotification,
     );
@@ -125,7 +126,8 @@ class ScrollPicker extends StatelessWidget {
     if (notification is ScrollNotification) {
       if (_userStoppedScrolling(notification, scrollController)) {
         int indexOfMiddleElement =
-            (notification.metrics.pixels + listViewHeight / 2) ~/ itemHeight -
+            ((notification.metrics.pixels + visibleItemsHeight / 2) ~/
+                    itemHeight) -
                 numberOfPaddingRows;
         _changeSelectedItem(indexOfMiddleElement);
       }

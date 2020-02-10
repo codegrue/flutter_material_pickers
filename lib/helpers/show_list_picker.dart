@@ -17,7 +17,7 @@ void showMaterialListPicker({
       return ListPickerDialog(
         items: items,
         title: title,
-        initialValue: selectedItem,
+        initialItem: selectedItem,
       );
     },
   ).then((selection) {

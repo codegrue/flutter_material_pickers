@@ -22,7 +22,7 @@ void showMaterialNumberPicker({
       return ListPickerDialog(
         items: items,
         title: title,
-        initialValue: selectedNumber.toString(),
+        initialItem: selectedNumber.toString(),
       );
     },
   ).then((selection) {

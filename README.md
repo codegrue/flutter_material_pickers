@@ -2,7 +2,7 @@
 
 A flutter package containing commonly used material design picker dialogs. Some are new, some wrap existing or built in pickers with a common dialog and access function.
 
-<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/main_new_pickers.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/main_convenience_pickers-d.png" width="200">
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/main_new_pickers.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/main_convenience_pickers.png" width="200">
 
 It includes:
 

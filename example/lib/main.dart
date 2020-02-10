@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
             ),
         themedWidgetBuilder: (context, theme) {
           return MaterialApp(
-            title: 'Material Pickers Examples',
+            title: 'Material Picker Examples',
             theme: theme,
             home: TestPage(),
           );
@@ -39,7 +39,7 @@ class _TestPageState extends State<TestPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        title: Text("Material Pickers Examples"),
+        title: Text("Material Picker Examples"),
         actions: <Widget>[
           IconButton(
             icon: Theme.of(context).brightness == Brightness.dark
@@ -123,7 +123,25 @@ class _TestPageState extends State<TestPage> {
             child: Text("Empty Picker"),
             onPressed: () => showMaterialEmptyPicker(
               context: context,
+              child: Center(
+                child: Container(
+                  padding: EdgeInsets.all(30.0),
+                  child: Text(
+                    "This is the base dialog widget for the pickers. However, you can place any content here you desire.",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ),
+              ),
             ),
+          ),
+        ),
+        Expanded(
+          child: Text(
+            "n/a",
+            textAlign: TextAlign.right,
           ),
         ),
       ],

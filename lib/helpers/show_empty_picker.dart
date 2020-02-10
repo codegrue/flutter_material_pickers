@@ -7,8 +7,7 @@ import 'package:flutter_material_pickers/dialogs/empty_content_dialog.dart';
 void showMaterialEmptyPicker({
   BuildContext context,
   String title,
-  List<String> items,
-  List<String> selectedItems,
+  Widget child,
   ValueChanged<List<String>> onChanged,
 }) {
   showDialog<List<String>>(
@@ -17,6 +16,7 @@ void showMaterialEmptyPicker({
       return EmptyContentDialog(
         context: context,
         title: title,
+        child: child,
       );
     },
   ).then((selection) {

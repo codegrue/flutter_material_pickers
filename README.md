@@ -175,6 +175,34 @@ showMaterialSelectionPicker(
 );
 ```
 
+### Time Picker Example
+
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_time_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_time_picker-d.png" width="200">
+
+```dart
+var time = TimeOfDay.now();
+
+showMaterialTimePicker(
+  context: context,
+  selectedTime: time,
+  onChanged: (value) => setState(() => time = value),
+);
+```
+
+### Date Picker Example
+
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_date_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_date_picker-d.png" width="200">
+
+```dart
+var date = DateTime.now();
+
+showMaterialDatePicker(
+  context: context,
+  selectedDate: model.date,
+  onChanged: (value) => setState(() => model.date = value),
+);
+```
+
 ## Dependencies
 
 This widget set relies on these external third-party components:

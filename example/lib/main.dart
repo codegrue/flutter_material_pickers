@@ -68,7 +68,7 @@ class _TestPageState extends State<TestPage> {
               Card(
                 child: Container(
                   padding: EdgeInsets.all(8.0),
-                  child: Column(
+                  child: ListView(
                     children: <Widget>[
                       buildEmptyRow(context),
                       Divider(),
@@ -88,7 +88,7 @@ class _TestPageState extends State<TestPage> {
               Card(
                 child: Container(
                   padding: EdgeInsets.all(8.0),
-                  child: Column(
+                  child: ListView(
                     children: <Widget>[
                       buildTimeRow(context),
                       Divider(),

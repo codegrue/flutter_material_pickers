@@ -95,6 +95,10 @@ class _TestPageState extends State<TestPage> {
                       buildDateRow(context),
                       Divider(),
                       buildColorRow(context),
+                      Divider(),
+                      buildPaletteRow(context),
+                      Divider(),
+                      buildSwatchRow(context)
                     ],
                   ),
                 ),
@@ -343,6 +347,58 @@ class _TestPageState extends State<TestPage> {
           width: 100.0,
           decoration: BoxDecoration(
             color: model.color,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row buildPaletteRow(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Container(
+          width: 150.0,
+          child: RaisedButton(
+            child: Text("Palette Picker"),
+            onPressed: () => showMaterialPalettePicker(
+              context: context,
+              selectedColor: model.palette,
+              onChanged: (value) => setState(() => model.palette = value),
+            ),
+          ),
+        ),
+        Expanded(child: Container()),
+        Container(
+          height: 20.0,
+          width: 100.0,
+          decoration: BoxDecoration(
+            color: model.palette,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row buildSwatchRow(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Container(
+          width: 150.0,
+          child: RaisedButton(
+            child: Text("Palette Picker"),
+            onPressed: () => showMaterialSwatchPicker(
+              context: context,
+              selectedColor: model.swatch,
+              onChanged: (value) => setState(() => model.swatch = value),
+            ),
+          ),
+        ),
+        Expanded(child: Container()),
+        Container(
+          height: 20.0,
+          width: 100.0,
+          decoration: BoxDecoration(
+            color: model.swatch,
           ),
         ),
       ],

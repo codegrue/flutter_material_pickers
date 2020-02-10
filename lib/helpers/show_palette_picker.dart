@@ -2,11 +2,11 @@
 // is governed by the MIT license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:flutter_colorpicker/material_picker.dart';
 
 const double _kPickerHeaderPortraitHeight = 60.0;
 
-void showMaterialColorPicker({
+void showMaterialPalettePicker({
   BuildContext context,
   String title = "Pick a color",
   Color selectedColor,
@@ -34,15 +34,10 @@ void showMaterialColorPicker({
           titlePadding: const EdgeInsets.all(0.0),
           contentPadding: const EdgeInsets.all(0.0),
           content: SingleChildScrollView(
-            child: ColorPicker(
+            child: MaterialPicker(
               pickerColor: selectedColor,
               onColorChanged: (color) => selectedColor = color,
-              colorPickerWidth: 1000.0,
-              pickerAreaHeightPercent: 0.3,
-              enableAlpha: true,
-              displayThumbColor: true,
-              enableLabel: true,
-              paletteType: PaletteType.hsv,
+              enableLabel: true, // only on portrait mode
             ),
           ),
           actions: <Widget>[

@@ -106,4 +106,10 @@ class ExampleModel {
 
   // Color Picker Model
   Color color = Colors.red;
+
+  // Palette Picker Model
+  Color palette = Colors.green;
+
+  // Palette Picker Model
+  Color swatch = Colors.blue;
 }

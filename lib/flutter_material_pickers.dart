@@ -15,6 +15,8 @@ export 'package:flutter_material_pickers/helpers/show_radio_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_time_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_date_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_color_picker.dart';
+export 'package:flutter_material_pickers/helpers/show_palette_picker.dart';
+export 'package:flutter_material_pickers/helpers/show_swatch_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_empty_picker.dart';
 
 // Constants

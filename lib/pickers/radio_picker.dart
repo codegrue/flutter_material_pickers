@@ -37,10 +37,6 @@ class RadioPickerState extends State<RadioPicker> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = Theme.of(context);
-
-    TextStyle defaultStyle = themeData.textTheme.body1;
-
     int itemCount = widget.items.length;
 
     return Container(
@@ -48,18 +44,16 @@ class RadioPickerState extends State<RadioPicker> {
         child: ListView.builder(
           itemCount: itemCount,
           itemBuilder: (BuildContext context, int index) {
-            return CheckboxListTile(
+            return RadioListTile<String>(
+              groupValue: selectedValue,
               title: Text(
                 widget.items[index],
-                style: defaultStyle,
               ),
-              value: (widget.items[index] == selectedValue),
-              onChanged: (bool value) {
+              value: widget.items[index],
+              onChanged: (String value) {
                 setState(() {
-                  if (value == true) {
-                    selectedValue = widget.items[index];
-                    widget.onChanged(selectedValue);
-                  }
+                  selectedValue = value;
+                  widget.onChanged(selectedValue);
                 });
               },
             );

@@ -10,6 +10,7 @@ export 'helpers/converter_functions.dart';
 export 'package:flutter_material_pickers/helpers/show_scroll_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_number_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_checkbox_picker.dart';
+export 'package:flutter_material_pickers/helpers/show_selection_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_radio_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_time_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_date_picker.dart';

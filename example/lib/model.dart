@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 class ExampleModel {
+  // Scroll/Radio Picker Model
   var selectedUsState = "Connecticut";
   List<String> usStates = <String>[
     'Alabama',
@@ -56,6 +57,7 @@ class ExampleModel {
     'Wyoming',
   ];
 
+  // Checkbox Picker Model
   List<String> iceCreamToppings = <String>[
     'Hot Fudge',
     'Sprinkles',
@@ -75,13 +77,33 @@ class ExampleModel {
   ];
   List<String> selectedIceCreamToppings = <String>[
     'Hot Fudge',
-    'Caramel',
-    'Whipped Cream',
-    'Marshmallow',
+    'Sprinkles',
   ];
 
+  // Selection Picker Model
+  List<String> speedOptions = <String>[
+    'Light',
+    'Ridiculous',
+    'Ludicrous',
+    'Plaid',
+  ];
+  String speed = 'Ludicrous';
+  List<Icon> speedIcons = <Icon>[
+    Icon(Icons.sort),
+    Icon(Icons.clear_all),
+    Icon(Icons.swap_calls),
+    Icon(Icons.select_all),
+  ];
+
+  // Number Picker Model
   var age = 25;
+
+  // Time Picker Model
   var time = TimeOfDay.now();
+
+  // Date Picker Model
   var date = DateTime.now();
+
+  // Color Picker Model
   Color color = Colors.red;
 }

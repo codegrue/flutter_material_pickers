@@ -78,6 +78,8 @@ class _TestPageState extends State<TestPage> {
                         buildCheckboxRow(context),
                         Divider(),
                         buildRadioRow(context),
+                        Divider(),
+                        buildSelectionRow(context),
                       ],
                     ),
                   ),
@@ -90,7 +92,7 @@ class _TestPageState extends State<TestPage> {
                   Container(
                     color: Theme.of(context).secondaryHeaderColor,
                     child: ListTile(
-                      title: Text('Wrapped Pickers'),
+                      title: Text('Convenience Pickers'),
                     ),
                   ),
                   Container(
@@ -249,6 +251,33 @@ class _TestPageState extends State<TestPage> {
         Expanded(
           child: Text(
             model.selectedUsState.toString(),
+            textAlign: TextAlign.right,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row buildSelectionRow(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Container(
+          width: 150.0,
+          child: RaisedButton(
+            child: Text("Selection Picker"),
+            onPressed: () => showMaterialSelectionPicker(
+              context: context,
+              title: "Starship Speed",
+              items: model.speedOptions,
+              selectedItem: model.speed,
+              icons: model.speedIcons,
+              onChanged: (value) => setState(() => model.speed = value),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Text(
+            model.speed,
             textAlign: TextAlign.right,
           ),
         ),

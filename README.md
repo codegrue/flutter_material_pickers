@@ -140,6 +140,37 @@ showMaterialRadioPicker(
 );
 ```
 
+## Selection Picker Example
+
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_selection_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_selection_picker-d.png" width="200">
+
+```dart
+String speed = 'Ludicrous';
+
+List<String> speedOptions = <String>[
+  'Light',
+  'Ridiculous',
+  'Ludicrous',
+  'Plaid',
+];
+
+List<Icon> speedIcons = <Icon>[
+  Icon(Icons.sort),
+  Icon(Icons.clear_all),
+  Icon(Icons.swap_calls),
+  Icon(Icons.select_all),
+];
+
+showMaterialSelectionPicker(
+  context: context,
+  title: "Starship Speed",
+  items: model.speedOptions,
+  selectedItem: model.speed,
+  icons: model.speedIcons,
+  onChanged: (value) => setState(() => model.speed = value),
+);
+```
+
 ## Dependencies
 
 This widget set relies on these external third-party components:

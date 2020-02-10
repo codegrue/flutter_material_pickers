@@ -87,6 +87,32 @@ showMaterialNumberPicker(
 );
 ```
 
+## Checkbox Picker Example
+
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_checkbox_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_checkbox_picker-d.png" width="200">
+
+```dart
+List<String> iceCreamToppings = <String>[
+  'Hot Fudge',
+  'Sprinkles',
+  'Caramel',
+  'Oreos',
+  ...
+];
+List<String> selectedIceCreamToppings = <String>[
+  'Hot Fudge',
+  'Sprinkles',
+];
+
+showMaterialCheckboxPicker(
+  context: context,
+  title: "Pick Your Toppings",
+  items: model.iceCreamToppings,
+  selectedItems: selectedIceCreamToppings,
+  onChanged: (value) => setState(() => selectedIceCreamToppings = value),
+);
+```
+
 ## Dependencies
 
 This widget set relies on these external third-party components:

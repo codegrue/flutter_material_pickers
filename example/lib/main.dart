@@ -36,81 +36,71 @@ class _TestPageState extends State<TestPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
-      appBar: AppBar(
-        title: Text("Material Picker Examples"),
-        actions: <Widget>[
-          IconButton(
-            icon: Theme.of(context).brightness == Brightness.dark
-                ? Icon(Icons.brightness_7)
-                : Icon(Icons.brightness_4),
-            onPressed: () => DynamicTheme.of(context).setBrightness(
-                Theme.of(context).brightness == Brightness.dark
-                    ? Brightness.light
-                    : Brightness.dark),
-          )
-        ],
-      ),
-      body: Container(
-        margin: EdgeInsets.all(8.0),
-        child: ListView(
-          children: <Widget>[
-            Card(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    color: Theme.of(context).secondaryHeaderColor,
-                    child: ListTile(
-                      title: Text('New Pickers'),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      children: <Widget>[
-                        buildEmptyRow(context),
-                        Divider(),
-                        buildScrollRow(context),
-                        Divider(),
-                        buildNumberRow(context),
-                        Divider(),
-                        buildCheckboxRow(context),
-                        Divider(),
-                        buildRadioRow(context),
-                        Divider(),
-                        buildSelectionRow(context),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Card(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    color: Theme.of(context).secondaryHeaderColor,
-                    child: ListTile(
-                      title: Text('Convenience Pickers'),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      children: <Widget>[
-                        buildTimeRow(context),
-                        Divider(),
-                        buildDateRow(context),
-                        Divider(),
-                        buildColorRow(context),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
+        appBar: AppBar(
+          title: Text("Material Picker Examples"),
+          actions: <Widget>[
+            IconButton(
+              icon: Theme.of(context).brightness == Brightness.dark
+                  ? Icon(Icons.brightness_7)
+                  : Icon(Icons.brightness_4),
+              onPressed: () => DynamicTheme.of(context).setBrightness(
+                  Theme.of(context).brightness == Brightness.dark
+                      ? Brightness.light
+                      : Brightness.dark),
+            )
           ],
+          bottom: TabBar(
+            isScrollable: true,
+            tabs: <Widget>[
+              Tab(text: "New Pickers"),
+              Tab(text: "Convenience Pickers"),
+            ],
+          ),
+        ),
+        body: Container(
+          margin: EdgeInsets.all(8.0),
+          child: TabBarView(
+            children: <Widget>[
+              Card(
+                child: Container(
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget>[
+                      buildEmptyRow(context),
+                      Divider(),
+                      buildScrollRow(context),
+                      Divider(),
+                      buildNumberRow(context),
+                      Divider(),
+                      buildCheckboxRow(context),
+                      Divider(),
+                      buildRadioRow(context),
+                      Divider(),
+                      buildSelectionRow(context),
+                    ],
+                  ),
+                ),
+              ),
+              Card(
+                child: Container(
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget>[
+                      buildTimeRow(context),
+                      Divider(),
+                      buildDateRow(context),
+                      Divider(),
+                      buildColorRow(context),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

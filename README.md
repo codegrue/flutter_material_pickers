@@ -2,6 +2,8 @@
 
 A flutter package containing commonly used material design picker dialogs. Some are new, some wrap existing or built in pickers with a common dialog and access function.
 
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/main_new_pickers.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/main_convenience_pickers-d.png" width="200">
+
 It includes:
 
 - **New Pickers**
@@ -19,7 +21,9 @@ It includes:
 
 All show helpers implement an `onChange` handler to return picked option(s).
 
-## Empty Dialog Example
+## Example Usage
+
+### Empty Dialog Example
 
 Although not a picker, per se, the _showMaterialEmptyPicker_ helper displays the universal material design dialog wrapper that the pickers appear in. Using this directly, however, allows any content to be injected into the content area by passing in a custon Widget as the child. This code shows the basic structure of all the helpers:
 
@@ -43,7 +47,7 @@ showMaterialEmptyPicker(
 );
 ```
 
-## Scroll Picker Example
+### Scroll Picker Example
 
 <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_scroll_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_scroll_picker-d.png" width="200">
 
@@ -70,7 +74,7 @@ showMaterialScrollPicker(
 );
 ```
 
-## Number Picker Example
+### Number Picker Example
 
 <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_number_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_number_picker-d.png" width="200">
 
@@ -87,7 +91,7 @@ showMaterialNumberPicker(
 );
 ```
 
-## Checkbox Picker Example
+### Checkbox Picker Example
 
 <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_checkbox_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_checkbox_picker-d.png" width="200">
 
@@ -113,7 +117,7 @@ showMaterialCheckboxPicker(
 );
 ```
 
-## Radio Picker Example
+### Radio Picker Example
 
 <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_radio_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_radio_picker-d.png" width="200">
 
@@ -140,7 +144,7 @@ showMaterialRadioPicker(
 );
 ```
 
-## Selection Picker Example
+### Selection Picker Example
 
 <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_selection_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_selection_picker-d.png" width="200">
 

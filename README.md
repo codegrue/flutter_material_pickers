@@ -107,9 +107,36 @@ List<String> selectedIceCreamToppings = <String>[
 showMaterialCheckboxPicker(
   context: context,
   title: "Pick Your Toppings",
-  items: model.iceCreamToppings,
+  items: iceCreamToppings,
   selectedItems: selectedIceCreamToppings,
   onChanged: (value) => setState(() => selectedIceCreamToppings = value),
+);
+```
+
+## Radio Picker Example
+
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_radio_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_radio_picker-d.png" width="200">
+
+```dart
+var selectedUsState = "Connecticut";
+
+List<String> usStates = <String>[
+  'Alabama',
+  'Alaska',
+  'Arizona',
+  'Arkansas',
+  'California',
+  'Colorado',
+  'Connecticut',
+  ...
+];
+
+showMaterialRadioPicker(
+  context: context,
+  title: "Pick Your City",
+  items: model.usStates,
+  selectedItem: selectedUsState,
+  onChanged: (value) => setState(() => selectedUsState = value),
 );
 ```
 

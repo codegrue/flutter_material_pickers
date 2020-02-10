@@ -5,37 +5,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 /// This helper widget manages a scrollable checkbox list inside a picker widget.
-class CheckboxPicker extends StatefulWidget {
-  CheckboxPicker({
+class RadioPicker extends StatefulWidget {
+  RadioPicker({
     Key key,
     @required this.items,
-    @required this.initialItems,
+    @required this.initialItem,
+    @required this.onChanged,
   })  : assert(items != null),
         super(key: key);
 
   // Constants
   static const double defaultItemHeight = 40.0;
 
+  // Events
+  final ValueChanged<String> onChanged;
+
   // Variables
   final List<String> items;
-  final List<String> initialItems;
+  final String initialItem;
 
   @override
-  CheckboxPickerState createState() {
-    return CheckboxPickerState(initialItems);
+  RadioPickerState createState() {
+    return RadioPickerState(initialItem);
   }
 }
 
-class CheckboxPickerState extends State<CheckboxPicker> {
-  CheckboxPickerState(this.selectedValues);
+class RadioPickerState extends State<RadioPicker> {
+  RadioPickerState(this.selectedValue);
 
-  List<String> selectedValues;
+  String selectedValue;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
-
-    if (selectedValues == null) selectedValues = List<String>();
 
     TextStyle defaultStyle = themeData.textTheme.body1;
 
@@ -51,13 +53,12 @@ class CheckboxPickerState extends State<CheckboxPicker> {
                 widget.items[index],
                 style: defaultStyle,
               ),
-              value: selectedValues.contains(widget.items[index]),
+              value: (widget.items[index] == selectedValue),
               onChanged: (bool value) {
                 setState(() {
                   if (value == true) {
-                    selectedValues.add(widget.items[index]);
-                  } else {
-                    selectedValues.remove(widget.items[index]);
+                    selectedValue = widget.items[index];
+                    widget.onChanged(selectedValue);
                   }
                 });
               },

@@ -76,6 +76,8 @@ class _TestPageState extends State<TestPage> {
                         buildNumberRow(context),
                         Divider(),
                         buildCheckboxRow(context),
+                        Divider(),
+                        buildRadioRow(context),
                       ],
                     ),
                   ),
@@ -202,6 +204,33 @@ class _TestPageState extends State<TestPage> {
         Expanded(
           child: Text(
             model.selectedIceCreamToppings.toString(),
+            textAlign: TextAlign.right,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row buildRadioRow(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Container(
+          width: 150.0,
+          child: RaisedButton(
+            child: Text("Radio Picker"),
+            onPressed: () => showMaterialRadioPicker(
+              context: context,
+              title: "Pick Your City",
+              items: model.usStates,
+              selectedItem: model.selectedUsState,
+              onChanged: (value) =>
+                  setState(() => model.selectedUsState = value),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Text(
+            model.selectedUsState.toString(),
             textAlign: TextAlign.right,
           ),
         ),

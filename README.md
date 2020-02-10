@@ -45,6 +45,8 @@ showMaterialEmptyPicker(
 
 ## Scroll Picker Example
 
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_scroll_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_scroll_picker-d.png" width="200">
+
 ```dart
   var selectedUsState = "Connecticut";
   List<String> usStates = <String>[

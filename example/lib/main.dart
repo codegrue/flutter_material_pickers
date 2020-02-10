@@ -71,7 +71,7 @@ class _TestPageState extends State<TestPage> {
                       children: <Widget>[
                         buildEmptyRow(context),
                         Divider(),
-                        buildListRow(context),
+                        buildScrollRow(context),
                         Divider(),
                         buildNumberRow(context),
                         Divider(),
@@ -124,24 +124,18 @@ class _TestPageState extends State<TestPage> {
             ),
           ),
         ),
-        Expanded(
-          child: Text(
-            model.selectedUsState.toString(),
-            textAlign: TextAlign.right,
-          ),
-        ),
       ],
     );
   }
 
-  Row buildListRow(BuildContext context) {
+  Row buildScrollRow(BuildContext context) {
     return Row(
       children: <Widget>[
         Container(
           width: 150.0,
           child: RaisedButton(
-            child: Text("List Picker"),
-            onPressed: () => showMaterialListPicker(
+            child: Text("Scroll Picker"),
+            onPressed: () => showMaterialScrollPicker(
               context: context,
               title: "Pick Your City",
               items: model.usStates,

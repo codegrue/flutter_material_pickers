@@ -2,9 +2,9 @@
 // is governed by the MIT license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_material_pickers/dialogs/list_picker_dialog.dart';
+import 'package:flutter_material_pickers/dialogs/scroll_picker_dialog.dart';
 
-void showMaterialListPicker({
+void showMaterialScrollPicker({
   BuildContext context,
   String title,
   List<String> items,
@@ -14,7 +14,7 @@ void showMaterialListPicker({
   showDialog<String>(
     context: context,
     builder: (BuildContext context) {
-      return ListPickerDialog(
+      return ScrollPickerDialog(
         items: items,
         title: title,
         initialItem: selectedItem,

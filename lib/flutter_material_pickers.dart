@@ -5,8 +5,6 @@
 library flutter_material_pickers;
 
 export 'helpers/converter_functions.dart';
-export 'dialogs/list_picker_dialog.dart';
-export 'pickers/scroll_picker.dart';
 
 /// Helpers
 export 'package:flutter_material_pickers/helpers/show_list_picker.dart';

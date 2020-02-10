@@ -30,10 +30,10 @@ class ScrollPicker extends StatelessWidget {
   final List<String> items;
 
   // Determined during build by the LayoutBuilder
-  double widgetHeight;
-  int numberOfVisibleItems;
-  int numberOfPaddingRows;
-  double visibleItemsHeight;
+  static double widgetHeight;
+  static int numberOfVisibleItems;
+  static int numberOfPaddingRows;
+  static double visibleItemsHeight;
 
   final ScrollController scrollController;
 

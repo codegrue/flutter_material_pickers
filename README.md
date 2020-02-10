@@ -48,24 +48,42 @@ showMaterialEmptyPicker(
 <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_scroll_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_scroll_picker-d.png" width="200">
 
 ```dart
-  var selectedUsState = "Connecticut";
-  List<String> usStates = <String>[
-    'Alabama',
-    'Alaska',
-    'Arizona',
-    'Arkansas',
-    'California',
-    'Colorado',
-    'Connecticut',
-    ...
-  ];
+var selectedUsState = "Connecticut";
+
+List<String> usStates = <String>[
+  'Alabama',
+  'Alaska',
+  'Arizona',
+  'Arkansas',
+  'California',
+  'Colorado',
+  'Connecticut',
+  ...
+];
 
 showMaterialScrollPicker(
     context: context,
     title: "Pick Your City",
-    items: model.usStates,
-    selectedItem: model.selectedUsState,
-    onChanged: (value) => setState(() => model.selectedUsState = value),
+    items: usStates,
+    selectedItem: selectedUsState,
+    onChanged: (value) => setState(() => selectedUsState = value),
+);
+```
+
+## Number Picker Example
+
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_number_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_number_picker-d.png" width="200">
+
+```dart
+var age = 25;
+
+showMaterialNumberPicker(
+  context: context,
+  title: "Pick Your Age",
+  maxNumber: 100,
+  minNumber: 14,
+  selectedNumber: age,
+  onChanged: (value) => setState(() => age = value),
 );
 ```
 

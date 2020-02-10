@@ -23,8 +23,7 @@ All show helpers implement an `onChange` handler to return picked option(s).
 
 Although not a picker, per se, the _showMaterialEmptyPicker_ helper displays the universal material design dialog wrapper that the pickers appear in. Using this directly, however, allows any content to be injected into the content area by passing in a custon Widget as the child. This code shows the basic structure of all the helpers:
 
-![Screenshot](https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_empty_picker-l.png)
-![Screenshot](https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_empty_picker-d.png)
+![Screenshot](https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_empty_picker-l.png?s=200) ![Screenshot](https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_empty_picker-d.png)
 
 ```dart
 showMaterialEmptyPicker(

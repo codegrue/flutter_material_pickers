@@ -61,49 +61,51 @@ class _TestPageState extends State<TestPage> {
             ],
           ),
         ),
-        body: Container(
-          margin: EdgeInsets.all(8.0),
-          child: TabBarView(
-            children: <Widget>[
-              Card(
-                child: Container(
-                  padding: EdgeInsets.all(8.0),
-                  child: ListView(
-                    children: <Widget>[
-                      buildEmptyRow(context),
-                      Divider(),
-                      buildScrollRow(context),
-                      Divider(),
-                      buildNumberRow(context),
-                      Divider(),
-                      buildCheckboxRow(context),
-                      Divider(),
-                      buildRadioRow(context),
-                      Divider(),
-                      buildSelectionRow(context),
-                    ],
+        body: SafeArea(
+          child: Container(
+            margin: EdgeInsets.all(8.0),
+            child: TabBarView(
+              children: <Widget>[
+                Card(
+                  child: Container(
+                    padding: EdgeInsets.all(8.0),
+                    child: ListView(
+                      children: <Widget>[
+                        buildEmptyRow(context),
+                        Divider(),
+                        buildScrollRow(context),
+                        Divider(),
+                        buildNumberRow(context),
+                        Divider(),
+                        buildCheckboxRow(context),
+                        Divider(),
+                        buildRadioRow(context),
+                        Divider(),
+                        buildSelectionRow(context),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Card(
-                child: Container(
-                  padding: EdgeInsets.all(8.0),
-                  child: ListView(
-                    children: <Widget>[
-                      buildTimeRow(context),
-                      Divider(),
-                      buildDateRow(context),
-                      Divider(),
-                      buildColorRow(context),
-                      Divider(),
-                      buildPaletteRow(context),
-                      Divider(),
-                      buildSwatchRow(context)
-                    ],
+                Card(
+                  child: Container(
+                    padding: EdgeInsets.all(8.0),
+                    child: ListView(
+                      children: <Widget>[
+                        buildTimeRow(context),
+                        Divider(),
+                        buildDateRow(context),
+                        Divider(),
+                        buildColorRow(context),
+                        Divider(),
+                        buildPaletteRow(context),
+                        Divider(),
+                        buildSwatchRow(context)
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -385,7 +387,7 @@ class _TestPageState extends State<TestPage> {
         Container(
           width: 150.0,
           child: RaisedButton(
-            child: Text("Palette Picker"),
+            child: Text("Swatch Picker"),
             onPressed: () => showMaterialSwatchPicker(
               context: context,
               selectedColor: model.swatch,

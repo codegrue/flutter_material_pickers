@@ -17,7 +17,7 @@ It includes:
   - _showMaterialDatePicker_ - Displays the core date picker
   - _showMaterialTimePicker_ - Displays the core time picker
 - **Dialog**
-  - _showMaterialEmptyPicker_ - Picker list of arbitrary options
+  - _showMaterialResponsiveDialog_ - Picker list of arbitrary options
 
 All show helpers implement an `onChange` handler to return picked option(s).
 
@@ -30,17 +30,15 @@ Although not a picker, per se, the _showMaterialEmptyPicker_ helper displays the
 <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_empty_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_empty_picker-d.png" width="200">
 
 ```dart
-showMaterialEmptyPicker(
+showMaterialResponsiveDialog(
     context: context,
     child: Center(
         child: Container(
             padding: EdgeInsets.all(30.0),
-            child: Text(
-            "This is the base dialog widget for the pickers. However, you can place any content here you desire.",
+            child: Text("Any content here."),
             style: TextStyle(
                 fontSize: 20.0,
                 fontStyle: FontStyle.italic,
-            ),
             ),
         ),
     ),
@@ -200,6 +198,48 @@ showMaterialDatePicker(
   context: context,
   selectedDate: model.date,
   onChanged: (value) => setState(() => model.date = value),
+);
+```
+
+### Color Picker Example
+
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_color_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_color_picker-d.png" width="200">
+
+```dart
+Color color = Colors.red;
+
+showMaterialColorPicker(
+  context: context,
+  selectedColor: model.color,
+  onChanged: (value) => setState(() => model.color = value),
+);
+```
+
+### Palette Picker Example
+
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_palette_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_palette_picker-d.png" width="200">
+
+```dart
+Color palette = Colors.green;
+
+showMaterialPalettePicker(
+  context: context,
+  selectedColor: model.palette,
+  onChanged: (value) => setState(() => model.palette = value),
+);
+```
+
+### Swatch Picker Example
+
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_swatch_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_swatch_picker-d.png" width="200">
+
+```dart
+Color swatch = Colors.blue;
+
+showMaterialSwatchPicker(
+  context: context,
+  selectedColor: swatch,
+  onChanged: (value) => setState(() => swatch = value),
 );
 ```
 

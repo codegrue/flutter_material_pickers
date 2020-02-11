@@ -116,14 +116,14 @@ class _TestPageState extends State<TestPage> {
         Container(
           width: 150.0,
           child: RaisedButton(
-            child: Text("Empty Picker"),
-            onPressed: () => showMaterialEmptyPicker(
+            child: Text("Empty Dialog"),
+            onPressed: () => showMaterialResponsiveDialog(
               context: context,
               child: Center(
                 child: Container(
                   padding: EdgeInsets.all(30.0),
                   child: Text(
-                    "This is the base dialog widget for the pickers. However, you can place any content here you desire.",
+                    "This is the base dialog widget for the pickers. Unlike the off-the-shelf Dialog widget, it handles landscape orientations. You may place any content here you desire.",
                     style: TextStyle(
                       fontSize: 20.0,
                       fontStyle: FontStyle.italic,

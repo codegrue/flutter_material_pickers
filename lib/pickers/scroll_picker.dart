@@ -52,50 +52,59 @@ class ScrollPicker extends StatelessWidget {
         builder: (BuildContext context, BoxConstraints constraints) {
           widgetHeight = constraints.maxHeight;
           numberOfVisibleItems = widgetHeight ~/ itemHeight;
+
           numberOfPaddingRows = numberOfVisibleItems ~/ 2;
+
+          // ensure odd rows to allow a centered item
+          if (numberOfVisibleItems.isEven) numberOfVisibleItems++;
+
           visibleItemsHeight = numberOfVisibleItems * itemHeight;
 
           int itemCount = items.length + numberOfPaddingRows * 2;
 
-          return Stack(
-            children: <Widget>[
-              Container(
-                child: ListView.builder(
-                  controller: scrollController,
-                  itemExtent: itemHeight,
-                  itemCount: itemCount,
-                  itemBuilder: (BuildContext context, int index) {
-                    bool isPaddingRow = index < numberOfPaddingRows ||
-                        index >= itemCount - numberOfPaddingRows;
+          return Container(
+            child: Stack(
+              children: <Widget>[
+                Center(
+                  child: Container(
+                    height: visibleItemsHeight,
+                    child: ListView.builder(
+                      controller: scrollController,
+                      itemExtent: itemHeight,
+                      itemCount: itemCount,
+                      itemBuilder: (BuildContext context, int index) {
+                        bool isPaddingRow = index < numberOfPaddingRows ||
+                            index >= itemCount - numberOfPaddingRows;
 
-                    String value = (isPaddingRow)
-                        ? null
-                        : items[index - numberOfPaddingRows];
+                        String value = (isPaddingRow)
+                            ? null
+                            : items[index - numberOfPaddingRows];
 
-                    //define special style for selected (middle) element
-                    final TextStyle itemStyle =
-                        (value == selectedValue) ? selectedStyle : defaultStyle;
+                        //define special style for selected (middle) element
+                        final TextStyle itemStyle = (value == selectedValue)
+                            ? selectedStyle
+                            : defaultStyle;
 
-                    return isPaddingRow
-                        ? Container() //empty items for padding rows
-                        : GestureDetector(
-                            onTap: () {
-                              _itemTapped(index);
-                            },
-                            child: Container(
-                              color: Colors
-                                  .transparent, // seems to be necessary to allow touches outside the item text
-                              child: Center(
-                                child: Text(value, style: itemStyle),
-                              ),
-                            ),
-                          );
-                  },
+                        return isPaddingRow
+                            ? Container() //empty items for padding rows
+                            : GestureDetector(
+                                onTap: () {
+                                  _itemTapped(index);
+                                },
+                                child: Container(
+                                  color: Colors
+                                      .transparent, // seems to be necessary to allow touches outside the item text
+                                  child: Center(
+                                    child: Text(value, style: itemStyle),
+                                  ),
+                                ),
+                              );
+                      },
+                    ),
+                  ),
                 ),
-              ),
-              Container(
-                height: visibleItemsHeight,
-                child: Center(
+                Center(child: Divider()),
+                Center(
                   child: Container(
                     height: itemHeight,
                     decoration: BoxDecoration(
@@ -107,9 +116,9 @@ class ScrollPicker extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           );
         },
       ),
@@ -144,7 +153,7 @@ class ScrollPicker extends StatelessWidget {
 
     // animate to and center on the selected item
     scrollController.animateTo(itemIndex * itemHeight,
-        duration: Duration(seconds: 1), curve: ElasticOutCurve());
+        duration: Duration(milliseconds: 500), curve: ElasticOutCurve());
   }
 
   // indicates if user has stopped scrolling so we can center value in the middle

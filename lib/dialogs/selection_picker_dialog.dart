@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/pickers/selection_picker.dart';
 
-import 'empty_content_dialog.dart';
+import 'responsive_dialog.dart';
 
 /// This is a support widget that returns an Dialog with checkboxes as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
@@ -36,7 +36,7 @@ class _SelectionPickerDialogState extends State<SelectionPickerDialog> {
   Widget build(BuildContext context) {
     assert(context != null);
 
-    return EmptyContentDialog(
+    return ResponsiveDialog(
       context: context,
       title: widget.title,
       child: SelectionPicker(

@@ -2,9 +2,9 @@
 // is governed by the MIT license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_material_pickers/dialogs/empty_content_dialog.dart';
+import 'package:flutter_material_pickers/dialogs/responsive_dialog.dart';
 
-void showMaterialEmptyPicker({
+void showMaterialResponsiveDialog({
   BuildContext context,
   String title,
   Widget child,
@@ -13,7 +13,7 @@ void showMaterialEmptyPicker({
   showDialog<List<String>>(
     context: context,
     builder: (BuildContext context) {
-      return EmptyContentDialog(
+      return ResponsiveDialog(
         context: context,
         title: title,
         child: child,

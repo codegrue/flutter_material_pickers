@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/block_picker.dart';
 import 'package:flutter_material_pickers/dialogs/responsive_dialog.dart';
 
-const double _kPickerHeaderPortraitHeight = 60.0;
-
 void showMaterialSwatchPicker({
   BuildContext context,
   String title = "Pick a color",

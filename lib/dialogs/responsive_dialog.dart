@@ -11,6 +11,7 @@ class ResponsiveDialog extends StatelessWidget {
     this.context,
     String title,
     Widget child,
+    this.forcePortrait = false,
     this.okPressed,
     this.cancelPressed,
   })  : title = title ?? "Title Here",
@@ -20,6 +21,7 @@ class ResponsiveDialog extends StatelessWidget {
   final BuildContext context;
   final String title;
   final Widget child;
+  final bool forcePortrait;
 
   // Events
   final VoidCallback cancelPressed;
@@ -87,6 +89,8 @@ class ResponsiveDialog extends StatelessWidget {
         builder: (BuildContext context, Orientation orientation) {
           assert(orientation != null);
           assert(context != null);
+
+          if (forcePortrait) orientation = Orientation.portrait;
 
           switch (orientation) {
             case Orientation.portrait:

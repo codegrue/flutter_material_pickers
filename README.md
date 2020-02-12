@@ -74,7 +74,7 @@ showMaterialScrollPicker(
 
 ### Number Picker Example
 
-<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_number_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_number_picker-d.png" width="200">
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_number_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_number_picker-d.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_number_picker-ll.png" height="200">
 
 ```dart
 var age = 25;
@@ -91,7 +91,7 @@ showMaterialNumberPicker(
 
 ### Checkbox Picker Example
 
-<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_checkbox_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_checkbox_picker-d.png" width="200">
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_checkbox_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_checkbox_picker-d.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_checkbox_picker-ll.png" height="200">
 
 ```dart
 List<String> iceCreamToppings = <String>[
@@ -117,7 +117,7 @@ showMaterialCheckboxPicker(
 
 ### Radio Picker Example
 
-<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_radio_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_radio_picker-d.png" width="200">
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_radio_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_radio_picker-d.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_radio_picker-ll.png" height="200">
 
 ```dart
 var selectedUsState = "Connecticut";
@@ -144,7 +144,7 @@ showMaterialRadioPicker(
 
 ### Selection Picker Example
 
-<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_selection_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_selection_picker-d.png" width="200">
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_selection_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_selection_picker-d.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_selection_picker-ll.png" height="200">
 
 ```dart
 String speed = 'Ludicrous';
@@ -175,7 +175,7 @@ showMaterialSelectionPicker(
 
 ### Time Picker Example
 
-<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_time_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_time_picker-d.png" width="200">
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_time_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_time_picker-d.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_time_picker-ll.png" height="200">
 
 ```dart
 var time = TimeOfDay.now();
@@ -189,7 +189,7 @@ showMaterialTimePicker(
 
 ### Date Picker Example
 
-<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_date_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_date_picker-d.png" width="200">
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_date_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_date_picker-d.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_date_picker-ll.png" height="200">
 
 ```dart
 var date = DateTime.now();
@@ -203,7 +203,7 @@ showMaterialDatePicker(
 
 ### Color Picker Example
 
-<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_color_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_color_picker-d.png" width="200">
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_color_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_color_picker-d.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_color_picker-ll.png" height="200">
 
 ```dart
 Color color = Colors.red;
@@ -217,7 +217,7 @@ showMaterialColorPicker(
 
 ### Palette Picker Example
 
-<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_palette_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_palette_picker-d.png" width="200">
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_palette_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_palette_picker-d.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_palette_picker-ll.png" height="200">
 
 ```dart
 Color palette = Colors.green;
@@ -231,7 +231,7 @@ showMaterialPalettePicker(
 
 ### Swatch Picker Example
 
-<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_swatch_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_swatch_picker-d.png" width="200">
+<img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_swatch_picker-l.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_swatch_picker-d.png" width="200"> <img src="https://github.com/codegrue/flutter_material_pickers/blob/master/images/show_swatch_picker-ll.png" height="200">
 
 ```dart
 Color swatch = Colors.blue;

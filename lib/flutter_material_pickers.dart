@@ -4,8 +4,6 @@
 /// Package for building card based settings forms
 library flutter_material_pickers;
 
-export 'helpers/converter_functions.dart';
-
 /// Helpers
 export 'package:flutter_material_pickers/helpers/show_scroll_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_number_picker.dart';

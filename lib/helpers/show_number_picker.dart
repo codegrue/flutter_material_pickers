@@ -3,7 +3,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/scroll_picker_dialog.dart';
-import 'package:flutter_material_pickers/helpers/converter_functions.dart';
 
 void showMaterialNumberPicker({
   BuildContext context,
@@ -26,7 +25,6 @@ void showMaterialNumberPicker({
       );
     },
   ).then((selection) {
-    if (onChanged != null && selection != null)
-      onChanged(intelligentCast<int>(selection));
+    if (onChanged != null && selection != null) onChanged(int.parse(selection));
   });
 }

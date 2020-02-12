@@ -7,19 +7,21 @@ A flutter package containing commonly used material design picker dialogs. Some 
 It includes:
 
 - **New Pickers**
-  - _showMaterialCheckboxPicker_ - Allows many selections from a checkbox list
-  - _showMaterialScrollPicker_ - Shows a slot machine style picker for a single value
-  - _showMaterialNumberPicker_ - Shows a slit machine style picker for a number
-  - _showMaterialRadioPicker_ - Allows a single value selection from a radio list
-  - _showMaterialSelectionPicker_ - Shows an icon and label list to pick a single value
+  - _showMaterialScrollPicker_ - Allows selection of a string via a slot machine carousell
+  - _showMaterialNumberPicker_ - Allows selection of a number via a slot machine carousell
+  - _showMaterialRadioPicker_ - Allows selection of a single from a radio list
+  - _showMaterialCheckboxPicker_ - Allows selection of many values from a checkbox list
+  - _showMaterialSelectionPicker_ - Allows selection of a single value via an icon label list
 - **Convenience Pickers**
-  - _showMaterialColorPicker_ - Displays the color picker provided in the flutter_colorpicker library
-  - _showMaterialDatePicker_ - Displays the core date picker
-  - _showMaterialTimePicker_ - Displays the core time picker
+  - _showMaterialDatePicker_ - Allows selection of a date (uses the core date picker)
+  - _showMaterialTimePicker_ - Allows selection of a time (uses the core time picker)
+  - _showMaterialColorPicker_ - Allows RGB selection of a color (uses the ColorPicker of flutter_colorpicker)
+  - _showMaterialPalettePicker_ - Allows RGB selection of a color (uses the MaterialPicker of flutter_colorpicker)
+  - _showMaterialSwatchPicker_ - Allows RGB selection of a color (uses the BlockPicker of flutter_colorpicker)
 - **Dialog**
-  - _showMaterialResponsiveDialog_ - Picker list of arbitrary options
+  - _showMaterialResponsiveDialog_ - Extends Dialog by making it responsive to screen orientation changes
 
-All show helpers implement an `onChange` handler to return picked option(s).
+All helpers implement an `onChange` handler to return picked option(s).
 
 ## Example Usage
 

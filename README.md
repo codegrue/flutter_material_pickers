@@ -7,8 +7,8 @@ A flutter package containing commonly used material design picker dialogs. Some 
 It includes:
 
 - **New Pickers**
-  - _showMaterialScrollPicker_ - Allows selection of a string via a slot machine carousell
-  - _showMaterialNumberPicker_ - Allows selection of a number via a slot machine carousell
+  - _showMaterialScrollPicker_ - Allows selection of a string via a slot machine carousel
+  - _showMaterialNumberPicker_ - Allows selection of a number via a slot machine carousel
   - _showMaterialRadioPicker_ - Allows selection of a single from a radio list
   - _showMaterialCheckboxPicker_ - Allows selection of many values from a checkbox list
   - _showMaterialSelectionPicker_ - Allows selection of a single value via an icon label list
@@ -16,8 +16,8 @@ It includes:
   - _showMaterialDatePicker_ - Allows selection of a date (uses the core date picker)
   - _showMaterialTimePicker_ - Allows selection of a time (uses the core time picker)
   - _showMaterialColorPicker_ - Allows RGB selection of a color (uses the ColorPicker of flutter_colorpicker)
-  - _showMaterialPalettePicker_ - Allows RGB selection of a color (uses the MaterialPicker of flutter_colorpicker)
-  - _showMaterialSwatchPicker_ - Allows RGB selection of a color (uses the BlockPicker of flutter_colorpicker)
+  - _showMaterialPalettePicker_ - Allows Material palette selection of a color (uses the MaterialPicker of flutter_colorpicker)
+  - _showMaterialSwatchPicker_ - Allows selection of a color from swatches (uses the BlockPicker of flutter_colorpicker)
 - **Dialog**
   - _showMaterialResponsiveDialog_ - Extends Dialog by making it responsive to screen orientation changes
 

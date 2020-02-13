@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/checkbox_picker_dialog.dart';
 
+/// Allows selection of many values from a checkbox list.
 void showMaterialCheckboxPicker({
   BuildContext context,
   String title,

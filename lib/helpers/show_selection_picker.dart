@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/selection_picker_dialog.dart';
 
+/// Allows selection of a single value via an icon label list
 void showMaterialSelectionPicker({
   BuildContext context,
   String title,

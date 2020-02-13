@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_material_pickers/dialogs/responsive_dialog.dart';
 
+/// Allows RGB selection of a color.
 void showMaterialColorPicker({
   BuildContext context,
   String title = "Pick a color",

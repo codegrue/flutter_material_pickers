@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/scroll_picker_dialog.dart';
 
+/// Allows selection of a number via a slot machine carousel
 void showMaterialNumberPicker({
   BuildContext context,
   String title,

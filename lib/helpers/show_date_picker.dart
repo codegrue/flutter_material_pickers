@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 
+/// Allows selection of a date.
 void showMaterialDatePicker({
   BuildContext context,
   String title,

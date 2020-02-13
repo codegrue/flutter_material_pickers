@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/block_picker.dart';
 import 'package:flutter_material_pickers/dialogs/responsive_dialog.dart';
 
+/// Allows selection of a color from swatches
 void showMaterialSwatchPicker({
   BuildContext context,
   String title = "Pick a color",

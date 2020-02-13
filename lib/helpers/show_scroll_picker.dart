@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/scroll_picker_dialog.dart';
 
+/// Allows selection of a string via a slot machine carousel
 void showMaterialScrollPicker({
   BuildContext context,
   String title,

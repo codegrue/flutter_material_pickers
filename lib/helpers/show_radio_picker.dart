@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/radio_picker_dialog.dart';
 
+/// Allows selection of a single from a radio list
 void showMaterialRadioPicker({
   BuildContext context,
   String title,

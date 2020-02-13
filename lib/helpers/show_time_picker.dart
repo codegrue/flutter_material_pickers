@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 
+/// Allows selection of a time
 void showMaterialTimePicker({
   BuildContext context,
   String title,

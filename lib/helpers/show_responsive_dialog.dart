@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/responsive_dialog.dart';
 
+/// Extends Dialog by making it responsive to screen orientation changes
 void showMaterialResponsiveDialog({
   BuildContext context,
   String title,

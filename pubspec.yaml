@@ -1,6 +1,6 @@
 name: flutter_material_pickers
 description: A flutter package for displaying commonly used dialogs.
-version: 1.0.0
+version: 1.0.0+hotfix.1
 homepage: https://github.com/codegrue/flutter_material_pickers
 
 dependencies:

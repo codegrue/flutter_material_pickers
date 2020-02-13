@@ -14,6 +14,9 @@ class SelectionPickerDialog extends StatefulWidget {
     @required this.items,
     @required this.initialItem,
     this.icons,
+    this.headerColor,
+    this.backgroundColor,
+    this.buttonTextColor,
   });
 
   // Variables
@@ -21,6 +24,9 @@ class SelectionPickerDialog extends StatefulWidget {
   final String initialItem;
   final String title;
   final List<Icon> icons;
+  final Color headerColor;
+  final Color backgroundColor;
+  final Color buttonTextColor;
 
   @override
   State<SelectionPickerDialog> createState() =>
@@ -39,6 +45,9 @@ class _SelectionPickerDialogState extends State<SelectionPickerDialog> {
     return ResponsiveDialog(
       context: context,
       title: widget.title,
+      headerColor: widget.headerColor,
+      backgroundColor: widget.backgroundColor,
+      buttonTextColor: widget.buttonTextColor,
       child: SelectionPicker(
         items: widget.items,
         initialItem: selectedItem,

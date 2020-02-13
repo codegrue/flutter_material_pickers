@@ -9,6 +9,9 @@ void showMaterialResponsiveDialog({
   BuildContext context,
   String title,
   Widget child,
+  Color headerColor,
+  Color backgroundColor,
+  Color buttonTextColor,
   ValueChanged<List<String>> onChanged,
 }) {
   showDialog<List<String>>(
@@ -17,6 +20,9 @@ void showMaterialResponsiveDialog({
       return ResponsiveDialog(
         context: context,
         title: title,
+        headerColor: headerColor,
+        backgroundColor: backgroundColor,
+        buttonTextColor: buttonTextColor,
         child: child,
       );
     },

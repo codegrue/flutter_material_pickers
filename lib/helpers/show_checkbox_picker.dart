@@ -10,6 +10,9 @@ void showMaterialCheckboxPicker({
   String title,
   List<String> items,
   List<String> selectedItems,
+  Color headerColor,
+  Color backgroundColor,
+  Color buttonTextColor,
   ValueChanged<List<String>> onChanged,
 }) {
   showDialog<List<String>>(
@@ -19,6 +22,9 @@ void showMaterialCheckboxPicker({
         title: title,
         items: items,
         initialItems: selectedItems,
+        headerColor: headerColor,
+        backgroundColor: backgroundColor,
+        buttonTextColor: buttonTextColor,
       );
     },
   ).then((selection) {

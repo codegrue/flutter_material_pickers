@@ -11,6 +11,9 @@ class ResponsiveDialog extends StatelessWidget {
     this.context,
     String title,
     Widget child,
+    this.headerColor,
+    this.backgroundColor,
+    this.buttonTextColor,
     this.forcePortrait = false,
     this.okPressed,
     this.cancelPressed,
@@ -22,6 +25,9 @@ class ResponsiveDialog extends StatelessWidget {
   final String title;
   final Widget child;
   final bool forcePortrait;
+  final Color headerColor;
+  final Color backgroundColor;
+  final Color buttonTextColor;
 
   // Events
   final VoidCallback cancelPressed;
@@ -31,7 +37,7 @@ class ResponsiveDialog extends StatelessWidget {
     var theme = Theme.of(context);
 
     return Container(
-      color: theme.primaryColor,
+      color: headerColor ?? theme.primaryColor,
       height: (orientation == Orientation.portrait)
           ? kPickerHeaderPortraitHeight
           : null,
@@ -43,7 +49,7 @@ class ResponsiveDialog extends StatelessWidget {
           title,
           style: TextStyle(
             fontSize: 20.0,
-            color: const Color(0xffffffff),
+            color: theme.primaryTextTheme.body1.color,
           ),
         ),
       ),
@@ -62,12 +68,14 @@ class ResponsiveDialog extends StatelessWidget {
           ButtonBar(
             children: <Widget>[
               FlatButton(
+                textColor: buttonTextColor,
                 child: Text(localizations.cancelButtonLabel),
                 onPressed: () => (cancelPressed == null)
                     ? Navigator.of(context).pop()
                     : cancelPressed(),
               ),
               FlatButton(
+                textColor: buttonTextColor,
                 child: Text(localizations.okButtonLabel),
                 onPressed: () => (okPressed == null)
                     ? Navigator.of(context).pop()
@@ -85,6 +93,7 @@ class ResponsiveDialog extends StatelessWidget {
     assert(context != null);
 
     return Dialog(
+      backgroundColor: backgroundColor,
       child: OrientationBuilder(
         builder: (BuildContext context, Orientation orientation) {
           assert(orientation != null);

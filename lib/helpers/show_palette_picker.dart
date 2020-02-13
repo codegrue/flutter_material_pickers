@@ -10,6 +10,9 @@ void showMaterialPalettePicker({
   BuildContext context,
   String title = "Pick a color",
   Color selectedColor,
+  Color headerColor,
+  Color backgroundColor,
+  Color buttonTextColor,
   ValueChanged<Color> onChanged,
 }) {
   showDialog<Color>(
@@ -20,6 +23,9 @@ void showMaterialPalettePicker({
           return ResponsiveDialog(
             context: context,
             title: title,
+            headerColor: headerColor,
+            backgroundColor: backgroundColor,
+            buttonTextColor: buttonTextColor,
             child: MaterialPicker(
               pickerColor: selectedColor,
               onColorChanged: (color) => selectedColor = color,

@@ -10,6 +10,9 @@ void showMaterialColorPicker({
   BuildContext context,
   String title = "Pick a color",
   Color selectedColor,
+  Color headerColor,
+  Color backgroundColor,
+  Color buttonTextColor,
   ValueChanged<Color> onChanged,
 }) {
   showDialog<Color>(
@@ -20,6 +23,9 @@ void showMaterialColorPicker({
           return ResponsiveDialog(
             context: context,
             title: title,
+            headerColor: headerColor,
+            backgroundColor: backgroundColor,
+            buttonTextColor: buttonTextColor,
             forcePortrait: true,
             child: SingleChildScrollView(
               child: ColorPicker(

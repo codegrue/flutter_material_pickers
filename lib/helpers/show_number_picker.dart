@@ -11,6 +11,9 @@ void showMaterialNumberPicker({
   final int minNumber,
   final int maxNumber,
   final int selectedNumber,
+  Color headerColor,
+  Color backgroundColor,
+  Color buttonTextColor,
   ValueChanged<int> onChanged,
 }) {
   var items = List<String>.generate(
@@ -23,6 +26,9 @@ void showMaterialNumberPicker({
         items: items,
         title: title,
         initialItem: selectedNumber.toString(),
+        headerColor: headerColor,
+        backgroundColor: backgroundColor,
+        buttonTextColor: buttonTextColor,
       );
     },
   ).then((selection) {

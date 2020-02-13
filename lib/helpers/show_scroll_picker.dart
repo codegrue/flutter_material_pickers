@@ -10,6 +10,9 @@ void showMaterialScrollPicker({
   String title,
   List<String> items,
   String selectedItem,
+  Color headerColor,
+  Color backgroundColor,
+  Color buttonTextColor,
   ValueChanged<String> onChanged,
 }) {
   showDialog<String>(
@@ -19,6 +22,9 @@ void showMaterialScrollPicker({
         items: items,
         title: title,
         initialItem: selectedItem,
+        headerColor: headerColor,
+        backgroundColor: backgroundColor,
+        buttonTextColor: buttonTextColor,
       );
     },
   ).then((selection) {

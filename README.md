@@ -245,6 +245,29 @@ showMaterialSwatchPicker(
 );
 ```
 
+## Theming
+
+Note: it is highly recommended you use Flutter's theme method to style the dialogs across your entire application in one place. The example app demonstrates switching between light and dark themes globally. The elements that control dialog color are:
+
+- `Theme.of(context).primaryColor` controls the header background
+- `Theme.of(context).backgroundColor` controls the dialog background
+- `Theme.of(context).textTheme.button.decorationColor` controls the button text
+
+However, if for some reason you want to change colors in an individual dialog, several parameters are exposed to allow this:
+
+<img src="https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/images/show_checkbox_picker-custom.png" width="200">
+
+```dart
+showMaterialResponsiveDialog(
+    context: context,
+    headerColor: Colors.green, // background color of the header area
+    backgroundColor: Colors.lightGreen, // background color of the entire dialog
+    buttonTextColor: Colors.red, // text color of the action bar buttons
+    child: Text("Custom dialog colors"),
+);
+
+```
+
 ## Dependencies
 
 This widget set relies on these external third-party components:

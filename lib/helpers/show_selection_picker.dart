@@ -11,6 +11,9 @@ void showMaterialSelectionPicker({
   List<String> items,
   String selectedItem,
   List<Icon> icons,
+  Color headerColor,
+  Color backgroundColor,
+  Color buttonTextColor,
   ValueChanged<String> onChanged,
 }) {
   assert(items != null);
@@ -24,6 +27,9 @@ void showMaterialSelectionPicker({
         title: title,
         initialItem: selectedItem,
         icons: icons,
+        headerColor: headerColor,
+        backgroundColor: backgroundColor,
+        buttonTextColor: buttonTextColor,
       );
     },
   ).then((selection) {

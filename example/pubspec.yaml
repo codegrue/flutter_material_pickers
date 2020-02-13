@@ -9,7 +9,8 @@ dependencies:
     sdk: flutter
   flutter_material_pickers:
     path: ../
-  dynamic_theme: ^1.0.0
+  dynamic_theme: ^1.0.0,
+  intl: ^0.16.0
 
 flutter:
   uses-material-design: true

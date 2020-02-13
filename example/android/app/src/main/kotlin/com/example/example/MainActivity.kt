@@ -1,4 +1,4 @@
-package com.example.flutter_material_pickers
+package com.example.example
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

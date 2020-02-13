@@ -2,6 +2,7 @@ import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
+import 'package:intl/intl.dart';
 
 import 'model.dart';
 
@@ -297,7 +298,7 @@ class _TestPageState extends State<TestPage> {
         ),
         Expanded(
           child: Text(
-            model.time.toString(),
+            MaterialLocalizations.of(context).formatTimeOfDay(model.time),
             textAlign: TextAlign.right,
           ),
         ),
@@ -321,7 +322,7 @@ class _TestPageState extends State<TestPage> {
         ),
         Expanded(
           child: Text(
-            model.date.toString(),
+            DateFormat.yMMMd().format(model.date),
             textAlign: TextAlign.right,
           ),
         ),

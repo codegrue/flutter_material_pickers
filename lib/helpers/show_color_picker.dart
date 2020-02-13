@@ -20,15 +20,19 @@ void showMaterialColorPicker({
             context: context,
             title: title,
             forcePortrait: true,
-            child: ColorPicker(
-              pickerColor: selectedColor,
-              onColorChanged: (color) => selectedColor = color,
-              colorPickerWidth: 1000.0,
-              pickerAreaHeightPercent: 0.3,
-              enableAlpha: true,
-              displayThumbColor: true,
-              enableLabel: true,
-              paletteType: PaletteType.hsv,
+            child: ListView(
+              children: <Widget>[
+                ColorPicker(
+                  pickerColor: selectedColor,
+                  onColorChanged: (color) => selectedColor = color,
+                  colorPickerWidth: 1000.0,
+                  pickerAreaHeightPercent: 0.3,
+                  enableAlpha: true,
+                  displayThumbColor: true,
+                  enableLabel: true,
+                  paletteType: PaletteType.hsv,
+                ),
+              ],
             ),
           );
         },

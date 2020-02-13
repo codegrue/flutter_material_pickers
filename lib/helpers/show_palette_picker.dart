@@ -25,6 +25,7 @@ void showMaterialPalettePicker({
               onColorChanged: (color) => selectedColor = color,
               enableLabel: true, // only on portrait mode
             ),
+            okPressed: () => Navigator.of(context).pop(selectedColor),
           );
         },
       );

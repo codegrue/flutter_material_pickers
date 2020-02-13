@@ -24,6 +24,7 @@ void showMaterialSwatchPicker({
               pickerColor: selectedColor,
               onColorChanged: (color) => selectedColor = color,
             ),
+            okPressed: () => Navigator.of(context).pop(selectedColor),
           );
         },
       );

@@ -11,6 +11,7 @@ void showMaterialCheckboxPicker({
   List<String> items,
   List<String> selectedItems,
   Color headerColor,
+  Color headerTextColor,
   Color backgroundColor,
   Color buttonTextColor,
   ValueChanged<List<String>> onChanged,
@@ -23,6 +24,7 @@ void showMaterialCheckboxPicker({
         items: items,
         initialItems: selectedItems,
         headerColor: headerColor,
+        headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
       );

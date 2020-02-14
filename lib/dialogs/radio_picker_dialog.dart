@@ -14,6 +14,7 @@ class RadioPickerDialog extends StatefulWidget {
     this.items,
     this.initialItem,
     this.headerColor,
+    this.headerTextColor,
     this.backgroundColor,
     this.buttonTextColor,
   });
@@ -23,6 +24,7 @@ class RadioPickerDialog extends StatefulWidget {
   final String initialItem;
   final String title;
   final Color headerColor;
+  final Color headerTextColor;
   final Color backgroundColor;
   final Color buttonTextColor;
 
@@ -44,6 +46,7 @@ class _RadioPickerDialogState extends State<RadioPickerDialog> {
       context: context,
       title: widget.title,
       headerColor: widget.headerColor,
+      headerTextColor: widget.headerTextColor,
       backgroundColor: widget.backgroundColor,
       buttonTextColor: widget.buttonTextColor,
       child: RadioPicker(

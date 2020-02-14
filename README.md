@@ -7,19 +7,30 @@ A flutter package containing commonly used material design picker dialogs. Some 
 It includes:
 
 - **New Pickers**
-  - _showMaterialScrollPicker_ - Allows selection of a string via a slot machine carousel
-  - _showMaterialNumberPicker_ - Allows selection of a number via a slot machine carousel
-  - _showMaterialRadioPicker_ - Allows selection of a single from a radio list
-  - _showMaterialCheckboxPicker_ - Allows selection of many values from a checkbox list
-  - _showMaterialSelectionPicker_ - Allows selection of a single value via an icon label list
+  - _showMaterialScrollPicker:_
+    - Allows selection of a string via a slot machine carousel
+  - _showMaterialNumberPicker:_
+    - Allows selection of a number via a slot machine carousel
+  - _showMaterialRadioPicker:_
+    - Allows selection of a single from a radio list
+  - _showMaterialCheckboxPicker:_
+    - Allows selection of many values from a checkbox list
+  - _showMaterialSelectionPicker:_
+    - Allows selection of a single value via an icon label list
 - **Convenience Pickers**
-  - _showMaterialDatePicker_ - Allows selection of a date (uses the core date picker)
-  - _showMaterialTimePicker_ - Allows selection of a time (uses the core time picker)
-  - _showMaterialColorPicker_ - Allows RGB selection of a color (uses the ColorPicker of flutter_colorpicker)
-  - _showMaterialPalettePicker_ - Allows Material palette selection of a color (uses the MaterialPicker of flutter_colorpicker)
-  - _showMaterialSwatchPicker_ - Allows selection of a color from swatches (uses the BlockPicker of flutter_colorpicker)
+  - _showMaterialDatePicker:_
+    - Allows selection of a date (uses the core date picker)
+  - _showMaterialTimePicker:_
+    - Allows selection of a time (uses the core time picker)
+  - _showMaterialColorPicker:_
+    - Allows RGB selection of a color (uses the ColorPicker of flutter_colorpicker)
+  - _showMaterialPalettePicker:_
+    - Allows Material palette selection of a color (uses the MaterialPicker of flutter_colorpicker)
+  - _showMaterialSwatchPicker:_
+    - Allows selection of a color from swatches (uses the BlockPicker of flutter_colorpicker)
 - **Dialog**
-  - _showMaterialResponsiveDialog_ - Extends Dialog by making it responsive to screen orientation changes
+  - _showMaterialResponsiveDialog:_
+    - Extends Dialog by making it responsive to screen orientation changes
 
 All helpers implement an `onChange` handler to return picked option(s).
 
@@ -168,10 +179,10 @@ List<Icon> speedIcons = <Icon>[
 showMaterialSelectionPicker(
   context: context,
   title: "Starship Speed",
-  items: model.speedOptions,
-  selectedItem: model.speed,
-  icons: model.speedIcons,
-  onChanged: (value) => setState(() => model.speed = value),
+  items: speedOptions,
+  selectedItem: speed,
+  icons: speedIcons,
+  onChanged: (value) => setState(() => speed = value),
 );
 ```
 
@@ -198,8 +209,8 @@ var date = DateTime.now();
 
 showMaterialDatePicker(
   context: context,
-  selectedDate: model.date,
-  onChanged: (value) => setState(() => model.date = value),
+  selectedDate: date,
+  onChanged: (value) => setState(() => date = value),
 );
 ```
 
@@ -212,8 +223,8 @@ Color color = Colors.red;
 
 showMaterialColorPicker(
   context: context,
-  selectedColor: model.color,
-  onChanged: (value) => setState(() => model.color = value),
+  selectedColor: color,
+  onChanged: (value) => setState(() => color = value),
 );
 ```
 
@@ -226,8 +237,8 @@ Color palette = Colors.green;
 
 showMaterialPalettePicker(
   context: context,
-  selectedColor: model.palette,
-  onChanged: (value) => setState(() => model.palette = value),
+  selectedColor: palette,
+  onChanged: (value) => setState(() => palette = value),
 );
 ```
 
@@ -252,6 +263,7 @@ Note: it is highly recommended you use Flutter's theme method to style the dialo
 - `Theme.of(context).primaryColor` controls the header background
 - `Theme.of(context).backgroundColor` controls the dialog background
 - `Theme.of(context).textTheme.button.decorationColor` controls the button text
+- `Theme.of(context).primaryTextTheme.body1.color` controls the header text
 
 However, if for some reason you want to change colors in an individual dialog, several parameters are exposed to allow this:
 

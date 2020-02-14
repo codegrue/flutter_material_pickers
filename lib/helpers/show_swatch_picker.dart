@@ -11,6 +11,7 @@ void showMaterialSwatchPicker({
   String title = "Pick a color",
   Color selectedColor,
   Color headerColor,
+  Color headerTextColor,
   Color backgroundColor,
   Color buttonTextColor,
   ValueChanged<Color> onChanged,
@@ -24,6 +25,7 @@ void showMaterialSwatchPicker({
             context: context,
             title: title,
             headerColor: headerColor,
+            headerTextColor: headerTextColor,
             backgroundColor: backgroundColor,
             buttonTextColor: buttonTextColor,
             child: BlockPicker(

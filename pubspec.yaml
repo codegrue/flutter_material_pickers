@@ -1,6 +1,6 @@
 name: flutter_material_pickers
 description: A flutter package for showing material themed picker dialogs. This suite provides a set of new commonly used pickers and wraps some pre-existing ones into a consistent display paradigm.
-version: 1.1.0
+version: 1.2.0
 homepage: https://github.com/codegrue/flutter_material_pickers
 
 dependencies:

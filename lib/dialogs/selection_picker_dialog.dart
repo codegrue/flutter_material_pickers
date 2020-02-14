@@ -15,6 +15,7 @@ class SelectionPickerDialog extends StatefulWidget {
     @required this.initialItem,
     this.icons,
     this.headerColor,
+    this.headerTextColor,
     this.backgroundColor,
     this.buttonTextColor,
   });
@@ -25,6 +26,7 @@ class SelectionPickerDialog extends StatefulWidget {
   final String title;
   final List<Icon> icons;
   final Color headerColor;
+  final Color headerTextColor;
   final Color backgroundColor;
   final Color buttonTextColor;
 
@@ -46,6 +48,7 @@ class _SelectionPickerDialogState extends State<SelectionPickerDialog> {
       context: context,
       title: widget.title,
       headerColor: widget.headerColor,
+      headerTextColor: widget.headerTextColor,
       backgroundColor: widget.backgroundColor,
       buttonTextColor: widget.buttonTextColor,
       child: SelectionPicker(

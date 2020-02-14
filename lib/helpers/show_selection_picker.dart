@@ -12,6 +12,7 @@ void showMaterialSelectionPicker({
   String selectedItem,
   List<Icon> icons,
   Color headerColor,
+  Color headerTextColor,
   Color backgroundColor,
   Color buttonTextColor,
   ValueChanged<String> onChanged,
@@ -28,6 +29,7 @@ void showMaterialSelectionPicker({
         initialItem: selectedItem,
         icons: icons,
         headerColor: headerColor,
+        headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
       );

@@ -12,6 +12,7 @@ class ResponsiveDialog extends StatelessWidget {
     String title,
     Widget child,
     this.headerColor,
+    this.headerTextColor,
     this.backgroundColor,
     this.buttonTextColor,
     this.forcePortrait = false,
@@ -26,6 +27,7 @@ class ResponsiveDialog extends StatelessWidget {
   final Widget child;
   final bool forcePortrait;
   final Color headerColor;
+  final Color headerTextColor;
   final Color backgroundColor;
   final Color buttonTextColor;
 
@@ -49,7 +51,7 @@ class ResponsiveDialog extends StatelessWidget {
           title,
           style: TextStyle(
             fontSize: 20.0,
-            color: theme.primaryTextTheme.body1.color,
+            color: headerTextColor ?? theme.primaryTextTheme.body1.color,
           ),
         ),
       ),

@@ -11,6 +11,7 @@ void showMaterialScrollPicker({
   List<String> items,
   String selectedItem,
   Color headerColor,
+  Color headerTextColor,
   Color backgroundColor,
   Color buttonTextColor,
   ValueChanged<String> onChanged,
@@ -23,6 +24,7 @@ void showMaterialScrollPicker({
         title: title,
         initialItem: selectedItem,
         headerColor: headerColor,
+        headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
       );

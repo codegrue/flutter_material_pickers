@@ -14,6 +14,7 @@ class CheckboxPickerDialog extends StatefulWidget {
     this.items,
     this.initialItems,
     this.headerColor,
+    this.headerTextColor,
     this.backgroundColor,
     this.buttonTextColor,
   });
@@ -23,6 +24,7 @@ class CheckboxPickerDialog extends StatefulWidget {
   final List<String> initialItems;
   final String title;
   final Color headerColor;
+  final Color headerTextColor;
   final Color backgroundColor;
   final Color buttonTextColor;
 
@@ -47,6 +49,7 @@ class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
       context: context,
       title: widget.title,
       headerColor: widget.headerColor,
+      headerTextColor: widget.headerTextColor,
       backgroundColor: widget.backgroundColor,
       buttonTextColor: widget.buttonTextColor,
       child: CheckboxPicker(

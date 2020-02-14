@@ -12,6 +12,7 @@ void showMaterialNumberPicker({
   final int maxNumber,
   final int selectedNumber,
   Color headerColor,
+  Color headerTextColor,
   Color backgroundColor,
   Color buttonTextColor,
   ValueChanged<int> onChanged,
@@ -27,6 +28,7 @@ void showMaterialNumberPicker({
         title: title,
         initialItem: selectedNumber.toString(),
         headerColor: headerColor,
+        headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
       );

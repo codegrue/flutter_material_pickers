@@ -1,5 +1,9 @@
 # Releases
 
+## [1.3.0] - 4/16/2020
+
+- Upgraded dependency to latest `flutter_colorpicker`
+
 ## [1.2.0] - 2/13/2020
 
 - Added `headerTextColor` parameter to each helper method

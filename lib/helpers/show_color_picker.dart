@@ -37,7 +37,6 @@ void showMaterialColorPicker({
                 pickerAreaHeightPercent: 0.3,
                 enableAlpha: true,
                 displayThumbColor: true,
-                enableLabel: true,
                 paletteType: PaletteType.hsv,
               ),
             ),

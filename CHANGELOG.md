@@ -3,6 +3,7 @@
 ## [1.4.0] - 5/5/2020
 
 - changed the theming elements to properly match Material design elements (see readme example);
+- fixed centering issue on scroll picker
 
 ## [1.3.0] - 4/16/2020
 

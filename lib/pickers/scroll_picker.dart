@@ -47,7 +47,8 @@ class _ScrollPickerState extends State<ScrollPicker> {
     final ThemeData themeData = Theme.of(context);
 
     TextStyle defaultStyle = themeData.textTheme.body1;
-    TextStyle selectedStyle = themeData.textTheme.headline.copyWith(color: themeData.accentColor);
+    TextStyle selectedStyle =
+        themeData.textTheme.headline.copyWith(color: themeData.accentColor);
 
     return NotificationListener(
       child: LayoutBuilder(
@@ -68,7 +69,9 @@ class _ScrollPickerState extends State<ScrollPicker> {
           // amount shifted from center because desired area doesn't fit in visible area
           offset = (widgetHeight - visibleItemsHeight) / 2;
           scrollController = ScrollController(
-            initialScrollOffset: widget.items.contains(selectedValue) ? (widget.items.indexOf(selectedValue)) * itemHeight - offset : 0.0,
+            initialScrollOffset: widget.items.contains(selectedValue)
+                ? (widget.items.indexOf(selectedValue)) * itemHeight - offset
+                : 0.0,
           );
 
           return Container(
@@ -82,12 +85,17 @@ class _ScrollPickerState extends State<ScrollPicker> {
                       itemExtent: itemHeight,
                       itemCount: itemCount,
                       itemBuilder: (BuildContext context, int index) {
-                        bool isPaddingRow = index < numberOfPaddingRows || index >= itemCount - numberOfPaddingRows;
+                        bool isPaddingRow = index < numberOfPaddingRows ||
+                            index >= itemCount - numberOfPaddingRows;
 
-                        String value = (isPaddingRow) ? null : widget.items[index - numberOfPaddingRows];
+                        String value = (isPaddingRow)
+                            ? null
+                            : widget.items[index - numberOfPaddingRows];
 
                         //define special style for selected (middle) element
-                        final TextStyle itemStyle = (value == selectedValue) ? selectedStyle : defaultStyle;
+                        final TextStyle itemStyle = (value == selectedValue)
+                            ? selectedStyle
+                            : defaultStyle;
 
                         return isPaddingRow
                             ? Container() //empty items for padding rows
@@ -96,7 +104,8 @@ class _ScrollPickerState extends State<ScrollPicker> {
                                   _itemTapped(index);
                                 },
                                 child: Container(
-                                  color: Colors.transparent, // seems to be necessary to allow touches outside the item text
+                                  color: Colors
+                                      .transparent, // seems to be necessary to allow touches outside the item text
                                   child: Center(
                                     child: Text(value, style: itemStyle),
                                   ),
@@ -112,8 +121,10 @@ class _ScrollPickerState extends State<ScrollPicker> {
                     height: itemHeight,
                     decoration: BoxDecoration(
                       border: Border(
-                        top: BorderSide(color: themeData.accentColor, width: 1.0),
-                        bottom: BorderSide(color: themeData.accentColor, width: 1.0),
+                        top: BorderSide(
+                            color: themeData.accentColor, width: 1.0),
+                        bottom: BorderSide(
+                            color: themeData.accentColor, width: 1.0),
                       ),
                     ),
                   ),
@@ -135,7 +146,10 @@ class _ScrollPickerState extends State<ScrollPicker> {
   bool _onNotification(Notification notification) {
     if (notification is ScrollNotification) {
       if (_userStoppedScrolling(notification, scrollController)) {
-        int indexOfMiddleElement = ((notification.metrics.pixels + visibleItemsHeight / 2) ~/ itemHeight) - numberOfPaddingRows;
+        int indexOfMiddleElement =
+            ((notification.metrics.pixels + visibleItemsHeight / 2) ~/
+                    itemHeight) -
+                numberOfPaddingRows;
         _changeSelectedItem(indexOfMiddleElement);
       }
     }
@@ -151,7 +165,8 @@ class _ScrollPickerState extends State<ScrollPicker> {
     }
 
     // animate to and center on the selected item
-    scrollController.animateTo(itemIndex * itemHeight - offset, duration: Duration(milliseconds: 500), curve: ElasticOutCurve());
+    scrollController.animateTo(itemIndex * itemHeight - offset,
+        duration: Duration(milliseconds: 500), curve: ElasticOutCurve());
   }
 
   bool _userStoppedScrolling(

@@ -48,8 +48,12 @@ class _ResponsiveDialogState extends State<ResponsiveDialog> {
   Widget header(BuildContext context, Orientation orientation) {
     return Container(
       color: _headerColor,
-      height: (orientation == Orientation.portrait) ? kPickerHeaderPortraitHeight : null,
-      width: (orientation == Orientation.landscape) ? kPickerHeaderLandscapeWidth : null,
+      height: (orientation == Orientation.portrait)
+          ? kPickerHeaderPortraitHeight
+          : null,
+      width: (orientation == Orientation.landscape)
+          ? kPickerHeaderLandscapeWidth
+          : null,
       child: Center(
         child: Text(
           widget.title,
@@ -79,12 +83,16 @@ class _ResponsiveDialogState extends State<ResponsiveDialog> {
             FlatButton(
               textColor: _buttonTextColor,
               child: Text(localizations.cancelButtonLabel),
-              onPressed: () => (widget.cancelPressed == null) ? Navigator.of(context).pop() : widget.cancelPressed(),
+              onPressed: () => (widget.cancelPressed == null)
+                  ? Navigator.of(context).pop()
+                  : widget.cancelPressed(),
             ),
             FlatButton(
               textColor: _buttonTextColor,
               child: Text(localizations.okButtonLabel),
-              onPressed: () => (widget.okPressed == null) ? Navigator.of(context).pop() : widget.okPressed(),
+              onPressed: () => (widget.okPressed == null)
+                  ? Navigator.of(context).pop()
+                  : widget.okPressed(),
             ),
           ],
         ),
@@ -98,7 +106,8 @@ class _ResponsiveDialogState extends State<ResponsiveDialog> {
 
     var theme = Theme.of(context);
     _headerColor = widget.headerColor ?? theme.primaryColor;
-    _headerTextColor = widget.headerTextColor ?? theme.primaryTextTheme.title.color;
+    _headerTextColor =
+        widget.headerTextColor ?? theme.primaryTextTheme.title.color;
     _buttonTextColor = widget.buttonTextColor ?? theme.textTheme.button.color;
     _backgroundColor = widget.backgroundColor ?? theme.dialogBackgroundColor;
 

@@ -38,16 +38,23 @@ class RadioPickerState extends State<RadioPicker> {
   @override
   Widget build(BuildContext context) {
     int itemCount = widget.items.length;
+    var theme = Theme.of(context);
 
     return Container(
       child: Scrollbar(
         child: ListView.builder(
           itemCount: itemCount,
           itemBuilder: (BuildContext context, int index) {
+            bool isSelectedItem = (widget.items[index] == selectedValue);
+
             return RadioListTile<String>(
               groupValue: selectedValue,
+              activeColor: theme.accentColor,
               title: Text(
                 widget.items[index],
+                style: (isSelectedItem)
+                    ? TextStyle(color: theme.accentColor)
+                    : TextStyle(color: theme.textTheme.body1.color),
               ),
               value: widget.items[index],
               onChanged: (String value) {

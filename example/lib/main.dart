@@ -11,19 +11,45 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // var theme = ThemeData();
+    // theme = theme.copyWith(
+    //   primaryColor: Colors.green, // background color of the header area
+    //   accentColor: Colors.green[900], // color of selected controls and button bar text
+    //   dialogBackgroundColor: Colors.green[100], // background color of the entire dialog
+    //   primaryTextTheme: theme.primaryTextTheme.copyWith(
+    //     title: theme.primaryTextTheme.title.copyWith(
+    //       color: Colors.lightGreen[50], // text color of the header area
+    //     ),
+    //   ),
+    //   textTheme: theme.textTheme.copyWith(
+    //     body1: theme.textTheme.body1.copyWith(
+    //       color: Colors.green[700], // text color of dialog text
+    //     ),
+    //     button: theme.textTheme.button.copyWith(
+    //       color: Colors.green[700], // text color of the action bar buttons
+    //     ),
+    //   ),
+    // );
+    // return MaterialApp(
+    //   title: 'Material Picker Examples',
+    //   theme: theme,
+    //   home: TestPage(),
+    // );
+
     return DynamicTheme(
-        defaultBrightness: Brightness.light,
-        data: (brightness) => ThemeData(
-              primarySwatch: Colors.indigo,
-              brightness: brightness,
-            ),
-        themedWidgetBuilder: (context, theme) {
-          return MaterialApp(
-            title: 'Material Picker Examples',
-            theme: theme,
-            home: TestPage(),
-          );
-        });
+      defaultBrightness: Brightness.light,
+      data: (brightness) => ThemeData(
+        primarySwatch: Colors.indigo,
+        brightness: brightness,
+      ),
+      themedWidgetBuilder: (context, theme) {
+        return MaterialApp(
+          title: 'Material Picker Examples',
+          theme: theme,
+          home: TestPage(),
+        );
+      },
+    );
   }
 }
 
@@ -45,13 +71,8 @@ class _TestPageState extends State<TestPage> {
           title: Text("Material Picker Examples"),
           actions: <Widget>[
             IconButton(
-              icon: Theme.of(context).brightness == Brightness.dark
-                  ? Icon(Icons.brightness_7)
-                  : Icon(Icons.brightness_4),
-              onPressed: () => DynamicTheme.of(context).setBrightness(
-                  Theme.of(context).brightness == Brightness.dark
-                      ? Brightness.light
-                      : Brightness.dark),
+              icon: Theme.of(context).brightness == Brightness.dark ? Icon(Icons.brightness_7) : Icon(Icons.brightness_4),
+              onPressed: () => DynamicTheme.of(context).setBrightness(Theme.of(context).brightness == Brightness.dark ? Brightness.light : Brightness.dark),
             )
           ],
           bottom: TabBar(
@@ -159,8 +180,7 @@ class _TestPageState extends State<TestPage> {
               title: "Pick Your City",
               items: model.usStates,
               selectedItem: model.selectedUsState,
-              onChanged: (value) =>
-                  setState(() => model.selectedUsState = value),
+              onChanged: (value) => setState(() => model.selectedUsState = value),
             ),
           ),
         ),
@@ -213,8 +233,7 @@ class _TestPageState extends State<TestPage> {
               title: "Pick Your Toppings",
               items: model.iceCreamToppings,
               selectedItems: model.selectedIceCreamToppings,
-              onChanged: (value) =>
-                  setState(() => model.selectedIceCreamToppings = value),
+              onChanged: (value) => setState(() => model.selectedIceCreamToppings = value),
             ),
           ),
         ),
@@ -240,8 +259,7 @@ class _TestPageState extends State<TestPage> {
               title: "Pick Your City",
               items: model.usStates,
               selectedItem: model.selectedUsState,
-              onChanged: (value) =>
-                  setState(() => model.selectedUsState = value),
+              onChanged: (value) => setState(() => model.selectedUsState = value),
             ),
           ),
         ),

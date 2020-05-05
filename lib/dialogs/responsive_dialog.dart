@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 /// This is a support widget that returns an Dialog with checkboxes as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
-class ResponsiveDialog extends StatelessWidget {
+class ResponsiveDialog extends StatefulWidget {
   ResponsiveDialog({
     this.context,
     String title,
@@ -35,23 +35,27 @@ class ResponsiveDialog extends StatelessWidget {
   final VoidCallback cancelPressed;
   final VoidCallback okPressed;
 
-  Widget header(BuildContext context, Orientation orientation) {
-    var theme = Theme.of(context);
+  @override
+  _ResponsiveDialogState createState() => _ResponsiveDialogState();
+}
 
+class _ResponsiveDialogState extends State<ResponsiveDialog> {
+  Color _headerColor;
+  Color _headerTextColor;
+  Color _backgroundColor;
+  Color _buttonTextColor;
+
+  Widget header(BuildContext context, Orientation orientation) {
     return Container(
-      color: headerColor ?? theme.primaryColor,
-      height: (orientation == Orientation.portrait)
-          ? kPickerHeaderPortraitHeight
-          : null,
-      width: (orientation == Orientation.landscape)
-          ? kPickerHeaderLandscapeWidth
-          : null,
+      color: _headerColor,
+      height: (orientation == Orientation.portrait) ? kPickerHeaderPortraitHeight : null,
+      width: (orientation == Orientation.landscape) ? kPickerHeaderLandscapeWidth : null,
       child: Center(
         child: Text(
-          title,
+          widget.title,
           style: TextStyle(
             fontSize: 20.0,
-            color: headerTextColor ?? theme.primaryTextTheme.body1.color,
+            color: _headerTextColor,
           ),
         ),
       ),
@@ -64,28 +68,26 @@ class ResponsiveDialog extends StatelessWidget {
 
     return Container(
       height: kDialogActionBarHeight,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          ButtonBar(
-            children: <Widget>[
-              FlatButton(
-                textColor: buttonTextColor,
-                child: Text(localizations.cancelButtonLabel),
-                onPressed: () => (cancelPressed == null)
-                    ? Navigator.of(context).pop()
-                    : cancelPressed(),
-              ),
-              FlatButton(
-                textColor: buttonTextColor,
-                child: Text(localizations.okButtonLabel),
-                onPressed: () => (okPressed == null)
-                    ? Navigator.of(context).pop()
-                    : okPressed(),
-              ),
-            ],
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(width: 1.0, color: _headerColor),
           ),
-        ],
+        ),
+        child: ButtonBar(
+          children: <Widget>[
+            FlatButton(
+              textColor: _buttonTextColor,
+              child: Text(localizations.cancelButtonLabel),
+              onPressed: () => (widget.cancelPressed == null) ? Navigator.of(context).pop() : widget.cancelPressed(),
+            ),
+            FlatButton(
+              textColor: _buttonTextColor,
+              child: Text(localizations.okButtonLabel),
+              onPressed: () => (widget.okPressed == null) ? Navigator.of(context).pop() : widget.okPressed(),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -94,14 +96,20 @@ class ResponsiveDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     assert(context != null);
 
+    var theme = Theme.of(context);
+    _headerColor = widget.headerColor ?? theme.primaryColor;
+    _headerTextColor = widget.headerTextColor ?? theme.primaryTextTheme.title.color;
+    _buttonTextColor = widget.buttonTextColor ?? theme.textTheme.button.color;
+    _backgroundColor = widget.backgroundColor ?? theme.dialogBackgroundColor;
+
     return Dialog(
-      backgroundColor: backgroundColor,
+      backgroundColor: _backgroundColor,
       child: OrientationBuilder(
         builder: (BuildContext context, Orientation orientation) {
           assert(orientation != null);
           assert(context != null);
 
-          if (forcePortrait) orientation = Orientation.portrait;
+          if (widget.forcePortrait) orientation = Orientation.portrait;
 
           switch (orientation) {
             case Orientation.portrait:
@@ -110,7 +118,7 @@ class ResponsiveDialog extends StatelessWidget {
                   header(context, orientation),
                   Expanded(
                     child: Container(
-                      child: child,
+                      child: widget.child,
                     ),
                   ),
                   actionBar(context),
@@ -124,7 +132,7 @@ class ResponsiveDialog extends StatelessWidget {
                     child: Column(
                       children: <Widget>[
                         Expanded(
-                          child: child,
+                          child: widget.child,
                         ),
                         actionBar(context),
                       ],

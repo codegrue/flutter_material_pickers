@@ -1,5 +1,9 @@
 # Releases
 
+## [1.4.0] - 5/5/2020
+
+- changed the theming elements to properly match Material design elements (see readme example);
+
 ## [1.3.0] - 4/16/2020
 
 - Upgraded dependency to latest `flutter_colorpicker`

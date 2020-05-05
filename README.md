@@ -258,12 +258,39 @@ showMaterialSwatchPicker(
 
 ## Theming
 
-Note: it is highly recommended you use Flutter's theme method to style the dialogs across your entire application in one place. The example app demonstrates switching between light and dark themes globally. The elements that control dialog color are:
+It is highly recommended you use Flutter's built in theme styling with `primarySwatch` to automatically style all controls across your entire application.
 
-- `Theme.of(context).primaryColor` controls the header background
-- `Theme.of(context).backgroundColor` controls the dialog background
-- `Theme.of(context).textTheme.button.decorationColor` controls the button text
-- `Theme.of(context).primaryTextTheme.body1.color` controls the header text
+```dart
+ThemeData(
+  primarySwatch: Colors.indigo,
+)
+```
+
+If you desire to override the color for a given control, here is how to customize the theme:
+
+```dart
+var theme = ThemeData();
+theme = theme.copyWith(
+  primaryColor: Colors.green, // background color of the header area
+  accentColor: Colors.black, // color of selected controls and button bar text
+  dialogBackgroundColor: Colors.green[300], // background color of the entire dialog
+  primaryTextTheme: theme.primaryTextTheme.copyWith(
+    title: theme.primaryTextTheme.title.copyWith(
+      color: Colors.lightGreen[50], // text color of the header area
+    ),
+  ),
+  textTheme: theme.textTheme.copyWith(
+    body1: theme.textTheme.body1.copyWith(
+      color: Colors.green[900], // text color of dialog text
+    ),
+    button: theme.textTheme.button.copyWith(
+      color: Colors.lightGreen[50], // text color of the action bar buttons
+    ),
+  ),
+);
+```
+
+The example app demonstrates switching between light and dark themes globally.
 
 However, if for some reason you want to change colors in an individual dialog, several parameters are exposed to allow this:
 
@@ -273,11 +300,11 @@ However, if for some reason you want to change colors in an individual dialog, s
 showMaterialResponsiveDialog(
     context: context,
     headerColor: Colors.green, // background color of the header area
+    headerTextColor: Colors.white, // text fcolor of the header
     backgroundColor: Colors.lightGreen, // background color of the entire dialog
     buttonTextColor: Colors.red, // text color of the action bar buttons
     child: Text("Custom dialog colors"),
 );
-
 ```
 
 ## Dependencies

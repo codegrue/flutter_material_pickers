@@ -40,18 +40,25 @@ class SelectionPickerState extends State<SelectionPicker> {
   @override
   Widget build(BuildContext context) {
     int itemCount = widget.items.length;
+    var theme = Theme.of(context);
 
     return Container(
       child: Scrollbar(
         child: ListView.builder(
           itemCount: itemCount,
           itemBuilder: (BuildContext context, int index) {
+            bool isSelected = (widget.items[index] == selectedValue);
+            Color itemColor = (isSelected) ? theme.accentColor : theme.textTheme.body1.color;
+            Icon icon = (widget.icons == null) ? null : widget.icons[index];
+            if (icon != null && icon.color == null) icon = Icon(icon.icon, color: itemColor);
+
             return ListTile(
-              leading: (widget.icons == null) ? null : widget.icons[index],
-              title: Text(widget.items[index]),
-              trailing: (widget.items[index] == selectedValue)
-                  ? Icon(Icons.check)
-                  : null,
+              leading: icon,
+              title: Text(
+                widget.items[index],
+                style: TextStyle(color: itemColor),
+              ),
+              trailing: (isSelected) ? Icon(Icons.check, color: itemColor) : null,
               onTap: () {
                 setState(() {
                   selectedValue = widget.items[index];

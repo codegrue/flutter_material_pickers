@@ -33,11 +33,9 @@ class CheckboxPickerState extends State<CheckboxPicker> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = Theme.of(context);
+    var theme = Theme.of(context);
 
     if (selectedValues == null) selectedValues = List<String>();
-
-    TextStyle defaultStyle = themeData.textTheme.body1;
 
     int itemCount = widget.items.length;
 
@@ -46,12 +44,16 @@ class CheckboxPickerState extends State<CheckboxPicker> {
         child: ListView.builder(
           itemCount: itemCount,
           itemBuilder: (BuildContext context, int index) {
+            bool isSelected = selectedValues.contains(widget.items[index]);
+
             return CheckboxListTile(
+              activeColor: theme.accentColor,
+              checkColor: theme.dialogBackgroundColor,
               title: Text(
                 widget.items[index],
-                style: defaultStyle,
+                style: (isSelected) ? TextStyle(color: theme.accentColor) : TextStyle(color: theme.textTheme.body1.color),
               ),
-              value: selectedValues.contains(widget.items[index]),
+              value: isSelected,
               onChanged: (bool value) {
                 setState(() {
                   if (value == true) {

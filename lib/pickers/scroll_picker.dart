@@ -46,9 +46,9 @@ class _ScrollPickerState extends State<ScrollPicker> {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
 
-    TextStyle defaultStyle = themeData.textTheme.body1;
+    TextStyle defaultStyle = themeData.textTheme.bodyText2;
     TextStyle selectedStyle =
-        themeData.textTheme.headline.copyWith(color: themeData.accentColor);
+        themeData.textTheme.headline5.copyWith(color: themeData.accentColor);
 
     return NotificationListener(
       child: LayoutBuilder(

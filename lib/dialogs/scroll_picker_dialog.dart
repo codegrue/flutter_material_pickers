@@ -17,6 +17,8 @@ class ScrollPickerDialog extends StatefulWidget {
     this.headerTextColor,
     this.backgroundColor,
     this.buttonTextColor,
+    this.maxLongSide,
+    this.maxShortSide,
   });
 
   // Variables
@@ -27,6 +29,8 @@ class ScrollPickerDialog extends StatefulWidget {
   final Color headerTextColor;
   final Color backgroundColor;
   final Color buttonTextColor;
+  final double maxLongSide;
+  final double maxShortSide;
 
   @override
   State<ScrollPickerDialog> createState() =>
@@ -49,6 +53,8 @@ class _ScrollPickerDialogState extends State<ScrollPickerDialog> {
       headerTextColor: widget.headerTextColor,
       backgroundColor: widget.backgroundColor,
       buttonTextColor: widget.buttonTextColor,
+      maxLongSide: widget.maxLongSide,
+      maxShortSide: widget.maxLongSide,
       child: ScrollPicker(
         items: widget.items,
         initialValue: selectedItem,

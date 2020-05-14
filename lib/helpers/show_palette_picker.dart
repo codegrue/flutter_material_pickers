@@ -14,6 +14,8 @@ void showMaterialPalettePicker({
   Color headerTextColor,
   Color backgroundColor,
   Color buttonTextColor,
+  double maxLongSide,
+  double maxShortSide,
   ValueChanged<Color> onChanged,
 }) {
   showDialog<Color>(
@@ -28,6 +30,8 @@ void showMaterialPalettePicker({
             headerTextColor: headerTextColor,
             backgroundColor: backgroundColor,
             buttonTextColor: buttonTextColor,
+            maxLongSide: maxLongSide,
+            maxShortSide: maxLongSide,
             child: MaterialPicker(
               pickerColor: selectedColor,
               onColorChanged: (color) => selectedColor = color,

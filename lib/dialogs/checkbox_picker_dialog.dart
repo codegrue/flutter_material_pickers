@@ -17,6 +17,8 @@ class CheckboxPickerDialog extends StatefulWidget {
     this.headerTextColor,
     this.backgroundColor,
     this.buttonTextColor,
+    this.maxLongSide,
+    this.maxShortSide,
   });
 
   // Variables
@@ -27,6 +29,8 @@ class CheckboxPickerDialog extends StatefulWidget {
   final Color headerTextColor;
   final Color backgroundColor;
   final Color buttonTextColor;
+  final double maxLongSide;
+  final double maxShortSide;
 
   @override
   State<CheckboxPickerDialog> createState() =>
@@ -52,6 +56,8 @@ class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
       headerTextColor: widget.headerTextColor,
       backgroundColor: widget.backgroundColor,
       buttonTextColor: widget.buttonTextColor,
+      maxLongSide: widget.maxLongSide,
+      maxShortSide: widget.maxLongSide,
       child: CheckboxPicker(
         items: widget.items,
         initialItems: selectedItems,

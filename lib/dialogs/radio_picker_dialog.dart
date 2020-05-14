@@ -17,6 +17,8 @@ class RadioPickerDialog extends StatefulWidget {
     this.headerTextColor,
     this.backgroundColor,
     this.buttonTextColor,
+    this.maxLongSide,
+    this.maxShortSide,
   });
 
   // Variables
@@ -27,6 +29,8 @@ class RadioPickerDialog extends StatefulWidget {
   final Color headerTextColor;
   final Color backgroundColor;
   final Color buttonTextColor;
+  final double maxLongSide;
+  final double maxShortSide;
 
   @override
   State<RadioPickerDialog> createState() =>
@@ -49,6 +53,8 @@ class _RadioPickerDialogState extends State<RadioPickerDialog> {
       headerTextColor: widget.headerTextColor,
       backgroundColor: widget.backgroundColor,
       buttonTextColor: widget.buttonTextColor,
+      maxLongSide: widget.maxLongSide,
+      maxShortSide: widget.maxLongSide,
       child: RadioPicker(
         items: widget.items,
         initialItem: selectedItem,

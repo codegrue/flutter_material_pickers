@@ -53,7 +53,7 @@ class CheckboxPickerState extends State<CheckboxPicker> {
                 widget.items[index],
                 style: (isSelected)
                     ? TextStyle(color: theme.accentColor)
-                    : TextStyle(color: theme.textTheme.body1.color),
+                    : TextStyle(color: theme.textTheme.bodyText2.color),
               ),
               value: isSelected,
               onChanged: (bool value) {

@@ -54,7 +54,7 @@ class RadioPickerState extends State<RadioPicker> {
                 widget.items[index],
                 style: (isSelectedItem)
                     ? TextStyle(color: theme.accentColor)
-                    : TextStyle(color: theme.textTheme.body1.color),
+                    : TextStyle(color: theme.textTheme.bodyText2.color),
               ),
               value: widget.items[index],
               onChanged: (String value) {

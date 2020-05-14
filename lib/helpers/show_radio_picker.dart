@@ -14,6 +14,8 @@ void showMaterialRadioPicker({
   Color headerTextColor,
   Color backgroundColor,
   Color buttonTextColor,
+  double maxLongSide,
+  double maxShortSide,
   ValueChanged<String> onChanged,
 }) {
   showDialog<String>(
@@ -27,6 +29,8 @@ void showMaterialRadioPicker({
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
+        maxLongSide: maxLongSide,
+        maxShortSide: maxLongSide,
       );
     },
   ).then((selection) {

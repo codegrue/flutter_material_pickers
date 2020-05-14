@@ -13,6 +13,8 @@ void showMaterialResponsiveDialog({
   Color headerTextColor,
   Color backgroundColor,
   Color buttonTextColor,
+  double maxLongSide,
+  double maxShortSide,
   ValueChanged<List<String>> onChanged,
 }) {
   showDialog<List<String>>(
@@ -25,6 +27,8 @@ void showMaterialResponsiveDialog({
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
+        maxLongSide: maxLongSide,
+        maxShortSide: maxLongSide,
         child: child,
       );
     },

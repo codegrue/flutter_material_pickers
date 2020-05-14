@@ -4,6 +4,9 @@
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:flutter/material.dart';
 
+// copied from flutter calendar picker
+const Duration _dialogSizeAnimationDuration = Duration(milliseconds: 200);
+
 /// This is a support widget that returns an Dialog with checkboxes as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
 class ResponsiveDialog extends StatefulWidget {
@@ -16,10 +19,14 @@ class ResponsiveDialog extends StatefulWidget {
     this.backgroundColor,
     this.buttonTextColor,
     this.forcePortrait = false,
+    double maxLongSide,
+    double maxShortSide,
     this.okPressed,
     this.cancelPressed,
   })  : title = title ?? "Title Here",
-        child = child ?? Text("Content Here");
+        child = child ?? Text("Content Here"),
+        maxLongSide = maxLongSide ?? 600,
+        maxShortSide = maxShortSide ?? 400;
 
   // Variables
   final BuildContext context;
@@ -30,6 +37,8 @@ class ResponsiveDialog extends StatefulWidget {
   final Color headerTextColor;
   final Color backgroundColor;
   final Color buttonTextColor;
+  final double maxLongSide;
+  final double maxShortSide;
 
   // Events
   final VoidCallback cancelPressed;
@@ -107,51 +116,63 @@ class _ResponsiveDialogState extends State<ResponsiveDialog> {
     var theme = Theme.of(context);
     _headerColor = widget.headerColor ?? theme.primaryColor;
     _headerTextColor =
-        widget.headerTextColor ?? theme.primaryTextTheme.title.color;
+        widget.headerTextColor ?? theme.primaryTextTheme.headline6.color;
     _buttonTextColor = widget.buttonTextColor ?? theme.textTheme.button.color;
     _backgroundColor = widget.backgroundColor ?? theme.dialogBackgroundColor;
 
+    final Orientation orientation = MediaQuery.of(context).orientation;
+
+    // constrain the dialog from expanding to full screen
+    final Size dialogSize = (orientation == Orientation.portrait)
+        ? Size(widget.maxShortSide, widget.maxLongSide)
+        : Size(widget.maxLongSide, widget.maxShortSide);
+
     return Dialog(
       backgroundColor: _backgroundColor,
-      child: OrientationBuilder(
-        builder: (BuildContext context, Orientation orientation) {
-          assert(orientation != null);
-          assert(context != null);
+      child: AnimatedContainer(
+        width: dialogSize.width,
+        height: dialogSize.height,
+        duration: _dialogSizeAnimationDuration,
+        child: OrientationBuilder(
+          builder: (BuildContext context, Orientation orientation) {
+            assert(orientation != null);
+            assert(context != null);
 
-          if (widget.forcePortrait) orientation = Orientation.portrait;
+            if (widget.forcePortrait) orientation = Orientation.portrait;
 
-          switch (orientation) {
-            case Orientation.portrait:
-              return Column(
-                children: <Widget>[
-                  header(context, orientation),
-                  Expanded(
-                    child: Container(
-                      child: widget.child,
+            switch (orientation) {
+              case Orientation.portrait:
+                return Column(
+                  children: <Widget>[
+                    header(context, orientation),
+                    Expanded(
+                      child: Container(
+                        child: widget.child,
+                      ),
                     ),
-                  ),
-                  actionBar(context),
-                ],
-              );
-            case Orientation.landscape:
-              return Row(
-                children: <Widget>[
-                  header(context, orientation),
-                  Expanded(
-                    child: Column(
-                      children: <Widget>[
-                        Expanded(
-                          child: widget.child,
-                        ),
-                        actionBar(context),
-                      ],
+                    actionBar(context),
+                  ],
+                );
+              case Orientation.landscape:
+                return Row(
+                  children: <Widget>[
+                    header(context, orientation),
+                    Expanded(
+                      child: Column(
+                        children: <Widget>[
+                          Expanded(
+                            child: widget.child,
+                          ),
+                          actionBar(context),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              );
-          }
-          return null;
-        },
+                  ],
+                );
+            }
+            return null;
+          },
+        ),
       ),
     );
   }

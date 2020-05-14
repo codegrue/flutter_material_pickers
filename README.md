@@ -307,6 +307,17 @@ showMaterialResponsiveDialog(
 );
 ```
 
+## Sizing
+
+To prevent dialogs from growing to full screen on larger devices (or web) two properties control the maxmium size that it will grow:
+
+```dart
+  maxLongSide: 600,
+  maxShortSide: 400,
+```
+
+The sides relate to if the dialog is showing in landscape or portrait mode. If you wish larger (or smaller) dialogs you can overide these values.
+
 ## Dependencies
 
 This widget set relies on these external third-party components:

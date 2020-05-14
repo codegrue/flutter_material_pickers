@@ -18,6 +18,8 @@ class SelectionPickerDialog extends StatefulWidget {
     this.headerTextColor,
     this.backgroundColor,
     this.buttonTextColor,
+    this.maxLongSide,
+    this.maxShortSide,
   });
 
   // Variables
@@ -29,6 +31,8 @@ class SelectionPickerDialog extends StatefulWidget {
   final Color headerTextColor;
   final Color backgroundColor;
   final Color buttonTextColor;
+  final double maxLongSide;
+  final double maxShortSide;
 
   @override
   State<SelectionPickerDialog> createState() =>
@@ -51,6 +55,8 @@ class _SelectionPickerDialogState extends State<SelectionPickerDialog> {
       headerTextColor: widget.headerTextColor,
       backgroundColor: widget.backgroundColor,
       buttonTextColor: widget.buttonTextColor,
+      maxLongSide: widget.maxLongSide,
+      maxShortSide: widget.maxLongSide,
       child: SelectionPicker(
         items: widget.items,
         initialItem: selectedItem,

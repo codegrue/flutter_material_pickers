@@ -14,6 +14,8 @@ void showMaterialCheckboxPicker({
   Color headerTextColor,
   Color backgroundColor,
   Color buttonTextColor,
+  double maxLongSide,
+  double maxShortSide,
   ValueChanged<List<String>> onChanged,
 }) {
   showDialog<List<String>>(
@@ -27,6 +29,8 @@ void showMaterialCheckboxPicker({
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
+        maxLongSide: maxLongSide,
+        maxShortSide: maxLongSide,
       );
     },
   ).then((selection) {

@@ -48,8 +48,9 @@ class SelectionPickerState extends State<SelectionPicker> {
           itemCount: itemCount,
           itemBuilder: (BuildContext context, int index) {
             bool isSelected = (widget.items[index] == selectedValue);
-            Color itemColor =
-                (isSelected) ? theme.accentColor : theme.textTheme.body1.color;
+            Color itemColor = (isSelected)
+                ? theme.accentColor
+                : theme.textTheme.bodyText2.color;
             Icon icon = (widget.icons == null) ? null : widget.icons[index];
             if (icon != null && icon.color == null)
               icon = Icon(icon.icon, color: itemColor);

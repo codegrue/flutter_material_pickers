@@ -157,6 +157,10 @@ class _ScrollPickerState extends State<ScrollPicker> {
   }
 
   void _changeSelectedItem(int itemIndex) {
+    // prevent overflows
+    if (itemIndex > widget.items.length - 1)
+      itemIndex = widget.items.length - 1;
+
     // update value with selected item
     String newValue = widget.items[itemIndex];
     if (newValue != selectedValue) {

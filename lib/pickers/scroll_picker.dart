@@ -57,8 +57,8 @@ class _ScrollPickerState extends State<ScrollPicker> {
           numberOfVisibleItems = widgetHeight ~/ itemHeight;
 
           // add padding (empty) rows so you can scroll to the extents
-          numberOfPaddingRows = numberOfVisibleItems ~/ 2;
-          int itemCount = widget.items.length + numberOfPaddingRows * 2;
+          numberOfPaddingRows = numberOfVisibleItems ~/ 2 + 1;
+          int rowCount = widget.items.length + numberOfPaddingRows * 2;
 
           // ensure odd rows to allow a centered item
           if (numberOfVisibleItems.isEven) numberOfVisibleItems++;
@@ -67,11 +67,11 @@ class _ScrollPickerState extends State<ScrollPicker> {
           visibleItemsHeight = numberOfVisibleItems * itemHeight;
 
           // amount shifted from center because desired area doesn't fit in visible area
-          offset = (widgetHeight - visibleItemsHeight) / 2;
+          offset = (widgetHeight - visibleItemsHeight) / 2 - itemHeight;
           scrollController = ScrollController(
             initialScrollOffset: widget.items.contains(selectedValue)
-                ? (widget.items.indexOf(selectedValue)) * itemHeight - offset
-                : 0.0,
+                ? _calculateScrollPosition(widget.items.indexOf(selectedValue))
+                : _calculateScrollPosition(0),
           );
 
           return Container(
@@ -83,10 +83,10 @@ class _ScrollPickerState extends State<ScrollPicker> {
                     child: ListView.builder(
                       controller: scrollController,
                       itemExtent: itemHeight,
-                      itemCount: itemCount,
+                      itemCount: rowCount,
                       itemBuilder: (BuildContext context, int index) {
                         bool isPaddingRow = index < numberOfPaddingRows ||
-                            index >= itemCount - numberOfPaddingRows;
+                            index >= rowCount - numberOfPaddingRows;
 
                         String value = (isPaddingRow)
                             ? null
@@ -165,8 +165,12 @@ class _ScrollPickerState extends State<ScrollPicker> {
     }
 
     // animate to and center on the selected item
-    scrollController.animateTo(itemIndex * itemHeight - offset,
+    scrollController.animateTo(_calculateScrollPosition(itemIndex),
         duration: Duration(milliseconds: 500), curve: ElasticOutCurve());
+  }
+
+  double _calculateScrollPosition(int itemIndex) {
+    return itemIndex * itemHeight - offset;
   }
 
   bool _userStoppedScrolling(

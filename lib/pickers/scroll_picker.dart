@@ -38,152 +38,90 @@ class _ScrollPickerState extends State<ScrollPicker> {
   double visibleItemsHeight;
   double offset;
 
+  String selectedValue;
+
   ScrollController scrollController;
 
-  String selectedValue;
+  @override
+  void initState() {
+    super.initState();
+
+    int initialItem = widget.items.indexOf(selectedValue);
+    scrollController = FixedExtentScrollController(initialItem: initialItem);
+  }
 
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
-
     TextStyle defaultStyle = themeData.textTheme.bodyText2;
     TextStyle selectedStyle =
         themeData.textTheme.headline5.copyWith(color: themeData.accentColor);
 
-    return NotificationListener(
-      child: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          widgetHeight = constraints.maxHeight;
-          numberOfVisibleItems = widgetHeight ~/ itemHeight;
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        widgetHeight = constraints.maxHeight;
 
-          // add padding (empty) rows so you can scroll to the extents
-          numberOfPaddingRows = numberOfVisibleItems ~/ 2 + 1;
-          int rowCount = widget.items.length + numberOfPaddingRows * 2;
+        return Stack(
+          children: <Widget>[
+            GestureDetector(
+              onTapUp: _itemTapped,
+              child: ListWheelScrollView.useDelegate(
+                childDelegate: ListWheelChildBuilderDelegate(
+                    builder: (BuildContext context, int index) {
+                  if (index < 0 || index > widget.items.length - 1) {
+                    return null;
+                  }
 
-          // ensure odd rows to allow a centered item
-          if (numberOfVisibleItems.isEven) numberOfVisibleItems++;
+                  var value = widget.items[index];
 
-          // area the visible items desire to take
-          visibleItemsHeight = numberOfVisibleItems * itemHeight;
+                  final TextStyle itemStyle =
+                      (value == selectedValue) ? selectedStyle : defaultStyle;
 
-          // amount shifted from center because desired area doesn't fit in visible area
-          offset = (widgetHeight - visibleItemsHeight) / 2 - itemHeight;
-          scrollController = ScrollController(
-            initialScrollOffset: widget.items.contains(selectedValue)
-                ? _calculateScrollPosition(widget.items.indexOf(selectedValue))
-                : _calculateScrollPosition(0),
-          );
-
-          return Container(
-            child: Stack(
-              children: <Widget>[
-                Center(
-                  child: Container(
-                    height: widgetHeight,
-                    child: ListView.builder(
-                      controller: scrollController,
-                      itemExtent: itemHeight,
-                      itemCount: rowCount,
-                      itemBuilder: (BuildContext context, int index) {
-                        bool isPaddingRow = index < numberOfPaddingRows ||
-                            index >= rowCount - numberOfPaddingRows;
-
-                        String value = (isPaddingRow)
-                            ? null
-                            : widget.items[index - numberOfPaddingRows];
-
-                        //define special style for selected (middle) element
-                        final TextStyle itemStyle = (value == selectedValue)
-                            ? selectedStyle
-                            : defaultStyle;
-
-                        return isPaddingRow
-                            ? Container() //empty items for padding rows
-                            : GestureDetector(
-                                onTap: () {
-                                  _itemTapped(index);
-                                },
-                                child: Container(
-                                  color: Colors
-                                      .transparent, // seems to be necessary to allow touches outside the item text
-                                  child: Center(
-                                    child: Text(value, style: itemStyle),
-                                  ),
-                                ),
-                              );
-                      },
-                    ),
+                  return Center(
+                    child: Text(value, style: itemStyle),
+                  );
+                }),
+                controller: scrollController,
+                itemExtent: itemHeight,
+                onSelectedItemChanged: _onSelectedItemChanged,
+                physics: FixedExtentScrollPhysics(),
+              ),
+            ),
+            Center(child: Divider()),
+            Center(
+              child: Container(
+                height: itemHeight,
+                decoration: BoxDecoration(
+                  border: Border(
+                    top: BorderSide(color: themeData.accentColor, width: 1.0),
+                    bottom:
+                        BorderSide(color: themeData.accentColor, width: 1.0),
                   ),
                 ),
-                Center(child: Divider()),
-                Center(
-                  child: Container(
-                    height: itemHeight,
-                    decoration: BoxDecoration(
-                      border: Border(
-                        top: BorderSide(
-                            color: themeData.accentColor, width: 1.0),
-                        bottom: BorderSide(
-                            color: themeData.accentColor, width: 1.0),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          );
-        },
-      ),
-      onNotification: _onNotification,
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 
-  void _itemTapped(int itemIndex) {
-    int selectedIndex = itemIndex - numberOfPaddingRows;
-    _changeSelectedItem(selectedIndex);
+  void _itemTapped(TapUpDetails details) {
+    Offset position = details.localPosition;
+    double center = widgetHeight / 2;
+    double changeBy = position.dy - center;
+    double newPosition = scrollController.offset + changeBy;
+
+    // animate to and center on the selected item
+    scrollController.animateTo(newPosition,
+        duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
   }
 
-  bool _onNotification(Notification notification) {
-    if (notification is ScrollNotification) {
-      if (_userStoppedScrolling(notification, scrollController)) {
-        int indexOfMiddleElement =
-            ((notification.metrics.pixels + visibleItemsHeight / 2) ~/
-                    itemHeight) -
-                numberOfPaddingRows;
-        _changeSelectedItem(indexOfMiddleElement);
-      }
-    }
-    return true;
-  }
-
-  void _changeSelectedItem(int itemIndex) {
-    // prevent overflows
-    if (itemIndex > widget.items.length - 1)
-      itemIndex = widget.items.length - 1;
-
-    // update value with selected item
-    String newValue = widget.items[itemIndex];
+  void _onSelectedItemChanged(int index) {
+    String newValue = widget.items[index];
     if (newValue != selectedValue) {
       selectedValue = newValue;
       widget.onChanged(newValue);
     }
-
-    // animate to and center on the selected item
-    scrollController.animateTo(_calculateScrollPosition(itemIndex),
-        duration: Duration(milliseconds: 500), curve: ElasticOutCurve());
-  }
-
-  double _calculateScrollPosition(int itemIndex) {
-    return itemIndex * itemHeight - offset;
-  }
-
-  bool _userStoppedScrolling(
-    Notification notification,
-    ScrollController scrollController,
-  ) {
-    return notification is UserScrollNotification &&
-        notification.direction == ScrollDirection.idle &&
-        // ignore: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
-        scrollController.position.activity is! HoldScrollActivity;
   }
 }

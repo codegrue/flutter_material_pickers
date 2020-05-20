@@ -1,5 +1,9 @@
 # Releases
 
+## [1.5.2] - 5/20/2020
+
+- changed `ScrollPicker` to use `ListWheelScrollView` internally so it functions better.
+
 ## [1.5.1] - 5/15/2020
 
 - fixed positioning bug in selection picker with only two items

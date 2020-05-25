@@ -15,10 +15,12 @@ void showMaterialResponsiveDialog({
   Color buttonTextColor,
   double maxLongSide,
   double maxShortSide,
+  bool hideButtons = false,
   ValueChanged<List<String>> onChanged,
 }) {
   showDialog<List<String>>(
     context: context,
+    barrierDismissible: hideButtons,
     builder: (BuildContext context) {
       return ResponsiveDialog(
         context: context,
@@ -29,6 +31,7 @@ void showMaterialResponsiveDialog({
         buttonTextColor: buttonTextColor,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
+        hideButtons: hideButtons,
         child: child,
       );
     },

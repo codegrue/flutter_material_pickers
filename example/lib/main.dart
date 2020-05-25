@@ -11,37 +11,9 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // var theme = ThemeData();
-    // theme = theme.copyWith(
-    //   primaryColor: Colors.green, // background color of the header area
-    //   accentColor: Colors.green[900], // color of selected controls and button bar text
-    //   dialogBackgroundColor: Colors.green[100], // background color of the entire dialog
-    //   primaryTextTheme: theme.primaryTextTheme.copyWith(
-    //     title: theme.primaryTextTheme.title.copyWith(
-    //       color: Colors.lightGreen[50], // text color of the header area
-    //     ),
-    //   ),
-    //   textTheme: theme.textTheme.copyWith(
-    //     body1: theme.textTheme.body1.copyWith(
-    //       color: Colors.green[700], // text color of dialog text
-    //     ),
-    //     button: theme.textTheme.button.copyWith(
-    //       color: Colors.green[700], // text color of the action bar buttons
-    //     ),
-    //   ),
-    // );
-    // return MaterialApp(
-    //   title: 'Material Picker Examples',
-    //   theme: theme,
-    //   home: TestPage(),
-    // );
-
     return DynamicTheme(
       defaultBrightness: Brightness.light,
-      data: (brightness) => ThemeData(
-        primarySwatch: Colors.indigo,
-        brightness: brightness,
-      ),
+      data: _buildTheme,
       themedWidgetBuilder: (context, theme) {
         return MaterialApp(
           title: 'Material Picker Examples',
@@ -51,6 +23,39 @@ class MyApp extends StatelessWidget {
       },
     );
   }
+}
+
+ThemeData _buildTheme(Brightness brightness) {
+  var theme = ThemeData(
+    primarySwatch: Colors.indigo,
+    brightness: brightness,
+  );
+
+  if (brightness == Brightness.light) {
+    theme = theme.copyWith(
+      primaryColor: Colors.green, // background color of the header area
+      backgroundColor: Colors.green[100], // app background color
+      accentColor:
+          Colors.green[900], // color of selected controls and button bar text
+      dialogBackgroundColor:
+          Colors.green[100], // background color of the entire dialog
+      primaryTextTheme: theme.primaryTextTheme.copyWith(
+        headline6: theme.primaryTextTheme.headline6.copyWith(
+          color: Colors.lightGreen[50], // text color of the header area
+        ),
+      ),
+      textTheme: theme.textTheme.copyWith(
+        bodyText2: theme.textTheme.bodyText2.copyWith(
+          color: Colors.green[700], // text color of dialog text
+        ),
+        button: theme.textTheme.button.copyWith(
+          color: Colors.green[700], // text color of the action bar buttons
+        ),
+      ),
+    );
+  }
+
+  return theme;
 }
 
 class TestPage extends StatefulWidget {
@@ -150,14 +155,30 @@ class _TestPageState extends State<TestPage> {
             child: Text("Empty Dialog"),
             onPressed: () => showMaterialResponsiveDialog(
               context: context,
+              hideButtons: true,
               child: Center(
                 child: Container(
                   padding: EdgeInsets.all(30.0),
-                  child: Text(
-                    "This is the base dialog widget for the pickers. Unlike the off-the-shelf Dialog widget, it handles landscape orientations. You may place any content here you desire.",
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontStyle: FontStyle.italic,
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      text:
+                          "This is the base dialog widget for the pickers. Unlike the off-the-shelf Dialog widget, it handles landscape orientations. You may place any content here you desire.",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(text: "\n\n"),
+                        TextSpan(
+                            text:
+                                "This example has the button bar hidden, so you dismiss it by clicking outside the window.",
+                            style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w300)),
+                        //TextSpan(text: 'your text',style: TextStyle(color: Colors.redAccent,fontSize: 38))
+                      ],
                     ),
                   ),
                 ),

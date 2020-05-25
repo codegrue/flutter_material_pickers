@@ -1,5 +1,9 @@
 # Releases
 
+## [1.5.4] - 5/25/2020
+
+- added `hideButtons` to `ResponsiveDialog`
+
 ## [1.5.3] - 5/24/2020
 
 - added `showMaterialFilePicker` which wraps `file_picker_cross`

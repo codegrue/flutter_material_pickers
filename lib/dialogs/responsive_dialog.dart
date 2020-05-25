@@ -21,6 +21,7 @@ class ResponsiveDialog extends StatefulWidget {
     this.forcePortrait = false,
     double maxLongSide,
     double maxShortSide,
+    this.hideButtons = false,
     this.okPressed,
     this.cancelPressed,
   })  : title = title ?? "Title Here",
@@ -39,6 +40,7 @@ class ResponsiveDialog extends StatefulWidget {
   final Color buttonTextColor;
   final double maxLongSide;
   final double maxShortSide;
+  final bool hideButtons;
 
   // Events
   final VoidCallback cancelPressed;
@@ -77,6 +79,8 @@ class _ResponsiveDialogState extends State<ResponsiveDialog> {
   }
 
   Widget actionBar(BuildContext context) {
+    if (widget.hideButtons) return Container();
+
     var localizations = MaterialLocalizations.of(context);
 
     return Container(

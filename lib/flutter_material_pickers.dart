@@ -16,6 +16,7 @@ export 'package:flutter_material_pickers/helpers/show_color_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_palette_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_swatch_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_responsive_dialog.dart';
+export 'package:flutter_material_pickers/helpers/show_file_picker.dart';
 
 // Constants
 const double kPickerHeaderPortraitHeight = 80.0;

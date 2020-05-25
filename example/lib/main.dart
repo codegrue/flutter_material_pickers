@@ -71,8 +71,13 @@ class _TestPageState extends State<TestPage> {
           title: Text("Material Picker Examples"),
           actions: <Widget>[
             IconButton(
-              icon: Theme.of(context).brightness == Brightness.dark ? Icon(Icons.brightness_7) : Icon(Icons.brightness_4),
-              onPressed: () => DynamicTheme.of(context).setBrightness(Theme.of(context).brightness == Brightness.dark ? Brightness.light : Brightness.dark),
+              icon: Theme.of(context).brightness == Brightness.dark
+                  ? Icon(Icons.brightness_7)
+                  : Icon(Icons.brightness_4),
+              onPressed: () => DynamicTheme.of(context).setBrightness(
+                  Theme.of(context).brightness == Brightness.dark
+                      ? Brightness.light
+                      : Brightness.dark),
             )
           ],
           bottom: TabBar(
@@ -121,7 +126,9 @@ class _TestPageState extends State<TestPage> {
                         Divider(),
                         buildPaletteRow(context),
                         Divider(),
-                        buildSwatchRow(context)
+                        buildSwatchRow(context),
+                        Divider(),
+                        buildFileRow(context),
                       ],
                     ),
                   ),
@@ -180,7 +187,8 @@ class _TestPageState extends State<TestPage> {
               title: "Pick Your City",
               items: model.usStates,
               selectedItem: model.selectedUsState,
-              onChanged: (value) => setState(() => model.selectedUsState = value),
+              onChanged: (value) =>
+                  setState(() => model.selectedUsState = value),
             ),
           ),
         ),
@@ -233,7 +241,8 @@ class _TestPageState extends State<TestPage> {
               title: "Pick Your Toppings",
               items: model.iceCreamToppings,
               selectedItems: model.selectedIceCreamToppings,
-              onChanged: (value) => setState(() => model.selectedIceCreamToppings = value),
+              onChanged: (value) =>
+                  setState(() => model.selectedIceCreamToppings = value),
             ),
           ),
         ),
@@ -259,7 +268,8 @@ class _TestPageState extends State<TestPage> {
               title: "Pick Your City",
               items: model.usStates,
               selectedItem: model.selectedUsState,
-              onChanged: (value) => setState(() => model.selectedUsState = value),
+              onChanged: (value) =>
+                  setState(() => model.selectedUsState = value),
             ),
           ),
         ),
@@ -420,6 +430,29 @@ class _TestPageState extends State<TestPage> {
           width: 100.0,
           decoration: BoxDecoration(
             color: model.swatch,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row buildFileRow(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Container(
+          width: 150.0,
+          child: RaisedButton(
+            child: Text("File Picker"),
+            onPressed: () => showMaterialFilePicker(
+              context: context,
+              onChanged: (value) => setState(() => model.file = value),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Text(
+            "${model.file.lengthInBytes} bytes",
+            textAlign: TextAlign.right,
           ),
         ),
       ],

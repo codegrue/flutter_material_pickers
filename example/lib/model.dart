@@ -1,4 +1,6 @@
 // example viewmodel for the form
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
 class ExampleModel {
@@ -112,4 +114,7 @@ class ExampleModel {
 
   // Swatch Picker Model
   Color swatch = Colors.blue;
+
+  // File Picker Model
+  Uint8List file = Uint8List(1024 * 1024 * 15);
 }

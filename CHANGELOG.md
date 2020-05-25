@@ -1,5 +1,9 @@
 # Releases
 
+## [1.5.3] - 5/24/2020
+
+- added `showMaterialFilePicker` which wraps `file_picker_cross`
+
 ## [1.5.2] - 5/20/2020
 
 - changed `ScrollPicker` to use `ListWheelScrollView` internally so it functions better.

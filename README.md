@@ -7,29 +7,31 @@ A flutter package containing commonly used material design picker dialogs. Some 
 It includes:
 
 - **New Pickers**
-  - _showMaterialScrollPicker:_
+  - `showMaterialScrollPicker`:
     - Allows selection of a string via a slot machine carousel
-  - _showMaterialNumberPicker:_
+  - `showMaterialNumberPicker`:
     - Allows selection of a number via a slot machine carousel
-  - _showMaterialRadioPicker:_
+  - `showMaterialRadioPicker`:
     - Allows selection of a single from a radio list
-  - _showMaterialCheckboxPicker:_
+  - `showMaterialCheckboxPicker`:
     - Allows selection of many values from a checkbox list
-  - _showMaterialSelectionPicker:_
+  - `showMaterialSelectionPicker`:
     - Allows selection of a single value via an icon label list
 - **Convenience Pickers**
-  - _showMaterialDatePicker:_
+  - `showMaterialDatePicker`:
     - Allows selection of a date (uses the core date picker)
-  - _showMaterialTimePicker:_
+  - `showMaterialTimePicker`:
     - Allows selection of a time (uses the core time picker)
-  - _showMaterialColorPicker:_
+  - `showMaterialColorPicker`:
     - Allows RGB selection of a color (uses the ColorPicker of flutter_colorpicker)
-  - _showMaterialPalettePicker:_
+  - `showMaterialPalettePicker`:
     - Allows Material palette selection of a color (uses the MaterialPicker of flutter_colorpicker)
-  - _showMaterialSwatchPicker:_
+  - `showMaterialSwatchPicker`:
     - Allows selection of a color from swatches (uses the BlockPicker of flutter_colorpicker)
+  - `showMaterialSwatchPicker`:
+    - Allows selection of a file using the device's default picker
 - **Dialog**
-  - _showMaterialResponsiveDialog:_
+  - `showMaterialResponsiveDialog`:
     - Extends Dialog by making it responsive to screen orientation changes
 
 All helpers implement an `onChange` handler to return picked option(s).

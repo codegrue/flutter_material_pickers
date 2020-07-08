@@ -3,6 +3,7 @@
 ## [1.6.0] - 2020-07-08
 
 - added ability to customize `confirmText` and `cancelText`
+- added `onCancelled` handler to all helpers
 - updated dependencies
 
 ## [1.5.4] - 5/25/2020

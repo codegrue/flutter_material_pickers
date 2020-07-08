@@ -9,11 +9,13 @@ void showMaterialTimePicker({
   String title,
   TimeOfDay selectedTime,
   ValueChanged<TimeOfDay> onChanged,
+  VoidCallback onCancelled,
 }) {
   showTimePicker(
     context: context,
     initialTime: selectedTime,
   ).then((selection) {
     if (onChanged != null && selection != null) onChanged(selection);
+    if (onCancelled != null && selection == null) onCancelled();
   });
 }

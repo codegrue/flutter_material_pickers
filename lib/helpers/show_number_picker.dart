@@ -20,6 +20,7 @@ void showMaterialNumberPicker({
   double maxLongSide,
   double maxShortSide,
   ValueChanged<int> onChanged,
+  VoidCallback onCancelled,
 }) {
   var items = List<String>.generate(
       maxNumber - minNumber + 1, (i) => (i + minNumber).toString());
@@ -43,5 +44,6 @@ void showMaterialNumberPicker({
     },
   ).then((selection) {
     if (onChanged != null && selection != null) onChanged(int.parse(selection));
+    if (onCancelled != null && selection == null) onCancelled();
   });
 }

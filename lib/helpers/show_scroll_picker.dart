@@ -19,6 +19,7 @@ void showMaterialScrollPicker({
   double maxLongSide,
   double maxShortSide,
   ValueChanged<String> onChanged,
+  VoidCallback onCancelled,
 }) {
   showDialog<String>(
     context: context,
@@ -39,5 +40,6 @@ void showMaterialScrollPicker({
     },
   ).then((selection) {
     if (onChanged != null && selection != null) onChanged(selection);
+    if (onCancelled != null && selection == null) onCancelled();
   });
 }

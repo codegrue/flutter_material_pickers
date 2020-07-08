@@ -19,6 +19,7 @@ void showMaterialColorPicker({
   double maxLongSide,
   double maxShortSide,
   ValueChanged<Color> onChanged,
+  VoidCallback onCancelled,
 }) {
   showDialog<Color>(
     context: context,
@@ -55,5 +56,6 @@ void showMaterialColorPicker({
     },
   ).then((selection) {
     if (onChanged != null && selection != null) onChanged(selection);
+    if (onCancelled != null && selection == null) onCancelled();
   });
 }

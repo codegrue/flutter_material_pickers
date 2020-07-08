@@ -20,6 +20,7 @@ void showMaterialSelectionPicker({
   double maxLongSide,
   double maxShortSide,
   ValueChanged<String> onChanged,
+  VoidCallback onCancelled,
 }) {
   assert(items != null);
   assert(icons == null || items.length == icons.length);
@@ -44,5 +45,6 @@ void showMaterialSelectionPicker({
     },
   ).then((selection) {
     if (onChanged != null && selection != null) onChanged(selection);
+    if (onCancelled != null && selection == null) onCancelled();
   });
 }

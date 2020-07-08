@@ -156,6 +156,7 @@ class _TestPageState extends State<TestPage> {
             onPressed: () => showMaterialResponsiveDialog(
               context: context,
               hideButtons: true,
+              onCancelled: () => print("Dialog cancelled"),
               child: Center(
                 child: Container(
                   padding: EdgeInsets.all(30.0),
@@ -210,6 +211,7 @@ class _TestPageState extends State<TestPage> {
               selectedItem: model.selectedUsState,
               onChanged: (value) =>
                   setState(() => model.selectedUsState = value),
+              onCancelled: () => print("Scroll Picker cancelled"),
             ),
           ),
         ),

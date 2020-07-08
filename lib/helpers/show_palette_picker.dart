@@ -14,6 +14,8 @@ void showMaterialPalettePicker({
   Color headerTextColor,
   Color backgroundColor,
   Color buttonTextColor,
+  String confirmText,
+  String cancelText,
   double maxLongSide,
   double maxShortSide,
   ValueChanged<Color> onChanged,
@@ -30,6 +32,8 @@ void showMaterialPalettePicker({
             headerTextColor: headerTextColor,
             backgroundColor: backgroundColor,
             buttonTextColor: buttonTextColor,
+            confirmText: confirmText,
+            cancelText: cancelText,
             maxLongSide: maxLongSide,
             maxShortSide: maxLongSide,
             child: MaterialPicker(

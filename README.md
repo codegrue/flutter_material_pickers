@@ -309,6 +309,18 @@ showMaterialResponsiveDialog(
 );
 ```
 
+## Customization
+
+You can customize the text that appears in various areas of the screen. The button labels automatically localize to the native language versions of "Ok" and "Cancel", unless replacement text is provided.
+
+```dart
+showMaterialNumberPicker(
+  title: "Pick Your Age",
+  confirmText: "Count me in",
+  cancelText: "Negatory",
+);
+```
+
 ## Sizing
 
 To prevent dialogs from growing to full screen on larger devices (or web) two properties control the maxmium size that it will grow:

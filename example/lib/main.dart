@@ -235,6 +235,8 @@ class _TestPageState extends State<TestPage> {
               title: "Pick Your Age",
               maxNumber: 100,
               minNumber: 14,
+              confirmText: "Count me in",
+              cancelText: "Negatory",
               selectedNumber: model.age,
               onChanged: (value) => setState(() => model.age = value),
             ),

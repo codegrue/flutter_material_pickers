@@ -15,6 +15,8 @@ void showMaterialNumberPicker({
   Color headerTextColor,
   Color backgroundColor,
   Color buttonTextColor,
+  String confirmText,
+  String cancelText,
   double maxLongSide,
   double maxShortSide,
   ValueChanged<int> onChanged,
@@ -33,6 +35,8 @@ void showMaterialNumberPicker({
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
+        confirmText: confirmText,
+        cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
       );

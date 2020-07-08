@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/pickers/selection_picker.dart';
 
 import 'responsive_dialog.dart';
+import '../interfaces/common_dialog_properties.dart';
 
 /// This is a support widget that returns an Dialog with checkboxes as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
-class SelectionPickerDialog extends StatefulWidget {
+class SelectionPickerDialog extends StatefulWidget
+    implements ICommonDialogProperties {
   SelectionPickerDialog({
     this.title,
     @required this.items,
@@ -20,19 +22,32 @@ class SelectionPickerDialog extends StatefulWidget {
     this.buttonTextColor,
     this.maxLongSide,
     this.maxShortSide,
+    this.confirmText,
+    this.cancelText,
   });
 
   // Variables
   final List<String> items;
   final String initialItem;
+  @override
   final String title;
   final List<Icon> icons;
+  @override
   final Color headerColor;
+  @override
   final Color headerTextColor;
+  @override
   final Color backgroundColor;
+  @override
   final Color buttonTextColor;
+  @override
   final double maxLongSide;
+  @override
   final double maxShortSide;
+  @override
+  final String confirmText;
+  @override
+  final String cancelText;
 
   @override
   State<SelectionPickerDialog> createState() =>
@@ -57,6 +72,8 @@ class _SelectionPickerDialogState extends State<SelectionPickerDialog> {
       buttonTextColor: widget.buttonTextColor,
       maxLongSide: widget.maxLongSide,
       maxShortSide: widget.maxLongSide,
+      confirmText: widget.confirmText,
+      cancelText: widget.cancelText,
       child: SelectionPicker(
         items: widget.items,
         initialItem: selectedItem,

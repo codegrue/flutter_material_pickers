@@ -14,6 +14,8 @@ void showMaterialCheckboxPicker({
   Color headerTextColor,
   Color backgroundColor,
   Color buttonTextColor,
+  String confirmText,
+  String cancelText,
   double maxLongSide,
   double maxShortSide,
   ValueChanged<List<String>> onChanged,
@@ -29,6 +31,8 @@ void showMaterialCheckboxPicker({
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
+        confirmText: confirmText,
+        cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
       );

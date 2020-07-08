@@ -14,6 +14,8 @@ void showMaterialScrollPicker({
   Color headerTextColor,
   Color backgroundColor,
   Color buttonTextColor,
+  String confirmText,
+  String cancelText,
   double maxLongSide,
   double maxShortSide,
   ValueChanged<String> onChanged,
@@ -29,6 +31,8 @@ void showMaterialScrollPicker({
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
+        confirmText: confirmText,
+        cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
       );

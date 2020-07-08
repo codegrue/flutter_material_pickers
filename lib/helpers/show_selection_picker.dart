@@ -15,6 +15,8 @@ void showMaterialSelectionPicker({
   Color headerTextColor,
   Color backgroundColor,
   Color buttonTextColor,
+  String confirmText,
+  String cancelText,
   double maxLongSide,
   double maxShortSide,
   ValueChanged<String> onChanged,
@@ -34,6 +36,8 @@ void showMaterialSelectionPicker({
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
+        confirmText: confirmText,
+        cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
       );

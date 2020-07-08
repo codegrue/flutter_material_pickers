@@ -3,13 +3,15 @@
 
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:flutter/material.dart';
+import '../interfaces/common_dialog_properties.dart';
 
 // copied from flutter calendar picker
 const Duration _dialogSizeAnimationDuration = Duration(milliseconds: 200);
 
 /// This is a support widget that returns an Dialog with checkboxes as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
-class ResponsiveDialog extends StatefulWidget {
+class ResponsiveDialog extends StatefulWidget
+    implements ICommonDialogProperties {
   ResponsiveDialog({
     this.context,
     String title,
@@ -24,6 +26,8 @@ class ResponsiveDialog extends StatefulWidget {
     this.hideButtons = false,
     this.okPressed,
     this.cancelPressed,
+    this.confirmText,
+    this.cancelText,
   })  : title = title ?? "Title Here",
         child = child ?? Text("Content Here"),
         maxLongSide = maxLongSide ?? 600,
@@ -31,16 +35,27 @@ class ResponsiveDialog extends StatefulWidget {
 
   // Variables
   final BuildContext context;
+  @override
   final String title;
   final Widget child;
   final bool forcePortrait;
+  @override
   final Color headerColor;
+  @override
   final Color headerTextColor;
+  @override
   final Color backgroundColor;
+  @override
   final Color buttonTextColor;
+  @override
   final double maxLongSide;
+  @override
   final double maxShortSide;
   final bool hideButtons;
+  @override
+  final String confirmText;
+  @override
+  final String cancelText;
 
   // Events
   final VoidCallback cancelPressed;
@@ -95,14 +110,14 @@ class _ResponsiveDialogState extends State<ResponsiveDialog> {
           children: <Widget>[
             FlatButton(
               textColor: _buttonTextColor,
-              child: Text(localizations.cancelButtonLabel),
+              child: Text(widget.cancelText ?? localizations.cancelButtonLabel),
               onPressed: () => (widget.cancelPressed == null)
                   ? Navigator.of(context).pop()
                   : widget.cancelPressed(),
             ),
             FlatButton(
               textColor: _buttonTextColor,
-              child: Text(localizations.okButtonLabel),
+              child: Text(widget.confirmText ?? localizations.okButtonLabel),
               onPressed: () => (widget.okPressed == null)
                   ? Navigator.of(context).pop()
                   : widget.okPressed(),

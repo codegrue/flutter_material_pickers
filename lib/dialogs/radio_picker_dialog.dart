@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/pickers/radio_picker.dart';
 
 import 'responsive_dialog.dart';
+import '../interfaces/common_dialog_properties.dart';
 
 /// This is a support widget that returns an Dialog with checkboxes as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
-class RadioPickerDialog extends StatefulWidget {
+class RadioPickerDialog extends StatefulWidget
+    implements ICommonDialogProperties {
   RadioPickerDialog({
     this.title,
     this.items,
@@ -19,18 +21,31 @@ class RadioPickerDialog extends StatefulWidget {
     this.buttonTextColor,
     this.maxLongSide,
     this.maxShortSide,
+    this.confirmText,
+    this.cancelText,
   });
 
   // Variables
   final List<String> items;
   final String initialItem;
+  @override
   final String title;
+  @override
   final Color headerColor;
+  @override
   final Color headerTextColor;
+  @override
   final Color backgroundColor;
+  @override
   final Color buttonTextColor;
+  @override
   final double maxLongSide;
+  @override
   final double maxShortSide;
+  @override
+  final String confirmText;
+  @override
+  final String cancelText;
 
   @override
   State<RadioPickerDialog> createState() =>
@@ -55,6 +70,8 @@ class _RadioPickerDialogState extends State<RadioPickerDialog> {
       buttonTextColor: widget.buttonTextColor,
       maxLongSide: widget.maxLongSide,
       maxShortSide: widget.maxLongSide,
+      confirmText: widget.confirmText,
+      cancelText: widget.cancelText,
       child: RadioPicker(
         items: widget.items,
         initialItem: selectedItem,

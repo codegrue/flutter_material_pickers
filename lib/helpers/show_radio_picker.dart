@@ -14,6 +14,8 @@ void showMaterialRadioPicker({
   Color headerTextColor,
   Color backgroundColor,
   Color buttonTextColor,
+  String confirmText,
+  String cancelText,
   double maxLongSide,
   double maxShortSide,
   ValueChanged<String> onChanged,
@@ -29,6 +31,8 @@ void showMaterialRadioPicker({
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
+        confirmText: confirmText,
+        cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
       );

@@ -1,5 +1,20 @@
 # Flutter Material Pickers
 
+[![Pub Package](https://img.shields.io/pub/v/flutter_material_pickers.svg)](https://pub.dartlang.org/packages/flutter_material_pickers)
+[![GitHub stars](https://img.shields.io/github/stars/codegrue/flutter_material_pickers?color=brightgreen)](https://github.com/codegrue/flutter_material_pickers/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/codegrue/flutter_material_pickers)](https://github.com/codegrue/flutter_material_pickers/network/members)
+![GitHub repo size](https://img.shields.io/github/repo-size/codegrue/flutter_material_pickers)
+
+[![CodeFactor](https://img.shields.io/codefactor/grade/github/codegrue/flutter_material_pickers)](https://www.codefactor.io/repository/github/codegrue/flutter_material_pickers)
+[![Open Bugs](https://img.shields.io/github/issues-raw/codegrue/flutter_material_pickers/bug?label=bugs&color=orange)](https://github.com/codegrue/flutter_material_pickers/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
+[![Enhancement Requests](https://img.shields.io/github/issues-raw/codegrue/flutter_material_pickers/enhancement?label=enhancements)](https://github.com/codegrue/flutter_material_pickers/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement+)
+[![Closed Issues](https://img.shields.io/github/issues-closed-raw/codegrue/flutter_material_pickers?color=lightgrey)](https://github.com/codegrue/flutter_material_pickers/issues?q=is%3Aissue+is%3Aclosed)
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-yellow.svg)](https://www.buymeacoffee.com/CodeGrue)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/codegrue/flutter_material_pickers/pulls)
+[![Contributors](https://img.shields.io/github/contributors/codegrue/flutter_material_pickers)](https://github.com/codegrue/flutter_material_pickers/graphs/contributors)
+[![License](https://img.shields.io/github/license/codegrue/flutter_material_pickers?color=brightgreen)](https://github.com/codegrue/flutter_material_pickers/blob/master/LICENSE)
+
 A flutter package containing commonly used material design picker dialogs. Some are new, some wrap existing or built in pickers with a common dialog and access function.
 
 <img src="https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/images/main_new_pickers.png" width="200"> <img src="https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/images/main_convenience_pickers.png" width="200">
@@ -28,7 +43,7 @@ It includes:
     - Allows Material palette selection of a color (uses the MaterialPicker of flutter_colorpicker)
   - `showMaterialSwatchPicker`:
     - Allows selection of a color from swatches (uses the BlockPicker of flutter_colorpicker)
-  - `showMaterialSwatchPicker`:
+  - `showMaterialFilePicker`:
     - Allows selection of a file using the device's default picker
 - **Dialog**
   - `showMaterialResponsiveDialog`:

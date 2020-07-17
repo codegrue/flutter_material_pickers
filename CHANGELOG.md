@@ -1,5 +1,9 @@
 # Releases
 
+## [1.7.0] - 2020-07-08
+
+- changed file picker from file_picker_cross to file_picker for better compatibility
+
 ## [1.6.0] - 2020-07-08
 
 - added ability to customize `confirmText` and `cancelText`

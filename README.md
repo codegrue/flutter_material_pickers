@@ -347,6 +347,12 @@ To prevent dialogs from growing to full screen on larger devices (or web) two pr
 
 The sides relate to if the dialog is showing in landscape or portrait mode. If you wish larger (or smaller) dialogs you can overide these values.
 
+## Supported Platforms
+
+- [x] Android
+- [x] iOS
+- [x] Web
+
 ## Dependencies
 
 This widget set relies on these external third-party components:

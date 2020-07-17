@@ -19,6 +19,7 @@ void showMaterialCheckboxPicker({
   double maxLongSide,
   double maxShortSide,
   ValueChanged<List<String>> onChanged,
+  VoidCallback onConfirmed,
   VoidCallback onCancelled,
 }) {
   showDialog<List<String>>(
@@ -41,5 +42,6 @@ void showMaterialCheckboxPicker({
   ).then((selection) {
     if (onChanged != null && selection != null) onChanged(selection);
     if (onCancelled != null && selection == null) onCancelled();
+    if (onConfirmed != null && selection != null) onConfirmed();
   });
 }

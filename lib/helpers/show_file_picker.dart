@@ -16,10 +16,6 @@ Future<void> showMaterialFilePicker({
   String fileExtension,
   ValueChanged<Uint8List> onChanged,
 }) async {
-  // FilePicker filePicker = FilePicker(
-  //   fileExtension: fileExtension,
-  //   type: fileType,
-  // );
   try {
     File file = await FilePicker.getFile(type: fileType);
     var data = file.readAsBytesSync();
@@ -29,15 +25,4 @@ Future<void> showMaterialFilePicker({
     if (error.runtimeType is NoSuchMethodError) return; // user canceled dialog
     throw error;
   }
-
-  // FilePicker.getFile().then(
-  //   (_) {
-  //     final file = filePicker.toUint8List();
-  //     if (onChanged != null && file != null) onChanged(file);
-  //   },
-  // ).catchError((dynamic error) {
-  //   if (error.runtimeType is PlatformException) return; // user clicked twice
-  //   if (error.runtimeType is NoSuchMethodError) return; // user canceled dialog
-  //   throw error;
-  // });
 }

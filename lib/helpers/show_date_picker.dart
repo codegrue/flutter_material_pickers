@@ -13,6 +13,7 @@ void showMaterialDatePicker({
   String okButtonLabel,
   String cancelButtonLabel,
   ValueChanged<DateTime> onChanged,
+  VoidCallback onConfirmed,
   VoidCallback onCancelled,
 }) {
   if (firstDate == null) firstDate = DateTime(1990, 1, 1);
@@ -28,5 +29,6 @@ void showMaterialDatePicker({
   ).then((selection) {
     if (onChanged != null && selection != null) onChanged(selection);
     if (onCancelled != null && selection == null) onCancelled();
+    if (onConfirmed != null && selection != null) onConfirmed();
   });
 }

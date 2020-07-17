@@ -1,8 +1,9 @@
 # Releases
 
-## [1.7.0] - 2020-07-08
+## [1.7.0] - TBD
 
 - changed file picker from file_picker_cross to file_picker for better compatibility
+- added `onConfirmed` event to all dialog helpers
 
 ## [1.6.0] - 2020-07-08
 

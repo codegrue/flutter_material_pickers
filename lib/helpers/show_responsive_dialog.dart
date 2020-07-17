@@ -19,10 +19,10 @@ void showMaterialResponsiveDialog({
   double maxLongSide,
   double maxShortSide,
   bool hideButtons = false,
-  ValueChanged<List<String>> onChanged,
+  VoidCallback onConfirmed,
   VoidCallback onCancelled,
 }) {
-  showDialog<List<String>>(
+  showDialog<void>(
     context: context,
     barrierDismissible: hideButtons,
     builder: (BuildContext context) {
@@ -39,10 +39,15 @@ void showMaterialResponsiveDialog({
         maxShortSide: maxLongSide,
         hideButtons: hideButtons,
         child: child,
+        okPressed: () {
+          if (onConfirmed != null) onConfirmed();
+          Navigator.of(context).pop();
+        },
+        cancelPressed: () {
+          if (onCancelled != null) onCancelled();
+          Navigator.of(context).pop();
+        },
       );
     },
-  ).then((selection) {
-    if (onChanged != null && selection != null) onChanged(selection);
-    if (onCancelled != null && selection == null) onCancelled();
-  });
+  );
 }

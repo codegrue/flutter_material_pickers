@@ -363,10 +363,6 @@ This widget set relies on these external third-party components:
 
 Please see the [Changelog](https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/CHANGELOG.md) page to know what's recently changed.
 
-## Authors
-
-- Jeff Jorczak <jeff@jorczak.com>
-
 ## Contributions
 
 If you find a bug or want a feature, but don't know how to fix/implement it, please fill an [issue](https://raw.githubusercontent.com/codegrue/flutter_material_pickers/issues).

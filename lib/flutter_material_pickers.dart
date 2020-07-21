@@ -18,6 +18,8 @@ export 'package:flutter_material_pickers/helpers/show_swatch_picker.dart';
 export 'package:flutter_material_pickers/helpers/show_responsive_dialog.dart';
 export 'package:flutter_material_pickers/helpers/show_file_picker.dart';
 
+export 'package:file_picker/file_picker.dart' show FileType;
+
 // Constants
 const double kPickerHeaderPortraitHeight = 80.0;
 const double kPickerHeaderLandscapeWidth = 168.0;

@@ -1,8 +1,9 @@
 # Releases
 
-## [1.7.1] - 2020-07-20
+## [1.7.1] - 2020-07-21
 
 - removed pub.dev issue in readme.md with email
+- exposed FileType enum from file_picker
 
 ## [1.7.0] - 2020-07-20
 

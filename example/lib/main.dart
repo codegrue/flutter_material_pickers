@@ -474,6 +474,7 @@ class _TestPageState extends State<TestPage> {
             child: Text("File Picker"),
             onPressed: () => showMaterialFilePicker(
               context: context,
+              fileType: FileType.image,
               onChanged: (value) => setState(() => model.file = value),
             ),
           ),

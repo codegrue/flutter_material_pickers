@@ -1,5 +1,9 @@
 # Releases
 
+## [1.7.1] - 2020-07-20
+
+- removed pub.dev issue in readme.md with email
+
 ## [1.7.0] - 2020-07-20
 
 - changed file picker from file_picker_cross to file_picker for better compatibility

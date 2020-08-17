@@ -11,6 +11,7 @@ class ScrollPicker extends StatefulWidget {
     @required this.items,
     @required this.initialValue,
     @required this.onChanged,
+    this.showDivider: true,
   })  : assert(items != null),
         super(key: key);
 
@@ -20,6 +21,7 @@ class ScrollPicker extends StatefulWidget {
   // Variables
   final List<String> items;
   final String initialValue;
+  final bool showDivider;
 
   @override
   _ScrollPickerState createState() => _ScrollPickerState(initialValue);
@@ -87,7 +89,7 @@ class _ScrollPickerState extends State<ScrollPicker> {
                 physics: FixedExtentScrollPhysics(),
               ),
             ),
-            Center(child: Divider()),
+            Center(child: widget.showDivider ? Divider() : Container()),
             Center(
               child: Container(
                 height: itemHeight,

@@ -21,6 +21,7 @@ class ScrollPickerDialog extends StatefulWidget
     this.buttonTextColor,
     this.maxLongSide,
     this.maxShortSide,
+    this.showDivider,
     this.confirmText,
     this.cancelText,
   });
@@ -46,6 +47,8 @@ class ScrollPickerDialog extends StatefulWidget
   final String confirmText;
   @override
   final String cancelText;
+
+  final bool showDivider;
 
   @override
   State<ScrollPickerDialog> createState() =>
@@ -75,6 +78,7 @@ class _ScrollPickerDialogState extends State<ScrollPickerDialog> {
       child: ScrollPicker(
         items: widget.items,
         initialValue: selectedItem,
+        showDivider: widget.showDivider,
         onChanged: (value) => setState(() => selectedItem = value),
       ),
       okPressed: () => Navigator.of(context).pop(selectedItem),

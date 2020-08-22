@@ -36,7 +36,7 @@ void showMaterialResponsiveDialog({
         confirmText: confirmText,
         cancelText: cancelText,
         maxLongSide: maxLongSide,
-        maxShortSide: maxLongSide,
+        maxShortSide: maxShortSide,
         hideButtons: hideButtons,
         child: child,
         okPressed: () {

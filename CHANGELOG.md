@@ -1,5 +1,9 @@
 # Releases
 
+## [1.7.2] - 2020-08-20
+
+- updated 'showMaterialResponsiveDialog' to property capture 'maxShortSide' parameter.
+
 ## [1.7.1] - 2020-07-21
 
 - removed pub.dev issue in readme.md with email

@@ -2,6 +2,7 @@
 
 ## [1.7.3] - 2020-08-26
 
+- updated 'showMaterialResponsiveDialog' to property capture 'maxShortSide' parameter.
 - fixed null error in numberpicker
 
 ## [1.7.2] - 2020-07-27

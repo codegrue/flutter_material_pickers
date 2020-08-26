@@ -210,6 +210,7 @@ class _TestPageState extends State<TestPage> {
             onPressed: () => showMaterialScrollPicker(
               context: context,
               title: "Pick Your City",
+              showDivider: false,
               items: model.usStates,
               selectedItem: model.selectedUsState,
               onChanged: (value) =>

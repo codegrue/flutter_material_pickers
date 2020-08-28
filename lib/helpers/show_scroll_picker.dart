@@ -18,7 +18,7 @@ void showMaterialScrollPicker({
   String cancelText,
   double maxLongSide,
   double maxShortSide,
-  bool showDivider,
+  bool showDivider: true,
   ValueChanged<String> onChanged,
   VoidCallback onConfirmed,
   VoidCallback onCancelled,

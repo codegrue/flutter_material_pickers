@@ -1,5 +1,9 @@
 # Releases
 
+## [1.7.4] - 2020-08-27
+
+- fixed null error in scrollpicker
+
 ## [1.7.3] - 2020-08-26
 
 - updated 'showMaterialResponsiveDialog' to property capture 'maxShortSide' parameter.

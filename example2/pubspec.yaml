@@ -1,9 +1,6 @@
 name: flutter_material_pickers_example
 description: A Flutter project that demonstrated the use of the flutter_material_pickers package.
-version: 1.0.0+1
-
-environment:
-  sdk: ">=2.7.0 <3.0.0"
+version: 1.0.0
 
 dependencies:
   flutter:
@@ -17,7 +14,3 @@ dependencies:
 
 flutter:
   uses-material-design: true
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter

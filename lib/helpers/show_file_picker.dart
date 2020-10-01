@@ -2,12 +2,10 @@
 // is governed by the MIT license that can be found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 /// Allows selection of a file.
 Future<void> showMaterialFilePicker({
@@ -16,13 +14,11 @@ Future<void> showMaterialFilePicker({
   String fileExtension,
   ValueChanged<Uint8List> onChanged,
 }) async {
-  try {
-    File file = await FilePicker.getFile(type: fileType);
-    var data = file.readAsBytesSync();
-    if (onChanged != null && file != null) onChanged(data);
-  } catch (error) {
-    if (error.runtimeType is PlatformException) return; // user clicked twice
-    if (error.runtimeType is NoSuchMethodError) return; // user canceled dialog
-    throw error;
+  FilePickerResult result = await FilePicker.platform
+      .pickFiles(type: fileType, withData: true, allowMultiple: false);
+  if (result != null && result.files.length == 1) {
+    PlatformFile file = result.files.single;
+    var data = file.bytes;
+    if (onChanged != null && data != null) onChanged(data);
   }
 }

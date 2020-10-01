@@ -34,9 +34,9 @@ PODS:
     - DKImagePickerController/PhotoGallery
     - Flutter
   - Flutter (1.0.0)
-  - SDWebImage (5.8.4):
-    - SDWebImage/Core (= 5.8.4)
-  - SDWebImage/Core (5.8.4)
+  - SDWebImage (5.9.2):
+    - SDWebImage/Core (= 5.9.2)
+  - SDWebImage/Core (5.9.2)
   - shared_preferences (0.0.1):
     - Flutter
   - SwiftyGif (5.3.0)
@@ -66,10 +66,10 @@ SPEC CHECKSUMS:
   DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
   file_picker: 3e6c3790de664ccf9b882732d9db5eaf6b8d4eb1
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
-  shared_preferences: 430726339841afefe5142b9c1f50cb6bd7793e01
+  SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
+  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   SwiftyGif: e466e86c660d343357ab944a819a101c4127cb40
 
-PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+PODFILE CHECKSUM: a75497545d4391e2d394c3668e20cfb1c2bbd4aa
 
 COCOAPODS: 1.9.3

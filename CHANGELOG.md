@@ -1,5 +1,9 @@
 # Releases
 
+## [1.8.0] - 2020-10-01
+
+- Upgraded to 2.0 version of `file_picker`
+
 ## [1.7.4] - 2020-08-27
 
 - fixed null error in scrollpicker

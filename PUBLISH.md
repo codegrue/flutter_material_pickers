@@ -2,6 +2,7 @@
 
 Steps to publish to pub.dartlang.org:
 
+- Remove MacOS Finder extended properties: `sudo xattr -cr`
 - Verify no documentation issues: `dartdoc --no-auto-include-dependencies`
 - Verify packages are all up to date: `flutter pub outdated`
 - Verify no code issues: `flutter analyze`

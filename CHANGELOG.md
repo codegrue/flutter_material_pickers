@@ -3,6 +3,7 @@
 ## [1.8.0] - 2020-10-01
 
 - Upgraded to 2.0 version of `file_picker`
+- confirmed compatibility with Web and added web to the example
 
 ## [1.7.4] - 2020-08-27
 

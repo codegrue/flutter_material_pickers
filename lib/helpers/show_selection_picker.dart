@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/selection_picker_dialog.dart';
+import 'package:flutter_material_pickers/interfaces/common_dialog_properties.dart';
 
 /// Allows selection of a single value via an icon label list
 void showMaterialSelectionPicker({
@@ -22,6 +23,7 @@ void showMaterialSelectionPicker({
   ValueChanged<String> onChanged,
   VoidCallback onConfirmed,
   VoidCallback onCancelled,
+  CustomDialogBuilder customDialogBuilder
 }) {
   assert(items != null);
   assert(icons == null || items.length == icons.length);
@@ -42,6 +44,7 @@ void showMaterialSelectionPicker({
         cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
+        customDialogBuilder: customDialogBuilder,
       );
     },
   ).then((selection) {

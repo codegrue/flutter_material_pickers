@@ -12,6 +12,9 @@ class ScrollPicker extends StatefulWidget {
     @required this.initialValue,
     @required this.onChanged,
     this.showDivider: true,
+    this.borderSide = const BorderSide(color: Color.fromRGBO(0, 50, 99, 1), width: 1.0),
+    this.customSelectedItem = const TextStyle(color: Color.fromRGBO(0, 50, 99, 1), fontSize: 16),
+    this.customHideItem = const TextStyle(color: Color.fromRGBO(199, 199, 199, 1), fontSize: 12)
   })  : assert(items != null),
         super(key: key);
 
@@ -22,6 +25,9 @@ class ScrollPicker extends StatefulWidget {
   final List<String> items;
   final String initialValue;
   final bool showDivider;
+  final BorderSide borderSide;
+  final TextStyle customSelectedItem;
+  final TextStyle customHideItem;
 
   @override
   _ScrollPickerState createState() => _ScrollPickerState(initialValue);
@@ -54,10 +60,6 @@ class _ScrollPickerState extends State<ScrollPicker> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = Theme.of(context);
-    TextStyle defaultStyle = themeData.textTheme.bodyText2;
-    TextStyle selectedStyle =
-        themeData.textTheme.headline5.copyWith(color: themeData.accentColor);
 
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
@@ -77,7 +79,7 @@ class _ScrollPickerState extends State<ScrollPicker> {
                   var value = widget.items[index];
 
                   final TextStyle itemStyle =
-                      (value == selectedValue) ? selectedStyle : defaultStyle;
+                      (value == selectedValue) ? widget.customSelectedItem : widget.customHideItem;
 
                   return Center(
                     child: Text(value, style: itemStyle),
@@ -95,9 +97,9 @@ class _ScrollPickerState extends State<ScrollPicker> {
                 height: itemHeight,
                 decoration: BoxDecoration(
                   border: Border(
-                    top: BorderSide(color: themeData.accentColor, width: 1.0),
+                    top: widget.borderSide,
                     bottom:
-                        BorderSide(color: themeData.accentColor, width: 1.0),
+                        widget.borderSide,
                   ),
                 ),
               ),

@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/radio_picker_dialog.dart';
+import 'package:flutter_material_pickers/interfaces/common_dialog_properties.dart';
 
 /// Allows selection of a single from a radio list
 void showMaterialRadioPicker({
@@ -21,6 +22,7 @@ void showMaterialRadioPicker({
   ValueChanged<String> onChanged,
   VoidCallback onConfirmed,
   VoidCallback onCancelled,
+  CustomDialogBuilder customDialogBuilder
 }) {
   showDialog<String>(
     context: context,
@@ -37,6 +39,7 @@ void showMaterialRadioPicker({
         cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
+        customDialogBuilder: customDialogBuilder,
       );
     },
   ).then((selection) {

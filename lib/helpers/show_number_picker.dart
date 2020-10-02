@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/scroll_picker_dialog.dart';
+import 'package:flutter_material_pickers/interfaces/common_dialog_properties.dart';
 
 /// Allows selection of a number via a slot machine carousel
 void showMaterialNumberPicker({
@@ -22,6 +23,7 @@ void showMaterialNumberPicker({
   ValueChanged<int> onChanged,
   VoidCallback onConfirmed,
   VoidCallback onCancelled,
+  CustomDialogBuilder customDialogBuilder
 }) {
   var items = List<String>.generate(
       maxNumber - minNumber + 1, (i) => (i + minNumber).toString());
@@ -41,6 +43,7 @@ void showMaterialNumberPicker({
         cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
+        customDialogBuilder: customDialogBuilder,
       );
     },
   ).then((selection) {

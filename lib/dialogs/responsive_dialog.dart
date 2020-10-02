@@ -28,6 +28,8 @@ class ResponsiveDialog extends StatefulWidget
     this.cancelPressed,
     this.confirmText,
     this.cancelText,
+    this.customDialogBuilder,
+    this.selectedItem
   })  : title = title ?? "Title Here",
         child = child ?? Text("Content Here"),
         maxLongSide = maxLongSide ?? 600,
@@ -56,6 +58,9 @@ class ResponsiveDialog extends StatefulWidget
   final String confirmText;
   @override
   final String cancelText;
+  @override 
+  final CustomDialogBuilder customDialogBuilder;
+  final String selectedItem;
 
   // Events
   final VoidCallback cancelPressed;
@@ -145,6 +150,23 @@ class _ResponsiveDialogState extends State<ResponsiveDialog> {
     final Size dialogSize = (orientation == Orientation.portrait)
         ? Size(widget.maxShortSide, widget.maxLongSide)
         : Size(widget.maxLongSide, widget.maxShortSide);
+
+    if (widget.customDialogBuilder != null) {
+      return widget.customDialogBuilder(
+        context: context,
+        child: widget.child,
+        title: widget.title,
+        headerColor: _headerColor,
+        headerTextColor: _headerTextColor,
+        backgroundColor: _backgroundColor,
+        buttonTextColor: _buttonTextColor,
+        maxLongSide: widget.maxLongSide,
+        maxShortSide: widget.maxShortSide,
+        confirmText: widget.confirmText,
+        cancelText: widget.cancelText,
+        okPressed: () => Navigator.of(context).pop(widget.selectedItem)
+      );
+    }
 
     return Dialog(
       backgroundColor: _backgroundColor,

@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/checkbox_picker_dialog.dart';
+import 'package:flutter_material_pickers/interfaces/common_dialog_properties.dart';
 
 /// Allows selection of many values from a checkbox list.
 void showMaterialCheckboxPicker({
@@ -21,6 +22,7 @@ void showMaterialCheckboxPicker({
   ValueChanged<List<String>> onChanged,
   VoidCallback onConfirmed,
   VoidCallback onCancelled,
+  CustomDialogBuilder customDialogBuilder
 }) {
   showDialog<List<String>>(
     context: context,
@@ -37,6 +39,7 @@ void showMaterialCheckboxPicker({
         cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
+        customDialogBuilder: customDialogBuilder,
       );
     },
   ).then((selection) {

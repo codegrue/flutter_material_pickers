@@ -23,6 +23,7 @@ class RadioPickerDialog extends StatefulWidget
     this.maxShortSide,
     this.confirmText,
     this.cancelText,
+    this.customDialogBuilder
   });
 
   // Variables
@@ -46,6 +47,8 @@ class RadioPickerDialog extends StatefulWidget
   final String confirmText;
   @override
   final String cancelText;
+  @override 
+  final CustomDialogBuilder customDialogBuilder;
 
   @override
   State<RadioPickerDialog> createState() =>
@@ -78,6 +81,7 @@ class _RadioPickerDialogState extends State<RadioPickerDialog> {
         onChanged: (value) => setState(() => selectedItem = value),
       ),
       okPressed: () => Navigator.of(context).pop(selectedItem),
+      customDialogBuilder: widget.customDialogBuilder,
     );
   }
 }

@@ -24,6 +24,7 @@ class SelectionPickerDialog extends StatefulWidget
     this.maxShortSide,
     this.confirmText,
     this.cancelText,
+    this.customDialogBuilder
   });
 
   // Variables
@@ -48,6 +49,8 @@ class SelectionPickerDialog extends StatefulWidget
   final String confirmText;
   @override
   final String cancelText;
+  @override 
+  final CustomDialogBuilder customDialogBuilder;
 
   @override
   State<SelectionPickerDialog> createState() =>
@@ -81,6 +84,7 @@ class _SelectionPickerDialogState extends State<SelectionPickerDialog> {
         onChanged: (value) => setState(() => selectedItem = value),
       ),
       okPressed: () => Navigator.of(context).pop(selectedItem),
+      customDialogBuilder: widget.customDialogBuilder,
     );
   }
 }

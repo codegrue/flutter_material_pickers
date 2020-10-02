@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/scroll_picker_dialog.dart';
+import 'package:flutter_material_pickers/interfaces/common_dialog_properties.dart';
 
 /// Allows selection of a string via a slot machine carousel
 void showMaterialScrollPicker({
@@ -22,6 +23,7 @@ void showMaterialScrollPicker({
   ValueChanged<String> onChanged,
   VoidCallback onConfirmed,
   VoidCallback onCancelled,
+  CustomDialogBuilder customDialogBuilder
 }) {
   showDialog<String>(
     context: context,
@@ -39,6 +41,7 @@ void showMaterialScrollPicker({
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
         showDivider: showDivider,
+        customDialogBuilder: customDialogBuilder,
       );
     },
   ).then((selection) {

@@ -1,5 +1,22 @@
 import 'package:flutter/material.dart';
 
+typedef CustomDialogBuilder = Widget Function(
+  {
+    BuildContext context, 
+    Widget child,
+    String title,
+    Color headerColor,
+    Color headerTextColor,
+    Color backgroundColor,
+    Color buttonTextColor,
+    double maxLongSide,
+    double maxShortSide,
+    String confirmText,
+    String cancelText,
+    VoidCallback okPressed
+  }
+);
+
 abstract class ICommonDialogProperties {
   final String title = null;
   final Color headerColor = null;
@@ -10,4 +27,5 @@ abstract class ICommonDialogProperties {
   final double maxShortSide = null;
   final String confirmText = null;
   final String cancelText = null;
+  final CustomDialogBuilder customDialogBuilder = null;
 }

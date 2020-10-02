@@ -23,6 +23,7 @@ class CheckboxPickerDialog extends StatefulWidget
     this.maxShortSide,
     this.confirmText,
     this.cancelText,
+    this.customDialogBuilder
   });
 
   // Variables
@@ -46,6 +47,8 @@ class CheckboxPickerDialog extends StatefulWidget
   final String confirmText;
   @override
   final String cancelText;
+  @override 
+  final CustomDialogBuilder customDialogBuilder;
 
   @override
   State<CheckboxPickerDialog> createState() =>
@@ -80,6 +83,7 @@ class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
         initialItems: selectedItems,
       ),
       okPressed: () => Navigator.of(context).pop(selectedItems),
+      customDialogBuilder: widget.customDialogBuilder,
     );
   }
 }

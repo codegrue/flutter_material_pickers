@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_material_pickers/dialogs/responsive_dialog.dart';
+import 'package:flutter_material_pickers/interfaces/common_dialog_properties.dart';
 
 /// Allows RGB selection of a color.
 void showMaterialColorPicker({
@@ -21,6 +22,7 @@ void showMaterialColorPicker({
   ValueChanged<Color> onChanged,
   VoidCallback onConfirmed,
   VoidCallback onCancelled,
+  CustomDialogBuilder customDialogBuilder
 }) {
   showDialog<Color>(
     context: context,
@@ -39,6 +41,7 @@ void showMaterialColorPicker({
             maxLongSide: maxLongSide,
             maxShortSide: maxLongSide,
             forcePortrait: true,
+            customDialogBuilder: customDialogBuilder,
             child: SingleChildScrollView(
               child: ColorPicker(
                 pickerColor: selectedColor,

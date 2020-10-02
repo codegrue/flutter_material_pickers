@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_material_pickers/dialogs/responsive_dialog.dart';
+import 'package:flutter_material_pickers/interfaces/common_dialog_properties.dart';
 
 /// Allows Material palette selection of a color
 void showMaterialPalettePicker({
@@ -21,6 +22,7 @@ void showMaterialPalettePicker({
   ValueChanged<Color> onChanged,
   VoidCallback onConfirmed,
   VoidCallback onCancelled,
+  CustomDialogBuilder customDialogBuilder
 }) {
   showDialog<Color>(
     context: context,
@@ -38,6 +40,7 @@ void showMaterialPalettePicker({
             cancelText: cancelText,
             maxLongSide: maxLongSide,
             maxShortSide: maxLongSide,
+            customDialogBuilder: customDialogBuilder,
             child: MaterialPicker(
               pickerColor: selectedColor,
               onColorChanged: (color) => selectedColor = color,

@@ -2,6 +2,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:file_picker/file_picker.dart';
 
 class ExampleModel {
   // Scroll/Radio Picker Model
@@ -116,5 +117,5 @@ class ExampleModel {
   Color swatch = Colors.blue;
 
   // File Picker Model
-  Uint8List file = Uint8List(1024 * 1024 * 15);
+  PlatformFile file = PlatformFile(bytes: Uint8List(1024 * 1024 * 15));
 }

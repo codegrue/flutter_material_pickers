@@ -482,7 +482,7 @@ class _TestPageState extends State<TestPage> {
         ),
         Expanded(
           child: Text(
-            "${model.file.lengthInBytes} bytes",
+            "${model.file.bytes.lengthInBytes} bytes",
             textAlign: TextAlign.right,
           ),
         ),

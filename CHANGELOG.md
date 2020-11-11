@@ -1,5 +1,10 @@
 # Releases
 
+## [1.8.1] - 2020-11-10
+
+- updated file_picker to version 2.0.12
+- Fix allowedExtensions on file picker [CoolONEOfficial]
+
 ## [1.8.0] - 2020-10-01
 
 - Upgraded to 2.0 version of `file_picker`

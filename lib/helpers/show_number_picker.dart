@@ -8,9 +8,12 @@ import 'package:flutter_material_pickers/dialogs/scroll_picker_dialog.dart';
 void showMaterialNumberPicker({
   BuildContext context,
   String title,
+  @required
   final int minNumber,
+  @required
   final int maxNumber,
   final int selectedNumber,
+  final int step = 1,
   Color headerColor,
   Color headerTextColor,
   Color backgroundColor,
@@ -23,8 +26,11 @@ void showMaterialNumberPicker({
   VoidCallback onConfirmed,
   VoidCallback onCancelled,
 }) {
-  var items = List<String>.generate(
-      maxNumber - minNumber + 1, (i) => (i + minNumber).toString());
+  List<String> items = [];
+
+  for(int i = minNumber; i <= maxNumber; i += step){
+    items.add(i.toString());
+  }
 
   showDialog<String>(
     context: context,

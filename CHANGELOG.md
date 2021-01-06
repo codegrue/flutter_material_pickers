@@ -1,5 +1,10 @@
 # Releases
 
+## [1.9.0] - 2021-01-05
+
+- inmplemented step feature on MaterialNumberPicker (thanks Enough7)
+- upgraded to latest dependencies
+
 ## [1.8.1] - 2020-11-10
 
 - updated file_picker to version 2.0.12

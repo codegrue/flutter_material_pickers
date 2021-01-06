@@ -367,4 +367,4 @@ Please see the [Changelog](https://raw.githubusercontent.com/codegrue/flutter_ma
 
 If you find a bug or want a feature, but don't know how to fix/implement it, please fill an [issue](https://raw.githubusercontent.com/codegrue/flutter_material_pickers/issues).
 
-If you fixed a bug or implemented a new feature, please send a [pull request](https://raw.githubusercontent.com/codegrue/flutter_material_pickers/pulls).
+If you fixed a bug or implemented a new feature, please send a [pull request](https://raw.githubusercontent.com/codegrue/flutter_material_pickers/pulls). **Please include a note about your change in CHANGELOG.md with your pull request.**

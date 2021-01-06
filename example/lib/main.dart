@@ -239,9 +239,10 @@ class _TestPageState extends State<TestPage> {
             child: Text("Number Picker"),
             onPressed: () => showMaterialNumberPicker(
               context: context,
-              title: "Pick Your Age",
+              title: "Pick a Number",
               maxNumber: 100,
-              minNumber: 14,
+              minNumber: 15,
+              step: 5,
               confirmText: "Count me in",
               cancelText: "Negatory",
               selectedNumber: model.age,

@@ -35,7 +35,7 @@ class CheckboxPickerState extends State<CheckboxPicker> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
 
-    if (selectedValues == null) selectedValues = List<String>();
+    if (selectedValues == null) selectedValues = List<String>.empty();
 
     int itemCount = widget.items.length;
 

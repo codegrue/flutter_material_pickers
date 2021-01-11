@@ -1,8 +1,12 @@
 # Releases
 
+## [1.9.1] - 2021-01-11
+
+- updated formatting to pass static analysis tests
+
 ## [1.9.0] - 2021-01-05
 
-- inmplemented step feature on MaterialNumberPicker (thanks Enough7)
+- implemented step feature on MaterialNumberPicker (thanks Enough7)
 - upgraded to latest dependencies
 
 ## [1.8.1] - 2020-11-10

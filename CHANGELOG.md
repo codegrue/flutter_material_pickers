@@ -1,5 +1,9 @@
 # Releases
 
+## [1.9.2] - 2021-02-08
+
+- added support for `intl` nullsafety.2
+
 ## [1.9.1] - 2021-01-11
 
 - updated formatting to pass static analysis tests

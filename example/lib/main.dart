@@ -41,15 +41,15 @@ ThemeData _buildTheme(Brightness brightness) {
       dialogBackgroundColor:
           Colors.green[100], // background color of the entire dialog
       primaryTextTheme: theme.primaryTextTheme.copyWith(
-        headline6: theme.primaryTextTheme.headline6.copyWith(
+        headline6: theme.primaryTextTheme.headline6?.copyWith(
           color: Colors.lightGreen[50], // text color of the header area
         ),
       ),
       textTheme: theme.textTheme.copyWith(
-        bodyText2: theme.textTheme.bodyText2.copyWith(
+        bodyText2: theme.textTheme.bodyText2?.copyWith(
           color: Colors.green[700], // text color of dialog text
         ),
-        button: theme.textTheme.button.copyWith(
+        button: theme.textTheme.button?.copyWith(
           color: Colors.green[700], // text color of the action bar buttons
         ),
       ),
@@ -473,7 +473,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("File Picker"),
             onPressed: () => showMaterialFilePicker(
               context: context,
@@ -484,7 +484,7 @@ class _TestPageState extends State<TestPage> {
         ),
         Expanded(
           child: Text(
-            "${model.file.bytes.lengthInBytes} bytes",
+            "${model.file.bytes?.lengthInBytes} bytes",
             textAlign: TextAlign.right,
           ),
         ),

@@ -374,6 +374,8 @@ class _TestPageState extends State<TestPage> {
           child: ElevatedButton(
             child: Text("Date Picker"),
             onPressed: () => showMaterialDatePicker(
+              firstDate: DateTime(1990, 1, 1),
+              lastDate: DateTime(2050, 12, 31),
               context: context,
               selectedDate: model.date,
               onChanged: (value) => setState(() => model.date = value),

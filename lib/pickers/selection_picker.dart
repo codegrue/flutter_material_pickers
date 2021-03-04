@@ -7,13 +7,12 @@ import 'package:flutter/rendering.dart';
 /// This helper widget manages a scrollable checkbox list inside a picker widget.
 class SelectionPicker extends StatefulWidget {
   SelectionPicker({
-    Key key,
-    @required this.items,
-    @required this.initialItem,
-    @required this.onChanged,
+    Key? key,
+    required this.items,
+    required this.initialItem,
+    required this.onChanged,
     this.icons,
-  })  : assert(items != null),
-        super(key: key);
+  })  : super(key: key);
 
   // Constants
   static const double defaultItemHeight = 40.0;
@@ -24,7 +23,7 @@ class SelectionPicker extends StatefulWidget {
   // Variables
   final List<String> items;
   final String initialItem;
-  final List<Icon> icons;
+  final List<Icon>? icons;
 
   @override
   SelectionPickerState createState() {
@@ -48,10 +47,10 @@ class SelectionPickerState extends State<SelectionPicker> {
           itemCount: itemCount,
           itemBuilder: (BuildContext context, int index) {
             bool isSelected = (widget.items[index] == selectedValue);
-            Color itemColor = (isSelected)
+            Color? itemColor = (isSelected)
                 ? theme.accentColor
-                : theme.textTheme.bodyText2.color;
-            Icon icon = (widget.icons == null) ? null : widget.icons[index];
+                : theme.textTheme.bodyText2?.color;
+            Icon? icon = (widget.icons == null) ? null : widget.icons?[index];
             if (icon != null && icon.color == null)
               icon = Icon(icon.icon, color: itemColor);
 

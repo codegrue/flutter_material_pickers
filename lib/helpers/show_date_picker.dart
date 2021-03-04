@@ -5,20 +5,17 @@ import 'package:flutter/material.dart';
 
 /// Allows selection of a date.
 void showMaterialDatePicker({
-  BuildContext context,
-  String title,
-  DateTime firstDate,
-  DateTime lastDate,
-  DateTime selectedDate,
-  String okButtonLabel,
-  String cancelButtonLabel,
-  ValueChanged<DateTime> onChanged,
-  VoidCallback onConfirmed,
-  VoidCallback onCancelled,
+  required BuildContext context,
+  String? title,
+  required DateTime firstDate,
+  required DateTime lastDate,
+  required DateTime selectedDate,
+  String? okButtonLabel,
+  String? cancelButtonLabel,
+  ValueChanged<DateTime>? onChanged,
+  VoidCallback? onConfirmed,
+  VoidCallback? onCancelled,
 }) {
-  if (firstDate == null) firstDate = DateTime(1990, 1, 1);
-  if (lastDate == null) lastDate = DateTime(2050, 12, 31);
-
   showDatePicker(
     context: context,
     firstDate: firstDate,

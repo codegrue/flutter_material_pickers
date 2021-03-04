@@ -7,18 +7,17 @@ import 'package:flutter/rendering.dart';
 /// This helper widget manages a scrollable checkbox list inside a picker widget.
 class RadioPicker extends StatefulWidget {
   RadioPicker({
-    Key key,
-    @required this.items,
-    @required this.initialItem,
-    @required this.onChanged,
-  })  : assert(items != null),
-        super(key: key);
+    Key? key,
+    required this.items,
+    required this.initialItem,
+    required this.onChanged,
+  }) : super(key: key);
 
   // Constants
   static const double defaultItemHeight = 40.0;
 
   // Events
-  final ValueChanged<String> onChanged;
+  final ValueChanged<String?> onChanged;
 
   // Variables
   final List<String> items;
@@ -33,7 +32,7 @@ class RadioPicker extends StatefulWidget {
 class RadioPickerState extends State<RadioPicker> {
   RadioPickerState(this.selectedValue);
 
-  String selectedValue;
+  String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +53,10 @@ class RadioPickerState extends State<RadioPicker> {
                 widget.items[index],
                 style: (isSelectedItem)
                     ? TextStyle(color: theme.accentColor)
-                    : TextStyle(color: theme.textTheme.bodyText2.color),
+                    : TextStyle(color: theme.textTheme.bodyText2?.color),
               ),
               value: widget.items[index],
-              onChanged: (String value) {
+              onChanged: (String? value) {
                 setState(() {
                   selectedValue = value;
                   widget.onChanged(selectedValue);

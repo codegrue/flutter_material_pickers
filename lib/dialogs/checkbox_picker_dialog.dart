@@ -13,8 +13,8 @@ class CheckboxPickerDialog extends StatefulWidget
     implements ICommonDialogProperties {
   CheckboxPickerDialog({
     this.title,
-    this.items,
-    this.initialItems,
+    required this.items,
+    required this.initialItems,
     this.headerColor,
     this.headerTextColor,
     this.backgroundColor,
@@ -29,23 +29,23 @@ class CheckboxPickerDialog extends StatefulWidget
   final List<String> items;
   final List<String> initialItems;
   @override
-  final String title;
+  final String? title;
   @override
-  final Color headerColor;
+  final Color? headerColor;
   @override
-  final Color headerTextColor;
+  final Color? headerTextColor;
   @override
-  final Color backgroundColor;
+  final Color? backgroundColor;
   @override
-  final Color buttonTextColor;
+  final Color? buttonTextColor;
   @override
-  final double maxLongSide;
+  final double? maxLongSide;
   @override
-  final double maxShortSide;
+  final double? maxShortSide;
   @override
-  final String confirmText;
+  final String? confirmText;
   @override
-  final String cancelText;
+  final String? cancelText;
 
   @override
   State<CheckboxPickerDialog> createState() =>
@@ -58,12 +58,10 @@ class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
     selectedItems = List<String>.from(initialItems);
   }
 
-  List<String> selectedItems;
+  late List<String> selectedItems;
 
   @override
   Widget build(BuildContext context) {
-    assert(context != null);
-
     return ResponsiveDialog(
       context: context,
       title: widget.title,

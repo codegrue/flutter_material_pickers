@@ -6,24 +6,23 @@ import 'package:flutter_material_pickers/dialogs/selection_picker_dialog.dart';
 
 /// Allows selection of a single value via an icon label list
 void showMaterialSelectionPicker({
-  BuildContext context,
-  String title,
-  List<String> items,
-  String selectedItem,
-  List<Icon> icons,
-  Color headerColor,
-  Color headerTextColor,
-  Color backgroundColor,
-  Color buttonTextColor,
-  String confirmText,
-  String cancelText,
-  double maxLongSide,
-  double maxShortSide,
-  ValueChanged<String> onChanged,
-  VoidCallback onConfirmed,
-  VoidCallback onCancelled,
+  required BuildContext context,
+  String? title,
+  required List<String> items,
+  required String selectedItem,
+  List<Icon>? icons,
+  Color? headerColor,
+  Color? headerTextColor,
+  Color? backgroundColor,
+  Color? buttonTextColor,
+  String? confirmText,
+  String? cancelText,
+  double? maxLongSide,
+  double? maxShortSide,
+  ValueChanged<String>? onChanged,
+  VoidCallback? onConfirmed,
+  VoidCallback? onCancelled,
 }) {
-  assert(items != null);
   assert(icons == null || items.length == icons.length);
 
   showDialog<String>(

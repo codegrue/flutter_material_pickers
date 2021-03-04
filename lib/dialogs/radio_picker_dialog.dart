@@ -13,8 +13,8 @@ class RadioPickerDialog extends StatefulWidget
     implements ICommonDialogProperties {
   RadioPickerDialog({
     this.title,
-    this.items,
-    this.initialItem,
+    required this.items,
+    required this.initialItem,
     this.headerColor,
     this.headerTextColor,
     this.backgroundColor,
@@ -29,23 +29,23 @@ class RadioPickerDialog extends StatefulWidget
   final List<String> items;
   final String initialItem;
   @override
-  final String title;
+  final String? title;
   @override
-  final Color headerColor;
+  final Color? headerColor;
   @override
-  final Color headerTextColor;
+  final Color? headerTextColor;
   @override
-  final Color backgroundColor;
+  final Color? backgroundColor;
   @override
-  final Color buttonTextColor;
+  final Color? buttonTextColor;
   @override
-  final double maxLongSide;
+  final double? maxLongSide;
   @override
-  final double maxShortSide;
+  final double? maxShortSide;
   @override
-  final String confirmText;
+  final String? confirmText;
   @override
-  final String cancelText;
+  final String? cancelText;
 
   @override
   State<RadioPickerDialog> createState() =>
@@ -55,12 +55,10 @@ class RadioPickerDialog extends StatefulWidget
 class _RadioPickerDialogState extends State<RadioPickerDialog> {
   _RadioPickerDialogState(this.selectedItem);
 
-  String selectedItem;
+  String? selectedItem;
 
   @override
   Widget build(BuildContext context) {
-    assert(context != null);
-
     return ResponsiveDialog(
       context: context,
       title: widget.title,
@@ -74,7 +72,7 @@ class _RadioPickerDialogState extends State<RadioPickerDialog> {
       cancelText: widget.cancelText,
       child: RadioPicker(
         items: widget.items,
-        initialItem: selectedItem,
+        initialItem: selectedItem!,
         onChanged: (value) => setState(() => selectedItem = value),
       ),
       okPressed: () => Navigator.of(context).pop(selectedItem),

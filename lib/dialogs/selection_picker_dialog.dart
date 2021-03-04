@@ -13,8 +13,8 @@ class SelectionPickerDialog extends StatefulWidget
     implements ICommonDialogProperties {
   SelectionPickerDialog({
     this.title,
-    @required this.items,
-    @required this.initialItem,
+    required this.items,
+    required this.initialItem,
     this.icons,
     this.headerColor,
     this.headerTextColor,
@@ -30,24 +30,24 @@ class SelectionPickerDialog extends StatefulWidget
   final List<String> items;
   final String initialItem;
   @override
-  final String title;
-  final List<Icon> icons;
+  final String? title;
+  final List<Icon>? icons;
   @override
-  final Color headerColor;
+  final Color? headerColor;
   @override
-  final Color headerTextColor;
+  final Color? headerTextColor;
   @override
-  final Color backgroundColor;
+  final Color? backgroundColor;
   @override
-  final Color buttonTextColor;
+  final Color? buttonTextColor;
   @override
-  final double maxLongSide;
+  final double? maxLongSide;
   @override
-  final double maxShortSide;
+  final double? maxShortSide;
   @override
-  final String confirmText;
+  final String? confirmText;
   @override
-  final String cancelText;
+  final String? cancelText;
 
   @override
   State<SelectionPickerDialog> createState() =>
@@ -61,8 +61,6 @@ class _SelectionPickerDialogState extends State<SelectionPickerDialog> {
 
   @override
   Widget build(BuildContext context) {
-    assert(context != null);
-
     return ResponsiveDialog(
       context: context,
       title: widget.title,

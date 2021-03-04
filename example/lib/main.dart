@@ -1,7 +1,5 @@
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:dynamic_theme/dynamic_theme.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:intl/intl.dart';
 
@@ -12,10 +10,11 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DynamicTheme(
-      defaultBrightness: Brightness.light,
-      data: _buildTheme,
-      themedWidgetBuilder: (context, theme) {
+    return AdaptiveTheme(
+      initial: AdaptiveThemeMode.light,
+      light: _buildTheme(Brightness.light),
+      dark: _buildTheme(Brightness.dark),
+      builder: (context, theme) {
         return MaterialApp(
           title: 'Material Picker Examples',
           theme: theme,
@@ -80,10 +79,7 @@ class _TestPageState extends State<TestPage> {
               icon: Theme.of(context).brightness == Brightness.dark
                   ? Icon(Icons.brightness_7)
                   : Icon(Icons.brightness_4),
-              onPressed: () => DynamicTheme.of(context).setBrightness(
-                  Theme.of(context).brightness == Brightness.dark
-                      ? Brightness.light
-                      : Brightness.dark),
+              onPressed: () => AdaptiveTheme.of(context).toggleThemeMode(),
             )
           ],
           bottom: TabBar(

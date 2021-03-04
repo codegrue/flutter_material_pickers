@@ -152,7 +152,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Empty Dialog"),
             onPressed: () => showMaterialResponsiveDialog(
               context: context,
@@ -206,7 +206,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Scroll Picker"),
             onPressed: () => showMaterialScrollPicker(
               context: context,
@@ -236,7 +236,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Number Picker"),
             onPressed: () => showMaterialNumberPicker(
               context: context,
@@ -266,7 +266,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Checkbox Picker"),
             onPressed: () => showMaterialCheckboxPicker(
               context: context,
@@ -293,7 +293,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Radio Picker"),
             onPressed: () => showMaterialRadioPicker(
               context: context,
@@ -320,7 +320,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Selection Picker"),
             onPressed: () => showMaterialSelectionPicker(
               context: context,
@@ -347,7 +347,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Time Picker"),
             onPressed: () => showMaterialTimePicker(
               context: context,
@@ -371,7 +371,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Date Picker"),
             onPressed: () => showMaterialDatePicker(
               context: context,
@@ -395,7 +395,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Color Picker"),
             onPressed: () => showMaterialColorPicker(
               context: context,
@@ -421,7 +421,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Palette Picker"),
             onPressed: () => showMaterialPalettePicker(
               context: context,
@@ -447,7 +447,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Swatch Picker"),
             onPressed: () => showMaterialSwatchPicker(
               context: context,

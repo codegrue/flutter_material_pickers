@@ -29,12 +29,16 @@ ThemeData _buildTheme(Brightness brightness) {
   var theme = ThemeData(
     primarySwatch: Colors.indigo,
     brightness: brightness,
-  );
+  ); // app background color
 
   if (brightness == Brightness.light) {
     theme = theme.copyWith(
       primaryColor: Colors.green, // background color of the header area
-      backgroundColor: Colors.green[100], // app background color
+      backgroundColor: Colors.green[100],
+      colorScheme: theme.colorScheme.copyWith(
+        primary: Colors.green, // new way to do title color
+        surface: Colors.green[100], // new way to do background color
+      ),
       accentColor:
           Colors.green[900], // color of selected controls and button bar text
       dialogBackgroundColor:

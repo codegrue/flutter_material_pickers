@@ -108,16 +108,20 @@ class _ResponsiveDialogState extends State<ResponsiveDialog> {
         ),
         child: ButtonBar(
           children: <Widget>[
-            FlatButton(
-              textColor: _buttonTextColor,
-              child: Text(widget.cancelText ?? localizations.cancelButtonLabel),
+            TextButton(
+              child: Text(
+                widget.cancelText ?? localizations.cancelButtonLabel,
+                style: TextStyle(color: _buttonTextColor),
+              ),
               onPressed: () => (widget.cancelPressed == null)
                   ? Navigator.of(context).pop()
                   : widget.cancelPressed!(),
             ),
-            FlatButton(
-              textColor: _buttonTextColor,
-              child: Text(widget.confirmText ?? localizations.okButtonLabel),
+            TextButton(
+              child: Text(
+                widget.confirmText ?? localizations.okButtonLabel,
+                style: TextStyle(color: _buttonTextColor),
+              ),
               onPressed: () => (widget.okPressed == null)
                   ? Navigator.of(context).pop()
                   : widget.okPressed!(),

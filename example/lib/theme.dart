@@ -46,9 +46,6 @@ ThemeData buildTheme(Brightness brightness) {
     ),
     timePickerTheme: theme.timePickerTheme.copyWith(
       backgroundColor: backgroundColor,
-      helpTextStyle: theme.timePickerTheme.helpTextStyle?.copyWith(
-        color: textColor,
-      ),
     ),
   );
 

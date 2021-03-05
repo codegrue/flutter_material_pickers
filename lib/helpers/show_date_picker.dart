@@ -39,7 +39,6 @@ void showMaterialDatePicker({
             cancelText: cancelText,
             maxLongSide: maxLongSide,
             maxShortSide: maxLongSide,
-            forcePortrait: true,
             child: SingleChildScrollView(
               child: CalendarDatePicker(
                 initialDate: selectedDate,

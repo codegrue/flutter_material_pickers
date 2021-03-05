@@ -1,6 +1,5 @@
-import 'package:dynamic_theme/dynamic_theme.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:intl/intl.dart';
 
@@ -11,10 +10,11 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DynamicTheme(
-      defaultBrightness: Brightness.light,
-      data: _buildTheme,
-      themedWidgetBuilder: (context, theme) {
+    return AdaptiveTheme(
+      initial: AdaptiveThemeMode.light,
+      light: _buildTheme(Brightness.light),
+      dark: _buildTheme(Brightness.dark),
+      builder: (context, theme) {
         return MaterialApp(
           title: 'Material Picker Examples',
           theme: theme,
@@ -40,15 +40,15 @@ ThemeData _buildTheme(Brightness brightness) {
       dialogBackgroundColor:
           Colors.green[100], // background color of the entire dialog
       primaryTextTheme: theme.primaryTextTheme.copyWith(
-        headline6: theme.primaryTextTheme.headline6.copyWith(
+        headline6: theme.primaryTextTheme.headline6?.copyWith(
           color: Colors.lightGreen[50], // text color of the header area
         ),
       ),
       textTheme: theme.textTheme.copyWith(
-        bodyText2: theme.textTheme.bodyText2.copyWith(
+        bodyText2: theme.textTheme.bodyText2?.copyWith(
           color: Colors.green[700], // text color of dialog text
         ),
-        button: theme.textTheme.button.copyWith(
+        button: theme.textTheme.button?.copyWith(
           color: Colors.green[700], // text color of the action bar buttons
         ),
       ),
@@ -79,10 +79,7 @@ class _TestPageState extends State<TestPage> {
               icon: Theme.of(context).brightness == Brightness.dark
                   ? Icon(Icons.brightness_7)
                   : Icon(Icons.brightness_4),
-              onPressed: () => DynamicTheme.of(context).setBrightness(
-                  Theme.of(context).brightness == Brightness.dark
-                      ? Brightness.light
-                      : Brightness.dark),
+              onPressed: () => AdaptiveTheme.of(context).toggleThemeMode(),
             )
           ],
           bottom: TabBar(
@@ -151,7 +148,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Empty Dialog"),
             onPressed: () => showMaterialResponsiveDialog(
               context: context,
@@ -205,7 +202,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Scroll Picker"),
             onPressed: () => showMaterialScrollPicker(
               context: context,
@@ -235,7 +232,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Number Picker"),
             onPressed: () => showMaterialNumberPicker(
               context: context,
@@ -265,7 +262,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Checkbox Picker"),
             onPressed: () => showMaterialCheckboxPicker(
               context: context,
@@ -292,7 +289,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Radio Picker"),
             onPressed: () => showMaterialRadioPicker(
               context: context,
@@ -319,7 +316,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Selection Picker"),
             onPressed: () => showMaterialSelectionPicker(
               context: context,
@@ -346,7 +343,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Time Picker"),
             onPressed: () => showMaterialTimePicker(
               context: context,
@@ -370,9 +367,11 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Date Picker"),
             onPressed: () => showMaterialDatePicker(
+              firstDate: DateTime(1990, 1, 1),
+              lastDate: DateTime(2050, 12, 31),
               context: context,
               selectedDate: model.date,
               onChanged: (value) => setState(() => model.date = value),
@@ -394,7 +393,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Color Picker"),
             onPressed: () => showMaterialColorPicker(
               context: context,
@@ -420,7 +419,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Palette Picker"),
             onPressed: () => showMaterialPalettePicker(
               context: context,
@@ -446,7 +445,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Swatch Picker"),
             onPressed: () => showMaterialSwatchPicker(
               context: context,
@@ -472,7 +471,7 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         Container(
           width: 150.0,
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("File Picker"),
             onPressed: () => showMaterialFilePicker(
               context: context,
@@ -483,7 +482,7 @@ class _TestPageState extends State<TestPage> {
         ),
         Expanded(
           child: Text(
-            "${model.file.bytes.lengthInBytes} bytes",
+            "${model.file.bytes?.lengthInBytes} bytes",
             textAlign: TextAlign.right,
           ),
         ),

@@ -7,13 +7,12 @@ import 'package:flutter/rendering.dart';
 /// This helper widget manages the scrollable content inside a picker widget.
 class ScrollPicker extends StatefulWidget {
   ScrollPicker({
-    Key key,
-    @required this.items,
-    @required this.initialValue,
-    @required this.onChanged,
+    Key? key,
+    required this.items,
+    required this.initialValue,
+    required this.onChanged,
     this.showDivider: true,
-  })  : assert(items != null),
-        super(key: key);
+  }) : super(key: key);
 
   // Events
   final ValueChanged<String> onChanged;
@@ -34,15 +33,15 @@ class _ScrollPickerState extends State<ScrollPicker> {
   static const double itemHeight = 50.0;
 
   // Variables
-  double widgetHeight;
-  int numberOfVisibleItems;
-  int numberOfPaddingRows;
-  double visibleItemsHeight;
-  double offset;
+  late double widgetHeight;
+  late int numberOfVisibleItems;
+  late int numberOfPaddingRows;
+  late double visibleItemsHeight;
+  late double offset;
 
   String selectedValue;
 
-  ScrollController scrollController;
+  late ScrollController scrollController;
 
   @override
   void initState() {
@@ -55,9 +54,9 @@ class _ScrollPickerState extends State<ScrollPicker> {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
-    TextStyle defaultStyle = themeData.textTheme.bodyText2;
-    TextStyle selectedStyle =
-        themeData.textTheme.headline5.copyWith(color: themeData.accentColor);
+    TextStyle? defaultStyle = themeData.textTheme.bodyText2;
+    TextStyle? selectedStyle =
+        themeData.textTheme.headline5?.copyWith(color: themeData.accentColor);
 
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
@@ -76,7 +75,7 @@ class _ScrollPickerState extends State<ScrollPicker> {
 
                   var value = widget.items[index];
 
-                  final TextStyle itemStyle =
+                  final TextStyle? itemStyle =
                       (value == selectedValue) ? selectedStyle : defaultStyle;
 
                   return Center(

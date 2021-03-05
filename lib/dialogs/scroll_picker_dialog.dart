@@ -13,8 +13,8 @@ class ScrollPickerDialog extends StatefulWidget
     implements ICommonDialogProperties {
   ScrollPickerDialog({
     this.title,
-    this.items,
-    this.initialItem,
+    required this.items,
+    required this.initialItem,
     this.headerColor,
     this.headerTextColor,
     this.backgroundColor,
@@ -30,23 +30,23 @@ class ScrollPickerDialog extends StatefulWidget
   final List<String> items;
   final String initialItem;
   @override
-  final String title;
+  final String? title;
   @override
-  final Color headerColor;
+  final Color? headerColor;
   @override
-  final Color headerTextColor;
+  final Color? headerTextColor;
   @override
-  final Color backgroundColor;
+  final Color? backgroundColor;
   @override
-  final Color buttonTextColor;
+  final Color? buttonTextColor;
   @override
-  final double maxLongSide;
+  final double? maxLongSide;
   @override
-  final double maxShortSide;
+  final double? maxShortSide;
   @override
-  final String confirmText;
+  final String? confirmText;
   @override
-  final String cancelText;
+  final String? cancelText;
 
   final bool showDivider;
 
@@ -62,8 +62,6 @@ class _ScrollPickerDialogState extends State<ScrollPickerDialog> {
 
   @override
   Widget build(BuildContext context) {
-    assert(context != null);
-
     return ResponsiveDialog(
       context: context,
       title: widget.title,

@@ -7,11 +7,10 @@ import 'package:flutter/rendering.dart';
 /// This helper widget manages a scrollable checkbox list inside a picker widget.
 class CheckboxPicker extends StatefulWidget {
   CheckboxPicker({
-    Key key,
-    @required this.items,
-    @required this.initialItems,
-  })  : assert(items != null),
-        super(key: key);
+    Key? key,
+    required this.items,
+    required this.initialItems,
+  }) : super(key: key);
 
   // Constants
   static const double defaultItemHeight = 40.0;
@@ -35,8 +34,6 @@ class CheckboxPickerState extends State<CheckboxPicker> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
 
-    if (selectedValues == null) selectedValues = List<String>.empty();
-
     int itemCount = widget.items.length;
 
     return Container(
@@ -53,10 +50,10 @@ class CheckboxPickerState extends State<CheckboxPicker> {
                 widget.items[index],
                 style: (isSelected)
                     ? TextStyle(color: theme.accentColor)
-                    : TextStyle(color: theme.textTheme.bodyText2.color),
+                    : TextStyle(color: theme.textTheme.bodyText2?.color),
               ),
               value: isSelected,
-              onChanged: (bool value) {
+              onChanged: (bool? value) {
                 setState(() {
                   if (value == true) {
                     selectedValues.add(widget.items[index]);

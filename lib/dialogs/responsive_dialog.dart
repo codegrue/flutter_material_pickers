@@ -13,16 +13,16 @@ const Duration _dialogSizeAnimationDuration = Duration(milliseconds: 200);
 class ResponsiveDialog extends StatefulWidget
     implements ICommonDialogProperties {
   ResponsiveDialog({
-    this.context,
-    String title,
-    Widget child,
+    required this.context,
+    String? title,
+    Widget? child,
     this.headerColor,
     this.headerTextColor,
     this.backgroundColor,
     this.buttonTextColor,
     this.forcePortrait = false,
-    double maxLongSide,
-    double maxShortSide,
+    double? maxLongSide,
+    double? maxShortSide,
     this.hideButtons = false,
     this.okPressed,
     this.cancelPressed,
@@ -36,40 +36,40 @@ class ResponsiveDialog extends StatefulWidget
   // Variables
   final BuildContext context;
   @override
-  final String title;
+  final String? title;
   final Widget child;
   final bool forcePortrait;
   @override
-  final Color headerColor;
+  final Color? headerColor;
   @override
-  final Color headerTextColor;
+  final Color? headerTextColor;
   @override
-  final Color backgroundColor;
+  final Color? backgroundColor;
   @override
-  final Color buttonTextColor;
+  final Color? buttonTextColor;
   @override
-  final double maxLongSide;
+  final double? maxLongSide;
   @override
-  final double maxShortSide;
+  final double? maxShortSide;
   final bool hideButtons;
   @override
-  final String confirmText;
+  final String? confirmText;
   @override
-  final String cancelText;
+  final String? cancelText;
 
   // Events
-  final VoidCallback cancelPressed;
-  final VoidCallback okPressed;
+  final VoidCallback? cancelPressed;
+  final VoidCallback? okPressed;
 
   @override
   _ResponsiveDialogState createState() => _ResponsiveDialogState();
 }
 
 class _ResponsiveDialogState extends State<ResponsiveDialog> {
-  Color _headerColor;
-  Color _headerTextColor;
-  Color _backgroundColor;
-  Color _buttonTextColor;
+  late Color _headerColor;
+  late Color? _headerTextColor;
+  late Color _backgroundColor;
+  late Color? _buttonTextColor;
 
   Widget header(BuildContext context, Orientation orientation) {
     return Container(
@@ -82,7 +82,7 @@ class _ResponsiveDialogState extends State<ResponsiveDialog> {
           : null,
       child: Center(
         child: Text(
-          widget.title,
+          widget.title!,
           style: TextStyle(
             fontSize: 20.0,
             color: _headerTextColor,
@@ -113,14 +113,14 @@ class _ResponsiveDialogState extends State<ResponsiveDialog> {
               child: Text(widget.cancelText ?? localizations.cancelButtonLabel),
               onPressed: () => (widget.cancelPressed == null)
                   ? Navigator.of(context).pop()
-                  : widget.cancelPressed(),
+                  : widget.cancelPressed!(),
             ),
             FlatButton(
               textColor: _buttonTextColor,
               child: Text(widget.confirmText ?? localizations.okButtonLabel),
               onPressed: () => (widget.okPressed == null)
                   ? Navigator.of(context).pop()
-                  : widget.okPressed(),
+                  : widget.okPressed!(),
             ),
           ],
         ),
@@ -130,21 +130,19 @@ class _ResponsiveDialogState extends State<ResponsiveDialog> {
 
   @override
   Widget build(BuildContext context) {
-    assert(context != null);
-
     var theme = Theme.of(context);
     _headerColor = widget.headerColor ?? theme.primaryColor;
     _headerTextColor =
-        widget.headerTextColor ?? theme.primaryTextTheme.headline6.color;
-    _buttonTextColor = widget.buttonTextColor ?? theme.textTheme.button.color;
+        widget.headerTextColor ?? theme.primaryTextTheme.headline6?.color;
+    _buttonTextColor = widget.buttonTextColor ?? theme.textTheme.button?.color;
     _backgroundColor = widget.backgroundColor ?? theme.dialogBackgroundColor;
 
     final Orientation orientation = MediaQuery.of(context).orientation;
 
     // constrain the dialog from expanding to full screen
     final Size dialogSize = (orientation == Orientation.portrait)
-        ? Size(widget.maxShortSide, widget.maxLongSide)
-        : Size(widget.maxLongSide, widget.maxShortSide);
+        ? Size(widget.maxShortSide!, widget.maxLongSide!)
+        : Size(widget.maxLongSide!, widget.maxShortSide!);
 
     return Dialog(
       backgroundColor: _backgroundColor,
@@ -154,9 +152,6 @@ class _ResponsiveDialogState extends State<ResponsiveDialog> {
         duration: _dialogSizeAnimationDuration,
         child: OrientationBuilder(
           builder: (BuildContext context, Orientation orientation) {
-            assert(orientation != null);
-            assert(context != null);
-
             if (widget.forcePortrait) orientation = Orientation.portrait;
 
             switch (orientation) {
@@ -189,7 +184,6 @@ class _ResponsiveDialogState extends State<ResponsiveDialog> {
                   ],
                 );
             }
-            return null;
           },
         ),
       ),

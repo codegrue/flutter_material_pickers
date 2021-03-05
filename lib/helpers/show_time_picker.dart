@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 
 /// Allows selection of a time
 void showMaterialTimePicker({
-  BuildContext context,
-  String title,
-  TimeOfDay selectedTime,
-  ValueChanged<TimeOfDay> onChanged,
-  VoidCallback onConfirmed,
-  VoidCallback onCancelled,
+  required BuildContext context,
+  String? title,
+  required TimeOfDay selectedTime,
+  ValueChanged<TimeOfDay>? onChanged,
+  VoidCallback? onConfirmed,
+  VoidCallback? onCancelled,
 }) {
   showTimePicker(
     context: context,

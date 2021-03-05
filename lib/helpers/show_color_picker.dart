@@ -7,20 +7,20 @@ import 'package:flutter_material_pickers/dialogs/responsive_dialog.dart';
 
 /// Allows RGB selection of a color.
 void showMaterialColorPicker({
-  BuildContext context,
+  required BuildContext context,
   String title = "Pick a color",
-  Color selectedColor,
-  Color headerColor,
-  Color headerTextColor,
-  Color backgroundColor,
-  Color buttonTextColor,
-  String confirmText,
-  String cancelText,
-  double maxLongSide,
-  double maxShortSide,
-  ValueChanged<Color> onChanged,
-  VoidCallback onConfirmed,
-  VoidCallback onCancelled,
+  required Color selectedColor,
+  Color? headerColor,
+  Color? headerTextColor,
+  Color? backgroundColor,
+  Color? buttonTextColor,
+  String? confirmText,
+  String? cancelText,
+  double? maxLongSide,
+  double? maxShortSide,
+  ValueChanged<Color>? onChanged,
+  VoidCallback? onConfirmed,
+  VoidCallback? onCancelled,
 }) {
   showDialog<Color>(
     context: context,

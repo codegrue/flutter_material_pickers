@@ -4,6 +4,7 @@ import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:intl/intl.dart';
 
 import 'model.dart';
+import 'theme.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,8 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return AdaptiveTheme(
       initial: AdaptiveThemeMode.light,
-      light: _buildTheme(Brightness.light),
-      dark: _buildTheme(Brightness.dark),
+      light: buildTheme(Brightness.light),
+      dark: buildTheme(Brightness.dark),
       builder: (context, theme) {
         return MaterialApp(
           title: 'Material Picker Examples',
@@ -23,43 +24,6 @@ class MyApp extends StatelessWidget {
       },
     );
   }
-}
-
-ThemeData _buildTheme(Brightness brightness) {
-  var theme = ThemeData(
-    primarySwatch: Colors.indigo,
-    brightness: brightness,
-  ); // app background color
-
-  if (brightness == Brightness.light) {
-    theme = theme.copyWith(
-      primaryColor: Colors.green, // background color of the header area
-      backgroundColor: Colors.green[100],
-      colorScheme: theme.colorScheme.copyWith(
-        primary: Colors.green, // new way to do title color
-        surface: Colors.green[100], // new way to do background color
-      ),
-      accentColor:
-          Colors.green[900], // color of selected controls and button bar text
-      dialogBackgroundColor:
-          Colors.green[100], // background color of the entire dialog
-      primaryTextTheme: theme.primaryTextTheme.copyWith(
-        headline6: theme.primaryTextTheme.headline6?.copyWith(
-          color: Colors.lightGreen[50], // text color of the header area
-        ),
-      ),
-      textTheme: theme.textTheme.copyWith(
-        bodyText2: theme.textTheme.bodyText2?.copyWith(
-          color: Colors.green[700], // text color of dialog text
-        ),
-        button: theme.textTheme.button?.copyWith(
-          color: Colors.green[700], // text color of the action bar buttons
-        ),
-      ),
-    );
-  }
-
-  return theme;
 }
 
 class TestPage extends StatefulWidget {

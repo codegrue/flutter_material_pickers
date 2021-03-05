@@ -8,6 +8,8 @@ void showMaterialTimePicker({
   required BuildContext context,
   String? title,
   required TimeOfDay selectedTime,
+  String? confirmText,
+  String? cancelText,
   ValueChanged<TimeOfDay>? onChanged,
   VoidCallback? onConfirmed,
   VoidCallback? onCancelled,
@@ -15,6 +17,8 @@ void showMaterialTimePicker({
   showTimePicker(
     context: context,
     initialTime: selectedTime,
+    cancelText: cancelText,
+    confirmText: confirmText,
   ).then((selection) {
     if (onChanged != null && selection != null) onChanged(selection);
     if (onCancelled != null && selection == null) onCancelled();

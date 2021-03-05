@@ -1,6 +1,6 @@
 # Releases
 
-## [2.0.0] - 2021-03-05
+## [2.0.0] - vNext
 
 - Bumped SDK restriction from 2.7.0 to 2.12.0 (new minimum).
 - Removed the meta package dependency since the @required annotation has been replaced and is not needed for named parameters anymore.
@@ -9,6 +9,7 @@
 - Removed unnecessary not null asserts for required parameters as package users cannot send nullable values for these anymore.
 - Replaced the DynamicTheme dependency with the actively maintained AdaptiveTheme in order to make sure the package supports sound null safety and is not in mixed mode (ie. depends on packages with no null safety).
 - Replaced deprecated widget FlatButton with the replacement ElevatedButton where applicable (no changes to api surface of the package were made).
+- changed the datePicker dialog to use the ResponsiveDialog so it behaves like the other widgets
 
 ## [1.9.2] - 2021-02-08
 

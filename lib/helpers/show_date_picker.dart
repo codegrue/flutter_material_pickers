@@ -2,6 +2,7 @@
 // is governed by the MIT license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_material_pickers/dialogs/responsive_dialog.dart';
 
 /// Allows selection of a date.
 void showMaterialDatePicker({
@@ -10,19 +11,48 @@ void showMaterialDatePicker({
   required DateTime firstDate,
   required DateTime lastDate,
   required DateTime selectedDate,
-  String? okButtonLabel,
-  String? cancelButtonLabel,
+  Color? headerColor,
+  Color? headerTextColor,
+  Color? backgroundColor,
+  Color? buttonTextColor,
+  String? confirmText,
+  String? cancelText,
+  double? maxLongSide,
+  double? maxShortSide,
   ValueChanged<DateTime>? onChanged,
   VoidCallback? onConfirmed,
   VoidCallback? onCancelled,
 }) {
-  showDatePicker(
+  showDialog<DateTime>(
     context: context,
-    firstDate: firstDate,
-    lastDate: lastDate,
-    initialDate: selectedDate,
-    cancelText: cancelButtonLabel,
-    confirmText: okButtonLabel,
+    builder: (BuildContext context) {
+      return OrientationBuilder(
+        builder: (context, orientation) {
+          return ResponsiveDialog(
+            context: context,
+            title: title,
+            headerColor: headerColor,
+            headerTextColor: headerTextColor,
+            backgroundColor: backgroundColor,
+            buttonTextColor: buttonTextColor,
+            confirmText: confirmText,
+            cancelText: cancelText,
+            maxLongSide: maxLongSide,
+            maxShortSide: maxLongSide,
+            forcePortrait: true,
+            child: SingleChildScrollView(
+              child: CalendarDatePicker(
+                initialDate: selectedDate,
+                firstDate: firstDate,
+                lastDate: lastDate,
+                onDateChanged: (date) => selectedDate = date,
+              ),
+            ),
+            okPressed: () => Navigator.of(context).pop(selectedDate),
+          );
+        },
+      );
+    },
   ).then((selection) {
     if (onChanged != null && selection != null) onChanged(selection);
     if (onCancelled != null && selection == null) onCancelled();

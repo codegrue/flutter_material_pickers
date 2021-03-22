@@ -5,6 +5,7 @@
 - allow null initial value for RadioPicker
 - allow null initial value for CheckBoxPicker
 - allow null initial value for NumberRicker
+- upgraded to null save colorpicker
 
 ## [2.0.0] - 2021-03-12
 

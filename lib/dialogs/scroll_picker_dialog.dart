@@ -4,13 +4,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/pickers/scroll_picker.dart';
 
-import 'responsive_dialog.dart';
 import '../interfaces/common_dialog_properties.dart';
+import 'responsive_dialog.dart';
 
 /// This is a support widget that returns an Dialog with checkboxes as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
-class ScrollPickerDialog extends StatefulWidget
-    implements ICommonDialogProperties {
+class ScrollPickerDialog<T> extends StatefulWidget implements ICommonDialogProperties {
   ScrollPickerDialog({
     this.title,
     required this.items,
@@ -27,8 +26,8 @@ class ScrollPickerDialog extends StatefulWidget
   });
 
   // Variables
-  final List<String> items;
-  final String initialItem;
+  final List<T> items;
+  final T initialItem;
   @override
   final String? title;
   @override
@@ -51,14 +50,13 @@ class ScrollPickerDialog extends StatefulWidget
   final bool showDivider;
 
   @override
-  State<ScrollPickerDialog> createState() =>
-      _ScrollPickerDialogState(initialItem);
+  State<ScrollPickerDialog> createState() => _ScrollPickerDialogState<T>(initialItem);
 }
 
-class _ScrollPickerDialogState extends State<ScrollPickerDialog> {
+class _ScrollPickerDialogState<T> extends State<ScrollPickerDialog<T>> {
   _ScrollPickerDialogState(this.selectedItem);
 
-  String selectedItem;
+  T selectedItem;
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +71,7 @@ class _ScrollPickerDialogState extends State<ScrollPickerDialog> {
       maxShortSide: widget.maxLongSide,
       confirmText: widget.confirmText,
       cancelText: widget.cancelText,
-      child: ScrollPicker(
+      child: ScrollPicker<T>(
         items: widget.items,
         initialValue: selectedItem,
         showDivider: widget.showDivider,

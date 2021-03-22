@@ -9,7 +9,7 @@ void showMaterialRadioPicker({
   required BuildContext context,
   String? title,
   required List<String> items,
-  required String selectedItem,
+  String? selectedItem,
   Color? headerColor,
   Color? headerTextColor,
   Color? backgroundColor,

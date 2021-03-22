@@ -10,7 +10,7 @@ void showMaterialNumberPicker({
   String? title,
   required final int minNumber,
   required final int maxNumber,
-  required final int selectedNumber,
+  final int? selectedNumber,
   final int step = 1,
   Color? headerColor,
   Color? headerTextColor,

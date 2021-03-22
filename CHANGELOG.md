@@ -1,6 +1,12 @@
 # Releases
 
-## [2.0.0] - vNext
+## [2.0.1] - 2021-03-22
+
+- allow null initial value for RadioPicker
+- allow null initial value for CheckBoxPicker
+- allow null initial value for NumberRicker
+
+## [2.0.0] - 2021-03-12
 
 - Bumped SDK restriction from 2.7.0 to 2.12.0 (new minimum).
 - Removed the meta package dependency since the @required annotation has been replaced and is not needed for named parameters anymore.

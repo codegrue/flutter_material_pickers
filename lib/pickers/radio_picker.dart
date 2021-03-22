@@ -9,7 +9,7 @@ class RadioPicker extends StatefulWidget {
   RadioPicker({
     Key? key,
     required this.items,
-    required this.initialItem,
+    this.initialItem,
     required this.onChanged,
   }) : super(key: key);
 
@@ -21,7 +21,7 @@ class RadioPicker extends StatefulWidget {
 
   // Variables
   final List<String> items;
-  final String initialItem;
+  final String? initialItem;
 
   @override
   RadioPickerState createState() {

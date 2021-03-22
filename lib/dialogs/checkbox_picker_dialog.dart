@@ -27,7 +27,7 @@ class CheckboxPickerDialog extends StatefulWidget
 
   // Variables
   final List<String> items;
-  final List<String> initialItems;
+  final List<String>? initialItems;
   @override
   final String? title;
   @override
@@ -53,9 +53,11 @@ class CheckboxPickerDialog extends StatefulWidget
 }
 
 class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
-  _CheckboxPickerDialogState(List<String> initialItems) {
+  _CheckboxPickerDialogState(List<String>? initialItems) {
     // make a shallow copy so we don't modify the original list
-    selectedItems = List<String>.from(initialItems);
+    selectedItems = (initialItems == null)
+        ? List<String>.empty(growable: true)
+        : List<String>.from(initialItems);
   }
 
   late List<String> selectedItems;

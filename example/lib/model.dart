@@ -6,7 +6,7 @@ import 'package:file_picker/file_picker.dart';
 
 class ExampleModel {
   // Scroll/Radio Picker Model
-  var selectedUsState = "Connecticut";
+  String? selectedUsState = 'Connecticut';
   List<String> usStates = <String>[
     'Alabama',
     'Alaska',

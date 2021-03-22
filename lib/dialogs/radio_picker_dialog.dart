@@ -14,7 +14,7 @@ class RadioPickerDialog extends StatefulWidget
   RadioPickerDialog({
     this.title,
     required this.items,
-    required this.initialItem,
+    this.initialItem,
     this.headerColor,
     this.headerTextColor,
     this.backgroundColor,
@@ -27,7 +27,7 @@ class RadioPickerDialog extends StatefulWidget
 
   // Variables
   final List<String> items;
-  final String initialItem;
+  final String? initialItem;
   @override
   final String? title;
   @override
@@ -72,7 +72,7 @@ class _RadioPickerDialogState extends State<RadioPickerDialog> {
       cancelText: widget.cancelText,
       child: RadioPicker(
         items: widget.items,
-        initialItem: selectedItem!,
+        initialItem: selectedItem,
         onChanged: (value) => setState(() => selectedItem = value),
       ),
       okPressed: () => Navigator.of(context).pop(selectedItem),

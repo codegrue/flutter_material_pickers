@@ -14,7 +14,7 @@ class ScrollPickerDialog extends StatefulWidget
   ScrollPickerDialog({
     this.title,
     required this.items,
-    required this.initialItem,
+    this.initialItem,
     this.headerColor,
     this.headerTextColor,
     this.backgroundColor,
@@ -28,7 +28,7 @@ class ScrollPickerDialog extends StatefulWidget
 
   // Variables
   final List<String> items;
-  final String initialItem;
+  final String? initialItem;
   @override
   final String? title;
   @override
@@ -58,7 +58,7 @@ class ScrollPickerDialog extends StatefulWidget
 class _ScrollPickerDialogState extends State<ScrollPickerDialog> {
   _ScrollPickerDialogState(this.selectedItem);
 
-  String selectedItem;
+  String? selectedItem;
 
   @override
   Widget build(BuildContext context) {

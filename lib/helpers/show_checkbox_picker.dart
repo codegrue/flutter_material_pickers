@@ -9,7 +9,7 @@ void showMaterialCheckboxPicker({
   required BuildContext context,
   String? title,
   required List<String> items,
-  required List<String> selectedItems,
+  List<String>? selectedItems,
   Color? headerColor,
   Color? headerTextColor,
   Color? backgroundColor,

@@ -9,7 +9,8 @@ class RadioPicker extends StatefulWidget {
   RadioPicker({
     Key? key,
     required this.items,
-    this.initialItem,
+    required this.values,
+    this.initialValue,
     required this.onChanged,
   }) : super(key: key);
 
@@ -21,11 +22,12 @@ class RadioPicker extends StatefulWidget {
 
   // Variables
   final List<String> items;
-  final String? initialItem;
+  final List<String> values;
+  final String? initialValue;
 
   @override
   RadioPickerState createState() {
-    return RadioPickerState(initialItem);
+    return RadioPickerState(initialValue);
   }
 }
 
@@ -44,7 +46,7 @@ class RadioPickerState extends State<RadioPicker> {
         child: ListView.builder(
           itemCount: itemCount,
           itemBuilder: (BuildContext context, int index) {
-            bool isSelectedItem = (widget.items[index] == selectedValue);
+            bool isSelectedItem = (widget.values[index] == selectedValue);
 
             return RadioListTile<String>(
               groupValue: selectedValue,
@@ -55,7 +57,7 @@ class RadioPickerState extends State<RadioPicker> {
                     ? TextStyle(color: theme.accentColor)
                     : TextStyle(color: theme.textTheme.bodyText2?.color),
               ),
-              value: widget.items[index],
+              value: widget.values[index],
               onChanged: (String? value) {
                 setState(() {
                   selectedValue = value;

@@ -9,6 +9,7 @@ class ScrollPicker extends StatefulWidget {
   ScrollPicker({
     Key? key,
     required this.items,
+    required this.values,
     this.initialValue,
     required this.onChanged,
     this.showDivider: true,
@@ -19,6 +20,7 @@ class ScrollPicker extends StatefulWidget {
 
   // Variables
   final List<String> items;
+  final List<String> values;
   final String? initialValue;
   final bool showDivider;
 
@@ -48,7 +50,7 @@ class _ScrollPickerState extends State<ScrollPicker> {
     super.initState();
 
     int initialItem =
-        (selectedValue == null) ? 0 : widget.items.indexOf(selectedValue!);
+        (selectedValue == null) ? 0 : widget.values.indexOf(selectedValue!);
     scrollController = FixedExtentScrollController(initialItem: initialItem);
   }
 
@@ -74,7 +76,7 @@ class _ScrollPickerState extends State<ScrollPicker> {
                     return null;
                   }
 
-                  var value = widget.items[index];
+                  var value = widget.values[index];
 
                   final TextStyle? itemStyle =
                       (value == selectedValue) ? selectedStyle : defaultStyle;
@@ -120,7 +122,7 @@ class _ScrollPickerState extends State<ScrollPicker> {
   }
 
   void _onSelectedItemChanged(int index) {
-    String newValue = widget.items[index];
+    String newValue = widget.values[index];
     if (newValue != selectedValue) {
       selectedValue = newValue;
       widget.onChanged(newValue);

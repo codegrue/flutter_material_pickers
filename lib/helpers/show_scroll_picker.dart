@@ -9,7 +9,8 @@ void showMaterialScrollPicker({
   required BuildContext context,
   String? title,
   required List<String> items,
-  String? selectedItem,
+  List<String>? values,
+  String? selectedValue,
   Color? headerColor,
   Color? headerTextColor,
   Color? backgroundColor,
@@ -23,13 +24,18 @@ void showMaterialScrollPicker({
   VoidCallback? onConfirmed,
   VoidCallback? onCancelled,
 }) {
+  assert(values == null || items.length == values.length);
+
+  if (values == null) values = items;
+
   showDialog<String>(
     context: context,
     builder: (BuildContext context) {
       return ScrollPickerDialog(
         items: items,
+        values: values!,
         title: title,
-        initialItem: selectedItem,
+        initialValue: selectedValue,
         headerColor: headerColor,
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,

@@ -6,7 +6,7 @@ import 'package:file_picker/file_picker.dart';
 
 class ExampleModel {
   // Scroll/Radio Picker Model
-  String? selectedUsState = 'Connecticut';
+  String? selectedUsState = 'CT';
   List<String> usStates = <String>[
     'Alabama',
     'Alaska',
@@ -59,6 +59,58 @@ class ExampleModel {
     'Wisconsin',
     'Wyoming',
   ];
+  List<String> usStateCodes = <String>[
+    'AL',
+    'AK',
+    'AZ',
+    'AR',
+    'CA',
+    'CO',
+    'CT',
+    'DE',
+    'FL',
+    'GA',
+    'HW',
+    'ID',
+    'IL',
+    'IN',
+    'IO',
+    'KN',
+    'KT',
+    'LA',
+    'MA',
+    'ML',
+    'MA',
+    'MI',
+    'MN',
+    'MS',
+    'MO',
+    'MO',
+    'NE',
+    'NV',
+    'NH',
+    'NJ',
+    'NM',
+    'NY',
+    'NC',
+    'ND',
+    'OH',
+    'OK',
+    'OR',
+    'PA',
+    'RI',
+    'SC',
+    'SD',
+    'TN',
+    'TX',
+    'UT',
+    'VT',
+    'VA',
+    'WA',
+    'WV',
+    'WI',
+    'WY',
+  ];
 
   // Checkbox Picker Model
   List<String> iceCreamToppings = <String>[
@@ -74,13 +126,28 @@ class ExampleModel {
     'Heath Bar',
     'Butterscotch',
     "m&m's",
-    "Coconut",
     "Gummy worms",
     "Fruit",
   ];
+  List<String> toppingCodes = <String>[
+    'FUDGE',
+    'SPRINK',
+    'CARM',
+    'OREO',
+    'PB',
+    'COOKIE',
+    'WHIP',
+    'MARSH',
+    'NUTS',
+    'HEATH',
+    'SCOTCH',
+    "MM",
+    "GUMMY",
+    "FRUIT",
+  ];
   List<String> selectedIceCreamToppings = <String>[
-    'Hot Fudge',
-    'Sprinkles',
+    'FUDGE',
+    'CARM',
   ];
 
   // Selection Picker Model

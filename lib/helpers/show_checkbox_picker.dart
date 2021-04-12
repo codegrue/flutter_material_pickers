@@ -9,7 +9,8 @@ void showMaterialCheckboxPicker({
   required BuildContext context,
   String? title,
   required List<String> items,
-  List<String>? selectedItems,
+  List<String>? values,
+  List<String>? selectedValues,
   Color? headerColor,
   Color? headerTextColor,
   Color? backgroundColor,
@@ -22,13 +23,18 @@ void showMaterialCheckboxPicker({
   VoidCallback? onConfirmed,
   VoidCallback? onCancelled,
 }) {
+  assert(values == null || items.length == values.length);
+
+  if (values == null) values = items;
+
   showDialog<List<String>>(
     context: context,
     builder: (BuildContext context) {
       return CheckboxPickerDialog(
         title: title,
         items: items,
-        initialItems: selectedItems,
+        values: values!,
+        initialValues: selectedValues,
         headerColor: headerColor,
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,

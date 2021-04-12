@@ -1,5 +1,9 @@
 # Releases
 
+## [2.1.0] - 2021-4-12
+
+- Added an optional `values` list to `showMaterialSelectionPicker`, `showMaterialCheckboxPicker`, `showMaterialRadioPicker`, and `showMaterialScrollPicker`. This allows separate display names and returned values. Can be used for consistent localization scenarios. Note: This is a minor breakign change. The field `selectedItem` was changed to `selectedValue`.
+
 ## [2.0.1] - 2021-03-22
 
 - allow null initial value for RadioPicker

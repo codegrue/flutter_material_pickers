@@ -14,7 +14,8 @@ class ScrollPickerDialog extends StatefulWidget
   ScrollPickerDialog({
     this.title,
     required this.items,
-    this.initialItem,
+    required this.values,
+    this.initialValue,
     this.headerColor,
     this.headerTextColor,
     this.backgroundColor,
@@ -28,7 +29,8 @@ class ScrollPickerDialog extends StatefulWidget
 
   // Variables
   final List<String> items;
-  final String? initialItem;
+  final List<String> values;
+  final String? initialValue;
   @override
   final String? title;
   @override
@@ -52,13 +54,13 @@ class ScrollPickerDialog extends StatefulWidget
 
   @override
   State<ScrollPickerDialog> createState() =>
-      _ScrollPickerDialogState(initialItem);
+      _ScrollPickerDialogState(initialValue);
 }
 
 class _ScrollPickerDialogState extends State<ScrollPickerDialog> {
-  _ScrollPickerDialogState(this.selectedItem);
+  _ScrollPickerDialogState(this.selectedValue);
 
-  String? selectedItem;
+  String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -75,11 +77,12 @@ class _ScrollPickerDialogState extends State<ScrollPickerDialog> {
       cancelText: widget.cancelText,
       child: ScrollPicker(
         items: widget.items,
-        initialValue: selectedItem,
+        values: widget.values,
+        initialValue: selectedValue,
         showDivider: widget.showDivider,
-        onChanged: (value) => setState(() => selectedItem = value),
+        onChanged: (value) => setState(() => selectedValue = value),
       ),
-      okPressed: () => Navigator.of(context).pop(selectedItem),
+      okPressed: () => Navigator.of(context).pop(selectedValue),
     );
   }
 }

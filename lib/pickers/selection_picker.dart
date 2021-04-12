@@ -9,10 +9,11 @@ class SelectionPicker extends StatefulWidget {
   SelectionPicker({
     Key? key,
     required this.items,
-    required this.initialItem,
+    required this.values,
+    required this.initialValue,
     required this.onChanged,
     this.icons,
-  })  : super(key: key);
+  }) : super(key: key);
 
   // Constants
   static const double defaultItemHeight = 40.0;
@@ -22,12 +23,13 @@ class SelectionPicker extends StatefulWidget {
 
   // Variables
   final List<String> items;
-  final String initialItem;
+  final List<String> values;
+  final String initialValue;
   final List<Icon>? icons;
 
   @override
   SelectionPickerState createState() {
-    return SelectionPickerState(initialItem);
+    return SelectionPickerState(initialValue);
   }
 }
 
@@ -46,7 +48,7 @@ class SelectionPickerState extends State<SelectionPicker> {
         child: ListView.builder(
           itemCount: itemCount,
           itemBuilder: (BuildContext context, int index) {
-            bool isSelected = (widget.items[index] == selectedValue);
+            bool isSelected = (widget.values[index] == selectedValue);
             Color? itemColor = (isSelected)
                 ? theme.accentColor
                 : theme.textTheme.bodyText2?.color;
@@ -64,7 +66,7 @@ class SelectionPickerState extends State<SelectionPicker> {
                   (isSelected) ? Icon(Icons.check, color: itemColor) : null,
               onTap: () {
                 setState(() {
-                  selectedValue = widget.items[index];
+                  selectedValue = widget.values[index];
                   widget.onChanged(selectedValue);
                 });
               },

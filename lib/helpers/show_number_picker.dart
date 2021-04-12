@@ -35,8 +35,9 @@ void showMaterialNumberPicker({
     builder: (BuildContext context) {
       return ScrollPickerDialog(
         items: items,
+        values: items, // items and vales are the same
         title: title,
-        initialItem: selectedNumber.toString(),
+        initialValue: selectedNumber.toString(),
         headerColor: headerColor,
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,

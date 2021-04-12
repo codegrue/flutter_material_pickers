@@ -177,7 +177,8 @@ class _TestPageState extends State<TestPage> {
               title: "Pick Your City",
               showDivider: false,
               items: model.usStates,
-              selectedItem: model.selectedUsState,
+              values: model.usStateCodes,
+              selectedValue: model.selectedUsState,
               onChanged: (value) =>
                   setState(() => model.selectedUsState = value),
               onCancelled: () => print("Scroll Picker cancelled"),
@@ -236,7 +237,8 @@ class _TestPageState extends State<TestPage> {
               context: context,
               title: "Pick Your Toppings",
               items: model.iceCreamToppings,
-              selectedItems: model.selectedIceCreamToppings,
+              values: model.toppingCodes,
+              selectedValues: model.selectedIceCreamToppings,
               onChanged: (value) =>
                   setState(() => model.selectedIceCreamToppings = value),
             ),
@@ -263,7 +265,8 @@ class _TestPageState extends State<TestPage> {
               context: context,
               title: "Pick Your City",
               items: model.usStates,
-              selectedItem: model.selectedUsState,
+              values: model.usStateCodes,
+              selectedValue: model.selectedUsState,
               onChanged: (value) =>
                   setState(() => model.selectedUsState = value),
             ),
@@ -290,7 +293,7 @@ class _TestPageState extends State<TestPage> {
               context: context,
               title: "Starship Speed",
               items: model.speedOptions,
-              selectedItem: model.speed,
+              selectedValue: model.speed,
               icons: model.speedIcons,
               onChanged: (value) => setState(() => model.speed = value),
             ),

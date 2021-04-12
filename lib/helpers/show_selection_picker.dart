@@ -9,7 +9,8 @@ void showMaterialSelectionPicker({
   required BuildContext context,
   String? title,
   required List<String> items,
-  required String selectedItem,
+  List<String>? values,
+  required String selectedValue,
   List<Icon>? icons,
   Color? headerColor,
   Color? headerTextColor,
@@ -24,14 +25,18 @@ void showMaterialSelectionPicker({
   VoidCallback? onCancelled,
 }) {
   assert(icons == null || items.length == icons.length);
+  assert(values == null || items.length == values.length);
+
+  if (values == null) values = items;
 
   showDialog<String>(
     context: context,
     builder: (BuildContext context) {
       return SelectionPickerDialog(
         items: items,
+        values: values!,
         title: title,
-        initialItem: selectedItem,
+        initialValue: selectedValue,
         icons: icons,
         headerColor: headerColor,
         headerTextColor: headerTextColor,

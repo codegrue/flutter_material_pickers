@@ -14,7 +14,8 @@ class SelectionPickerDialog extends StatefulWidget
   SelectionPickerDialog({
     this.title,
     required this.items,
-    required this.initialItem,
+    required this.values,
+    required this.initialValue,
     this.icons,
     this.headerColor,
     this.headerTextColor,
@@ -26,9 +27,9 @@ class SelectionPickerDialog extends StatefulWidget
     this.cancelText,
   });
 
-  // Variables
   final List<String> items;
-  final String initialItem;
+  final List<String> values;
+  final String initialValue;
   @override
   final String? title;
   final List<Icon>? icons;
@@ -51,13 +52,13 @@ class SelectionPickerDialog extends StatefulWidget
 
   @override
   State<SelectionPickerDialog> createState() =>
-      _SelectionPickerDialogState(initialItem);
+      _SelectionPickerDialogState(initialValue);
 }
 
 class _SelectionPickerDialogState extends State<SelectionPickerDialog> {
-  _SelectionPickerDialogState(this.selectedItem);
+  _SelectionPickerDialogState(this.selectedValue);
 
-  String selectedItem;
+  String selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -74,11 +75,12 @@ class _SelectionPickerDialogState extends State<SelectionPickerDialog> {
       cancelText: widget.cancelText,
       child: SelectionPicker(
         items: widget.items,
-        initialItem: selectedItem,
+        values: widget.values,
+        initialValue: selectedValue,
         icons: widget.icons,
-        onChanged: (value) => setState(() => selectedItem = value),
+        onChanged: (value) => setState(() => selectedValue = value),
       ),
-      okPressed: () => Navigator.of(context).pop(selectedItem),
+      okPressed: () => Navigator.of(context).pop(selectedValue),
     );
   }
 }

@@ -14,7 +14,8 @@ class CheckboxPickerDialog extends StatefulWidget
   CheckboxPickerDialog({
     this.title,
     required this.items,
-    required this.initialItems,
+    required this.values,
+    required this.initialValues,
     this.headerColor,
     this.headerTextColor,
     this.backgroundColor,
@@ -27,7 +28,8 @@ class CheckboxPickerDialog extends StatefulWidget
 
   // Variables
   final List<String> items;
-  final List<String>? initialItems;
+  final List<String> values;
+  final List<String>? initialValues;
   @override
   final String? title;
   @override
@@ -49,18 +51,18 @@ class CheckboxPickerDialog extends StatefulWidget
 
   @override
   State<CheckboxPickerDialog> createState() =>
-      _CheckboxPickerDialogState(initialItems);
+      _CheckboxPickerDialogState(initialValues);
 }
 
 class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
-  _CheckboxPickerDialogState(List<String>? initialItems) {
+  _CheckboxPickerDialogState(List<String>? initialValues) {
     // make a shallow copy so we don't modify the original list
-    selectedItems = (initialItems == null)
+    selectedValues = (initialValues == null)
         ? List<String>.empty(growable: true)
-        : List<String>.from(initialItems);
+        : List<String>.from(initialValues);
   }
 
-  late List<String> selectedItems;
+  late List<String> selectedValues;
 
   @override
   Widget build(BuildContext context) {
@@ -77,9 +79,10 @@ class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
       cancelText: widget.cancelText,
       child: CheckboxPicker(
         items: widget.items,
-        initialItems: selectedItems,
+        values: widget.values,
+        selectedValues: selectedValues,
       ),
-      okPressed: () => Navigator.of(context).pop(selectedItems),
+      okPressed: () => Navigator.of(context).pop(selectedValues),
     );
   }
 }

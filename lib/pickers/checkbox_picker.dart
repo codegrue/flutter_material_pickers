@@ -9,7 +9,8 @@ class CheckboxPicker extends StatefulWidget {
   CheckboxPicker({
     Key? key,
     required this.items,
-    required this.initialItems,
+    required this.values,
+    required this.selectedValues,
   }) : super(key: key);
 
   // Constants
@@ -17,11 +18,12 @@ class CheckboxPicker extends StatefulWidget {
 
   // Variables
   final List<String> items;
-  final List<String> initialItems;
+  final List<String> values;
+  final List<String> selectedValues;
 
   @override
   CheckboxPickerState createState() {
-    return CheckboxPickerState(initialItems);
+    return CheckboxPickerState(selectedValues);
   }
 }
 
@@ -41,7 +43,7 @@ class CheckboxPickerState extends State<CheckboxPicker> {
         child: ListView.builder(
           itemCount: itemCount,
           itemBuilder: (BuildContext context, int index) {
-            bool isSelected = selectedValues.contains(widget.items[index]);
+            bool isSelected = selectedValues.contains(widget.values[index]);
 
             return CheckboxListTile(
               activeColor: theme.accentColor,
@@ -56,9 +58,9 @@ class CheckboxPickerState extends State<CheckboxPicker> {
               onChanged: (bool? value) {
                 setState(() {
                   if (value == true) {
-                    selectedValues.add(widget.items[index]);
+                    selectedValues.add(widget.values[index]);
                   } else {
-                    selectedValues.remove(widget.items[index]);
+                    selectedValues.remove(widget.values[index]);
                   }
                 });
               },

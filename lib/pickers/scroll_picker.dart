@@ -77,12 +77,13 @@ class _ScrollPickerState extends State<ScrollPicker> {
                   }
 
                   var value = widget.values[index];
+                  var item = widget.items[index];    
 
                   final TextStyle? itemStyle =
                       (value == selectedValue) ? selectedStyle : defaultStyle;
 
                   return Center(
-                    child: Text(value, style: itemStyle),
+                    child: Text(item, style: itemStyle),
                   );
                 }),
                 controller: scrollController,

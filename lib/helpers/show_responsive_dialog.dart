@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/responsive_dialog.dart';
 
 /// Extends Dialog by making it responsive to screen orientation changes
-void showMaterialResponsiveDialog({
+Future<T?> showMaterialResponsiveDialog<T>({
   required BuildContext context,
   String? title,
   Widget? child,
@@ -22,7 +22,7 @@ void showMaterialResponsiveDialog({
   VoidCallback? onConfirmed,
   VoidCallback? onCancelled,
 }) {
-  showDialog<void>(
+  return showDialog<T>(
     context: context,
     barrierDismissible: hideButtons,
     builder: (BuildContext context) {

@@ -4,14 +4,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import '../flutter_material_pickers.dart';
+
 /// This helper widget manages the scrollable content inside a picker widget.
 class ScrollPicker<T> extends StatefulWidget {
   ScrollPicker({
     Key? key,
     required this.items,
-    required this.initialValue,
+    required this.selectedItem,
     required this.onChanged,
     this.showDivider: true,
+    this.transformer,
   }) : super(key: key);
 
   // Events
@@ -19,11 +22,14 @@ class ScrollPicker<T> extends StatefulWidget {
 
   // Variables
   final List<T> items;
-  final T initialValue;
+  final T selectedItem;
   final bool showDivider;
 
+  // Callbacks
+  final Transformer<T>? transformer;
+
   @override
-  _ScrollPickerState createState() => _ScrollPickerState<T>(initialValue);
+  _ScrollPickerState createState() => _ScrollPickerState<T>(selectedItem);
 }
 
 class _ScrollPickerState<T> extends State<ScrollPicker<T>> {

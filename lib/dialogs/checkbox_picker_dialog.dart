@@ -1,20 +1,21 @@
 // Copyright (c) 2018, codegrue. All rights reserved. Use of this source code
 // is governed by the MIT license that can be found in the LICENSE file.
 
-import 'package:flutter_material_pickers/pickers/checkbox_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_material_pickers/pickers/checkbox_picker.dart';
 
-import 'responsive_dialog.dart';
+import '../flutter_material_pickers.dart';
 import '../interfaces/common_dialog_properties.dart';
+import 'responsive_dialog.dart';
 
 /// This is a support widget that returns an Dialog with checkboxes as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
-class CheckboxPickerDialog extends StatefulWidget
-    implements ICommonDialogProperties {
+class CheckboxPickerDialog<T> extends StatefulWidget implements ICommonDialogProperties {
   CheckboxPickerDialog({
     this.title,
     required this.items,
-    required this.initialItems,
+    required this.selectedItems,
+    this.transformer,
     this.headerColor,
     this.headerTextColor,
     this.backgroundColor,
@@ -26,8 +27,9 @@ class CheckboxPickerDialog extends StatefulWidget
   });
 
   // Variables
-  final List<String> items;
-  final List<String> initialItems;
+  final List<T> items;
+  final List<T>? selectedItems;
+  final Transformer<T>? transformer;
   @override
   final String? title;
   @override
@@ -48,17 +50,16 @@ class CheckboxPickerDialog extends StatefulWidget
   final String? cancelText;
 
   @override
-  State<CheckboxPickerDialog> createState() =>
-      _CheckboxPickerDialogState(initialItems);
+  State<CheckboxPickerDialog> createState() => _CheckboxPickerDialogState<T>(selectedItems);
 }
 
-class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
-  _CheckboxPickerDialogState(List<String> initialItems) {
+class _CheckboxPickerDialogState<T> extends State<CheckboxPickerDialog<T>> {
+  _CheckboxPickerDialogState(List<T>? selectedItems) {
     // make a shallow copy so we don't modify the original list
-    selectedItems = List<String>.from(initialItems);
+    this.selectedItems = (selectedItems == null) ? List<T>.empty(growable: true) : List<T>.from(selectedItems);
   }
 
-  late List<String> selectedItems;
+  late List<T> selectedItems;
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +74,10 @@ class _CheckboxPickerDialogState extends State<CheckboxPickerDialog> {
       maxShortSide: widget.maxLongSide,
       confirmText: widget.confirmText,
       cancelText: widget.cancelText,
-      child: CheckboxPicker(
+      child: CheckboxPicker<T>(
         items: widget.items,
-        initialItems: selectedItems,
+        selectedItems: selectedItems,
+        transformer: widget.transformer,
       ),
       okPressed: () => Navigator.of(context).pop(selectedItems),
     );

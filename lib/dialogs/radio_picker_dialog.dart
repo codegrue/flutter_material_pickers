@@ -4,17 +4,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/pickers/radio_picker.dart';
 
-import 'responsive_dialog.dart';
+import '../flutter_material_pickers.dart';
 import '../interfaces/common_dialog_properties.dart';
+import 'responsive_dialog.dart';
 
 /// This is a support widget that returns an Dialog with checkboxes as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
-class RadioPickerDialog extends StatefulWidget
-    implements ICommonDialogProperties {
+class RadioPickerDialog<T> extends StatefulWidget implements ICommonDialogProperties {
   RadioPickerDialog({
     this.title,
     required this.items,
-    required this.initialItem,
+    this.selectedItem,
+    this.transformer,
     this.headerColor,
     this.headerTextColor,
     this.backgroundColor,
@@ -26,8 +27,9 @@ class RadioPickerDialog extends StatefulWidget
   });
 
   // Variables
-  final List<String> items;
-  final String initialItem;
+  final List<T> items;
+  final T? selectedItem;
+  final Transformer<T>? transformer;
   @override
   final String? title;
   @override
@@ -48,14 +50,13 @@ class RadioPickerDialog extends StatefulWidget
   final String? cancelText;
 
   @override
-  State<RadioPickerDialog> createState() =>
-      _RadioPickerDialogState(initialItem);
+  State<RadioPickerDialog> createState() => _RadioPickerDialogState<T>(selectedItem);
 }
 
-class _RadioPickerDialogState extends State<RadioPickerDialog> {
+class _RadioPickerDialogState<T> extends State<RadioPickerDialog<T>> {
   _RadioPickerDialogState(this.selectedItem);
 
-  String? selectedItem;
+  T? selectedItem;
 
   @override
   Widget build(BuildContext context) {
@@ -70,10 +71,11 @@ class _RadioPickerDialogState extends State<RadioPickerDialog> {
       maxShortSide: widget.maxLongSide,
       confirmText: widget.confirmText,
       cancelText: widget.cancelText,
-      child: RadioPicker(
+      child: RadioPicker<T>(
         items: widget.items,
-        initialItem: selectedItem!,
-        onChanged: (value) => setState(() => selectedItem = value),
+        initialValue: selectedItem,
+        onChanged: (item) => setState(() => selectedItem = item),
+        transformer: widget.transformer,
       ),
       okPressed: () => Navigator.of(context).pop(selectedItem),
     );

@@ -6,7 +6,7 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_material_pickers/dialogs/responsive_dialog.dart';
 
 /// Allows RGB selection of a color.
-void showMaterialColorPicker({
+Future<Color?> showMaterialColorPicker({
   required BuildContext context,
   String title = "Pick a color",
   required Color selectedColor,
@@ -22,7 +22,7 @@ void showMaterialColorPicker({
   VoidCallback? onConfirmed,
   VoidCallback? onCancelled,
 }) {
-  showDialog<Color>(
+  return showDialog<Color>(
     context: context,
     builder: (BuildContext context) {
       return OrientationBuilder(
@@ -56,8 +56,12 @@ void showMaterialColorPicker({
       );
     },
   ).then((selection) {
-    if (onChanged != null && selection != null) onChanged(selection);
-    if (onCancelled != null && selection == null) onCancelled();
-    if (onConfirmed != null && selection != null) onConfirmed();
+    if (selection != null) {
+      onChanged?.call(selection);
+      onConfirmed?.call();
+    } else {
+      onCancelled?.call();
+    }
+    return selection;
   });
 }

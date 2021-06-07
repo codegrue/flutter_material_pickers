@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 
 /// Allows selection of a time
-void showMaterialTimePicker({
+Future<TimeOfDay?> showMaterialTimePicker({
   required BuildContext context,
   String? title,
   required TimeOfDay selectedTime,
@@ -14,14 +14,18 @@ void showMaterialTimePicker({
   VoidCallback? onConfirmed,
   VoidCallback? onCancelled,
 }) {
-  showTimePicker(
+  return showTimePicker(
     context: context,
     initialTime: selectedTime,
     cancelText: cancelText,
     confirmText: confirmText,
   ).then((selection) {
-    if (onChanged != null && selection != null) onChanged(selection);
-    if (onCancelled != null && selection == null) onCancelled();
-    if (onConfirmed != null && selection != null) onConfirmed();
+    if (selection != null) {
+      onChanged?.call(selection);
+      onConfirmed?.call();
+    } else {
+      onCancelled?.call();
+    }
+    return selection;
   });
 }

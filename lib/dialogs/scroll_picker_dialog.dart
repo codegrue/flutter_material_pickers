@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/pickers/scroll_picker.dart';
 
+import '../flutter_material_pickers.dart';
 import '../interfaces/common_dialog_properties.dart';
 import 'responsive_dialog.dart';
 
@@ -13,7 +14,8 @@ class ScrollPickerDialog<T> extends StatefulWidget implements ICommonDialogPrope
   ScrollPickerDialog({
     this.title,
     required this.items,
-    required this.initialItem,
+    required this.selectedItem,
+    this.transformer,
     this.headerColor,
     this.headerTextColor,
     this.backgroundColor,
@@ -27,7 +29,8 @@ class ScrollPickerDialog<T> extends StatefulWidget implements ICommonDialogPrope
 
   // Variables
   final List<T> items;
-  final T initialItem;
+  final T? selectedItem;
+  final Transformer<T>? transformer;
   @override
   final String? title;
   @override
@@ -50,7 +53,7 @@ class ScrollPickerDialog<T> extends StatefulWidget implements ICommonDialogPrope
   final bool showDivider;
 
   @override
-  State<ScrollPickerDialog> createState() => _ScrollPickerDialogState<T>(initialItem);
+  State<ScrollPickerDialog> createState() => _ScrollPickerDialogState<T>(selectedItem ?? items[0]);
 }
 
 class _ScrollPickerDialogState<T> extends State<ScrollPickerDialog<T>> {
@@ -73,9 +76,10 @@ class _ScrollPickerDialogState<T> extends State<ScrollPickerDialog<T>> {
       cancelText: widget.cancelText,
       child: ScrollPicker<T>(
         items: widget.items,
-        initialValue: selectedItem,
+        selectedItem: selectedItem,
         showDivider: widget.showDivider,
         onChanged: (value) => setState(() => selectedItem = value),
+        transformer: widget.transformer,
       ),
       okPressed: () => Navigator.of(context).pop(selectedItem),
     );

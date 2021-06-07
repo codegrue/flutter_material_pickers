@@ -4,37 +4,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import '../flutter_material_pickers.dart';
+
 /// This helper widget manages a scrollable checkbox list inside a picker widget.
-class SelectionPicker extends StatefulWidget {
+class SelectionPicker<T> extends StatefulWidget {
   SelectionPicker({
     Key? key,
     required this.items,
-    required this.initialItem,
+    required this.initialValue,
     required this.onChanged,
-    this.icons,
-  })  : super(key: key);
+    this.transformer,
+    this.iconizer,
+  }) : super(key: key);
 
   // Constants
   static const double defaultItemHeight = 40.0;
 
   // Events
-  final ValueChanged<String> onChanged;
+  final ValueChanged<T> onChanged;
 
   // Variables
-  final List<String> items;
-  final String initialItem;
-  final List<Icon>? icons;
+  final List<T> items;
+  final T initialValue;
+
+  // Callbacks
+  final Transformer<T>? transformer;
+  final Iconizer<T>? iconizer;
 
   @override
-  SelectionPickerState createState() {
-    return SelectionPickerState(initialItem);
+  SelectionPickerState<T> createState() {
+    return SelectionPickerState(initialValue);
   }
 }
 
-class SelectionPickerState extends State<SelectionPicker> {
+class SelectionPickerState<T> extends State<SelectionPicker<T>> {
   SelectionPickerState(this.selectedValue);
 
-  String selectedValue;
+  T selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -46,22 +52,19 @@ class SelectionPickerState extends State<SelectionPicker> {
         child: ListView.builder(
           itemCount: itemCount,
           itemBuilder: (BuildContext context, int index) {
-            bool isSelected = (widget.items[index] == selectedValue);
-            Color? itemColor = (isSelected)
-                ? theme.accentColor
-                : theme.textTheme.bodyText2?.color;
-            Icon? icon = (widget.icons == null) ? null : widget.icons?[index];
-            if (icon != null && icon.color == null)
-              icon = Icon(icon.icon, color: itemColor);
+            T item = widget.items[index];
+            bool isSelected = (item == selectedValue);
+            Color? itemColor = (isSelected) ? theme.accentColor : theme.textTheme.bodyText2?.color;
+            Icon? icon = widget.iconizer?.call(item);
+            if (icon != null && icon.color == null) icon = Icon(icon.icon, color: itemColor);
 
             return ListTile(
               leading: icon,
               title: Text(
-                widget.items[index],
+                widget.transformer?.call(item) ?? '$item',
                 style: TextStyle(color: itemColor),
               ),
-              trailing:
-                  (isSelected) ? Icon(Icons.check, color: itemColor) : null,
+              trailing: (isSelected) ? Icon(Icons.check, color: itemColor) : null,
               onTap: () {
                 setState(() {
                   selectedValue = widget.items[index];

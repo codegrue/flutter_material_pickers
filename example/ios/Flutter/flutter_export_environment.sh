@@ -2,6 +2,7 @@
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/opt/flutter-sdk"
 export "FLUTTER_APPLICATION_PATH=/home/edlman/Zdrojaky/src/flutter/lib/flutter_material_pickers/example"
+export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build/ios"

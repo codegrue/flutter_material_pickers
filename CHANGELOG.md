@@ -1,6 +1,21 @@
 # Releases
 
-## [2.0.0] - vNext
+## [2.1.1] - 2021-4-13
+
+- Fixed item not showing on scroll picker [thanks elliotrtd]
+
+## [2.1.0] - 2021-4-12
+
+- Added an optional `values` list to `showMaterialSelectionPicker`, `showMaterialCheckboxPicker`, `showMaterialRadioPicker`, and `showMaterialScrollPicker`. This allows separate display names and returned values. Can be used for consistent localization scenarios. Note: This is a minor breakign change. The field `selectedItem` was changed to `selectedValue`.
+
+## [2.0.1] - 2021-03-22
+
+- allow null initial value for RadioPicker
+- allow null initial value for CheckBoxPicker
+- allow null initial value for NumberRicker
+- upgraded to null save colorpicker
+
+## [2.0.0] - 2021-03-12
 
 - Bumped SDK restriction from 2.7.0 to 2.12.0 (new minimum).
 - Removed the meta package dependency since the @required annotation has been replaced and is not needed for named parameters anymore.

@@ -4,7 +4,7 @@ version: 1.0.0+1
 publish_to: none
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
   flutter_material_pickers:
     path: ../
-  adaptive_theme: ^2.0.0-nullsafety.1
+  adaptive_theme: ^2.0.0
   intl: ^0.17.0
 
 flutter:

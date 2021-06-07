@@ -4,13 +4,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/selection_picker_dialog.dart';
 
+import '../flutter_material_pickers.dart';
+
 /// Allows selection of a single value via an icon label list
-void showMaterialSelectionPicker({
+Future<T?> showMaterialSelectionPicker<T>({
   required BuildContext context,
   String? title,
-  required List<String> items,
-  required String selectedItem,
-  List<Icon>? icons,
+  required List<T> items,
+  required T selectedItem,
   Color? headerColor,
   Color? headerTextColor,
   Color? backgroundColor,
@@ -19,20 +20,19 @@ void showMaterialSelectionPicker({
   String? cancelText,
   double? maxLongSide,
   double? maxShortSide,
-  ValueChanged<String>? onChanged,
+  ValueChanged<T>? onChanged,
   VoidCallback? onConfirmed,
   VoidCallback? onCancelled,
+  Transformer<T>? transformer,
+  Iconizer<T>? iconizer,
 }) {
-  assert(icons == null || items.length == icons.length);
-
-  showDialog<String>(
+  return showDialog<T>(
     context: context,
     builder: (BuildContext context) {
-      return SelectionPickerDialog(
+      return SelectionPickerDialog<T>(
         items: items,
         title: title,
-        initialItem: selectedItem,
-        icons: icons,
+        selectedItem: selectedItem,
         headerColor: headerColor,
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
@@ -41,11 +41,17 @@ void showMaterialSelectionPicker({
         cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
+        transformer: transformer,
+        iconizer: iconizer,
       );
     },
   ).then((selection) {
-    if (onChanged != null && selection != null) onChanged(selection);
-    if (onCancelled != null && selection == null) onCancelled();
-    if (onConfirmed != null && selection != null) onConfirmed();
+    if (selection != null) {
+      onChanged?.call(selection);
+      onConfirmed?.call();
+    } else {
+      onCancelled?.call();
+    }
+    return selection;
   });
 }

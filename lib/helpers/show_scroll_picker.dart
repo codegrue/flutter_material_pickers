@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/scroll_picker_dialog.dart';
+import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 
 /// Allows selection of a string via a slot machine carousel
 Future<T?> showMaterialScrollPicker<T>({
@@ -22,6 +23,7 @@ Future<T?> showMaterialScrollPicker<T>({
   ValueChanged<T>? onChanged,
   VoidCallback? onConfirmed,
   VoidCallback? onCancelled,
+  Transformer<T>? transformer,
 }) {
   return showDialog<T>(
     context: context,
@@ -29,7 +31,7 @@ Future<T?> showMaterialScrollPicker<T>({
       return ScrollPickerDialog<T>(
         items: items,
         title: title,
-        initialItem: selectedItem,
+        selectedItem: selectedItem,
         headerColor: headerColor,
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
@@ -39,6 +41,7 @@ Future<T?> showMaterialScrollPicker<T>({
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
         showDivider: showDivider,
+        transformer: transformer,
       );
     },
   ).then((selection) {

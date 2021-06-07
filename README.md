@@ -50,6 +50,17 @@ It includes:
     - Extends Dialog by making it responsive to screen orientation changes
 
 All helpers implement an `onChange` handler to return picked option(s).
+All helpers return `Future<T>` with the picked option(s).
+
+There are some **breaking changes** in 2.2.0 (from 2.1.1).
+* Pickers accept generic types passed to pickers and helpers.
+* There's no need to pass several lists (items, values, icons), just pass
+  one list of generic type objects.
+* To convert an item to a string displayed to a user either override
+  toString() in generic type class or pass transformer callback which
+  accepts item and returns String. (see examples)
+* To provide item's icon in SelectionPicker (and alikes), pass iconizer
+  callback which accepts item and returns Icon. (see example)
 
 ## Example Usage
 
@@ -65,7 +76,7 @@ showMaterialResponsiveDialog(
     child: Center(
         child: Container(
             padding: EdgeInsets.all(30.0),
-            child: Text("Any content here."),
+            child: Text('Any content here.'),
             style: TextStyle(
                 fontSize: 20.0,
                 fontStyle: FontStyle.italic,
@@ -80,22 +91,29 @@ showMaterialResponsiveDialog(
 <img src="https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/images/show_scroll_picker-l.png" width="200"> <img src="https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/images/show_scroll_picker-d.png" width="200"> <img src="https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/images/show_scroll_picker-ll.png" height="200">
 
 ```dart
-var selectedUsState = "Connecticut";
+class StateModel {
+  const StateModel(this.name, this.code);
+  final String code;
+  final String name;
 
-List<String> usStates = <String>[
-  'Alabama',
-  'Alaska',
-  'Arizona',
-  'Arkansas',
-  'California',
-  'Colorado',
-  'Connecticut',
+  @override
+  String toString() => name;
+}
+static const List<StateModel> usStates = <StateModel>[
+  StateModel('Alabama', 'AL'),
+  StateModel('Alaska', 'AK'),
+  StateModel('Arizona', 'AZ'),
+  StateModel('Arkansas', 'AR'),
+  StateModel('California', 'CA'),
+  StateModel('Colorado', 'CO'),
+  StateModel('Connecticut', 'CT'),
   ...
 ];
+StateModel selectedUsState = usStates[0];
 
-showMaterialScrollPicker(
+showMaterialScrollPicker<StateModel>(
     context: context,
-    title: "Pick Your City",
+    title: 'Pick Your State',
     items: usStates,
     selectedItem: selectedUsState,
     onChanged: (value) => setState(() => selectedUsState = value),
@@ -111,7 +129,7 @@ var age = 25;
 
 showMaterialNumberPicker(
   context: context,
-  title: "Pick Your Age",
+  title: 'Pick Your Age',
   maxNumber: 100,
   minNumber: 14,
   selectedNumber: age,
@@ -124,21 +142,29 @@ showMaterialNumberPicker(
 <img src="https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/images/show_checkbox_picker-l.png" width="200"> <img src="https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/images/show_checkbox_picker-d.png" width="200"> <img src="https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/images/show_checkbox_picker-ll.png" height="200">
 
 ```dart
-List<String> iceCreamToppings = <String>[
-  'Hot Fudge',
-  'Sprinkles',
-  'Caramel',
-  'Oreos',
+class ToppingModel {
+  const ToppingModel(this.name, this.code);
+  final String code;
+  final String name;
+
+  @override
+  String toString() => name;
+}
+static const List<ToppingModel> iceCreamToppings = <ToppingModel>[
+  ToppingModel('Hot Fudge', 'FUDGE'),
+  ToppingModel('Sprinkles', 'SPRINK'),
+  ToppingModel('Caramel', 'CARM'),
+  ToppingModel('Oreos', 'OREO'),
   ...
 ];
-List<String> selectedIceCreamToppings = <String>[
-  'Hot Fudge',
-  'Sprinkles',
+List<ToppingModel> selectedIceCreamToppings = [
+  iceCreamToppings[0],
+  iceCreamToppings[2],
 ];
 
-showMaterialCheckboxPicker(
+showMaterialCheckboxPicker<ToppingModel>(
   context: context,
-  title: "Pick Your Toppings",
+  title: 'Pick Your Toppings',
   items: iceCreamToppings,
   selectedItems: selectedIceCreamToppings,
   onChanged: (value) => setState(() => selectedIceCreamToppings = value),
@@ -150,23 +176,30 @@ showMaterialCheckboxPicker(
 <img src="https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/images/show_radio_picker-l.png" width="200"> <img src="https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/images/show_radio_picker-d.png" width="200"> <img src="https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/images/show_radio_picker-ll.png" height="200">
 
 ```dart
-var selectedUsState = "Connecticut";
+class StateModel {
+  const StateModel(this.name, this.code);
+  final String code;
+  final String name;
 
-List<String> usStates = <String>[
-  'Alabama',
-  'Alaska',
-  'Arizona',
-  'Arkansas',
-  'California',
-  'Colorado',
-  'Connecticut',
+  @override
+  String toString() => name;
+}
+static const List<StateModel> usStates = <StateModel>[
+  StateModel('Alabama', 'AL'),
+  StateModel('Alaska', 'AK'),
+  StateModel('Arizona', 'AZ'),
+  StateModel('Arkansas', 'AR'),
+  StateModel('California', 'CA'),
+  StateModel('Colorado', 'CO'),
+  StateModel('Connecticut', 'CT'),
   ...
 ];
+StateModel selectedUsState = usStates[3];
 
-showMaterialRadioPicker(
+showMaterialRadioPicker<StateModel>(
   context: context,
-  title: "Pick Your City",
-  items: model.usStates,
+  title: 'Pick Your State',
+  items: usStates,
   selectedItem: selectedUsState,
   onChanged: (value) => setState(() => selectedUsState = value),
 );
@@ -177,21 +210,19 @@ showMaterialRadioPicker(
 <img src="https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/images/show_selection_picker-l.png" width="200"> <img src="https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/images/show_selection_picker-d.png" width="200"> <img src="https://raw.githubusercontent.com/codegrue/flutter_material_pickers/master/images/show_selection_picker-ll.png" height="200">
 
 ```dart
-String speed = 'Ludicrous';
-
-List<String> speedOptions = <String>[
-  'Light',
-  'Ridiculous',
-  'Ludicrous',
-  'Plaid',
+class SpeedModel {
+  const SpeedModel(this.name, this.icon);
+  final String name;
+  final Icon icon;
+}
+// Selection Picker Model
+static const List<SpeedModel> speedOptions = <SpeedModel>[
+  SpeedModel('Light', Icon(Icons.sort)),
+  SpeedModel('Ridiculous', Icon(Icons.clear_all)),
+  SpeedModel('Ludicrous', Icon(Icons.swap_calls)),
+  SpeedModel('Plaid', Icon(Icons.select_all)),
 ];
-
-List<Icon> speedIcons = <Icon>[
-  Icon(Icons.sort),
-  Icon(Icons.clear_all),
-  Icon(Icons.swap_calls),
-  Icon(Icons.select_all),
-];
+SpeedModel speed = speedOptions[2];
 
 showMaterialSelectionPicker(
   context: context,
@@ -199,6 +230,8 @@ showMaterialSelectionPicker(
   items: speedOptions,
   selectedItem: speed,
   icons: speedIcons,
+  transformer: (item) => item.name,
+  iconizer: (item) => item.icon,
   onChanged: (value) => setState(() => speed = value),
 );
 ```
@@ -320,7 +353,7 @@ showMaterialResponsiveDialog(
     headerTextColor: Colors.white, // text fcolor of the header
     backgroundColor: Colors.lightGreen, // background color of the entire dialog
     buttonTextColor: Colors.red, // text color of the action bar buttons
-    child: Text("Custom dialog colors"),
+    child: Text('Custom dialog colors'),
 );
 ```
 
@@ -330,9 +363,9 @@ You can customize the text that appears in various areas of the screen. The butt
 
 ```dart
 showMaterialNumberPicker(
-  title: "Pick Your Age",
-  confirmText: "Count me in",
-  cancelText: "Negatory",
+  title: 'Pick Your Age',
+  confirmText: 'Count me in',
+  cancelText: 'Negatory',
 );
 ```
 

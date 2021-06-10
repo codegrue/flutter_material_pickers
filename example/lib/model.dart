@@ -137,5 +137,5 @@ class ExampleModel {
   Color swatch = Colors.blue;
 
   // File Picker Model
-  PlatformFile file = PlatformFile(bytes: Uint8List(1024 * 1024 * 15));
+  PlatformFile file = PlatformFile(name: 'somefile.ext', size: 1024 * 1024 * 15, bytes: Uint8List(1024 * 1024 * 15));
 }

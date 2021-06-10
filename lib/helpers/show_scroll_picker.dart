@@ -3,14 +3,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/scroll_picker_dialog.dart';
+import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 
 /// Allows selection of a string via a slot machine carousel
-void showMaterialScrollPicker({
+Future<T?> showMaterialScrollPicker<T>({
   required BuildContext context,
   String? title,
-  required List<String> items,
-  List<String>? values,
-  String? selectedValue,
+  required List<T> items,
+  required T selectedItem,
   Color? headerColor,
   Color? headerTextColor,
   Color? backgroundColor,
@@ -20,22 +20,18 @@ void showMaterialScrollPicker({
   double? maxLongSide,
   double? maxShortSide,
   bool showDivider: true,
-  ValueChanged<String>? onChanged,
+  ValueChanged<T>? onChanged,
   VoidCallback? onConfirmed,
   VoidCallback? onCancelled,
+  Transformer<T>? transformer,
 }) {
-  assert(values == null || items.length == values.length);
-
-  if (values == null) values = items;
-
-  showDialog<String>(
+  return showDialog<T>(
     context: context,
     builder: (BuildContext context) {
-      return ScrollPickerDialog(
+      return ScrollPickerDialog<T>(
         items: items,
-        values: values!,
         title: title,
-        initialValue: selectedValue,
+        selectedItem: selectedItem,
         headerColor: headerColor,
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
@@ -45,11 +41,13 @@ void showMaterialScrollPicker({
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
         showDivider: showDivider,
+        transformer: transformer,
       );
     },
   ).then((selection) {
     if (onChanged != null && selection != null) onChanged(selection);
     if (onCancelled != null && selection == null) onCancelled();
     if (onConfirmed != null && selection != null) onConfirmed();
+    return selection;
   });
 }

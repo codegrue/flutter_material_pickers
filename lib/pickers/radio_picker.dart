@@ -4,37 +4,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import '../flutter_material_pickers.dart';
+
 /// This helper widget manages a scrollable checkbox list inside a picker widget.
-class RadioPicker extends StatefulWidget {
+class RadioPicker<T> extends StatefulWidget {
   RadioPicker({
     Key? key,
     required this.items,
-    required this.values,
     this.initialValue,
     required this.onChanged,
+    this.transformer,
   }) : super(key: key);
 
   // Constants
   static const double defaultItemHeight = 40.0;
 
   // Events
-  final ValueChanged<String?> onChanged;
+  final ValueChanged<T?> onChanged;
 
   // Variables
-  final List<String> items;
-  final List<String> values;
-  final String? initialValue;
+  final List<T> items;
+  final T? initialValue;
+
+  // Callbacks
+  final Transformer<T>? transformer;
 
   @override
   RadioPickerState createState() {
-    return RadioPickerState(initialValue);
+    return RadioPickerState<T>(initialValue);
   }
 }
 
-class RadioPickerState extends State<RadioPicker> {
+class RadioPickerState<T> extends State<RadioPicker<T>> {
   RadioPickerState(this.selectedValue);
 
-  String? selectedValue;
+  T? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -46,19 +50,18 @@ class RadioPickerState extends State<RadioPicker> {
         child: ListView.builder(
           itemCount: itemCount,
           itemBuilder: (BuildContext context, int index) {
-            bool isSelectedItem = (widget.values[index] == selectedValue);
+            final item = widget.items[index];
+            bool isSelectedItem = item == selectedValue;
 
-            return RadioListTile<String>(
+            return RadioListTile<T>(
               groupValue: selectedValue,
               activeColor: theme.accentColor,
               title: Text(
-                widget.items[index],
-                style: (isSelectedItem)
-                    ? TextStyle(color: theme.accentColor)
-                    : TextStyle(color: theme.textTheme.bodyText2?.color),
+                widget.transformer?.call(item) ?? '$item',
+                style: (isSelectedItem) ? TextStyle(color: theme.accentColor) : TextStyle(color: theme.textTheme.bodyText2?.color),
               ),
-              value: widget.values[index],
-              onChanged: (String? value) {
+              value: item,
+              onChanged: (T? value) {
                 setState(() {
                   selectedValue = value;
                   widget.onChanged(selectedValue);

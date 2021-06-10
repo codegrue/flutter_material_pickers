@@ -4,13 +4,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/radio_picker_dialog.dart';
 
+import '../flutter_material_pickers.dart';
+
 /// Allows selection of a single from a radio list
-void showMaterialRadioPicker({
+Future<T?> showMaterialRadioPicker<T>({
   required BuildContext context,
   String? title,
-  required List<String> items,
-  List<String>? values,
-  String? selectedValue,
+  required List<T> items,
+  T? selectedItem,
   Color? headerColor,
   Color? headerTextColor,
   Color? backgroundColor,
@@ -19,22 +20,18 @@ void showMaterialRadioPicker({
   String? cancelText,
   double? maxLongSide,
   double? maxShortSide,
-  ValueChanged<String>? onChanged,
+  ValueChanged<T>? onChanged,
   VoidCallback? onConfirmed,
   VoidCallback? onCancelled,
+  Transformer<T>? transformer,
 }) {
-  assert(values == null || items.length == values.length);
-
-  if (values == null) values = items;
-
-  showDialog<String>(
+  return showDialog<T>(
     context: context,
     builder: (BuildContext context) {
-      return RadioPickerDialog(
+      return RadioPickerDialog<T>(
         items: items,
-        values: values!,
         title: title,
-        initialValue: selectedValue,
+        selectedItem: selectedItem,
         headerColor: headerColor,
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
@@ -43,11 +40,16 @@ void showMaterialRadioPicker({
         cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
+        transformer: transformer,
       );
     },
   ).then((selection) {
-    if (onChanged != null && selection != null) onChanged(selection);
-    if (onCancelled != null && selection == null) onCancelled();
-    if (onConfirmed != null && selection != null) onConfirmed();
+    if (selection != null) {
+      onChanged?.call(selection);
+      onConfirmed?.call();
+    } else {
+      onCancelled?.call();
+    }
+    return selection;
   });
 }

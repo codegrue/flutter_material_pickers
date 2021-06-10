@@ -4,8 +4,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/scroll_picker_dialog.dart';
 
+import '../flutter_material_pickers.dart';
+
 /// Allows selection of a number via a slot machine carousel
-void showMaterialNumberPicker({
+Future<int?> showMaterialNumberPicker({
   required BuildContext context,
   String? title,
   required final int minNumber,
@@ -23,21 +25,21 @@ void showMaterialNumberPicker({
   ValueChanged<int>? onChanged,
   VoidCallback? onConfirmed,
   VoidCallback? onCancelled,
+  Transformer<int>? transformer,
 }) {
-  List<String> items = [];
+  List<int> items = [];
 
   for (int i = minNumber; i <= maxNumber; i += step) {
-    items.add(i.toString());
+    items.add(i);
   }
 
-  showDialog<String>(
+  return showDialog<int>(
     context: context,
     builder: (BuildContext context) {
-      return ScrollPickerDialog(
+      return ScrollPickerDialog<int>(
         items: items,
-        values: items, // items and vales are the same
         title: title,
-        initialValue: selectedNumber.toString(),
+        selectedItem: selectedNumber,
         headerColor: headerColor,
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
@@ -49,8 +51,12 @@ void showMaterialNumberPicker({
       );
     },
   ).then((selection) {
-    if (onChanged != null && selection != null) onChanged(int.parse(selection));
-    if (onCancelled != null && selection == null) onCancelled();
-    if (onConfirmed != null && selection != null) onConfirmed();
+    if (selection != null) {
+      onChanged?.call(selection);
+      onConfirmed?.call();
+    } else {
+      onCancelled?.call();
+    }
+    return selection;
   });
 }

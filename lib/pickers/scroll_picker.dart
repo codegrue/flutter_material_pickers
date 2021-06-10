@@ -4,31 +4,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import '../flutter_material_pickers.dart';
+
 /// This helper widget manages the scrollable content inside a picker widget.
-class ScrollPicker extends StatefulWidget {
+class ScrollPicker<T> extends StatefulWidget {
   ScrollPicker({
     Key? key,
     required this.items,
-    required this.values,
-    this.initialValue,
+    required this.selectedItem,
     required this.onChanged,
     this.showDivider: true,
+    this.transformer,
   }) : super(key: key);
 
   // Events
-  final ValueChanged<String> onChanged;
+  final ValueChanged<T> onChanged;
 
   // Variables
-  final List<String> items;
-  final List<String> values;
-  final String? initialValue;
+  final List<T> items;
+  final T selectedItem;
   final bool showDivider;
 
+  // Callbacks
+  final Transformer<T>? transformer;
+
   @override
-  _ScrollPickerState createState() => _ScrollPickerState(initialValue);
+  _ScrollPickerState createState() => _ScrollPickerState<T>(selectedItem);
 }
 
-class _ScrollPickerState extends State<ScrollPicker> {
+class _ScrollPickerState<T> extends State<ScrollPicker<T>> {
   _ScrollPickerState(this.selectedValue);
 
   // Constants
@@ -41,7 +45,7 @@ class _ScrollPickerState extends State<ScrollPicker> {
   late double visibleItemsHeight;
   late double offset;
 
-  String? selectedValue;
+  T selectedValue;
 
   late ScrollController scrollController;
 
@@ -49,8 +53,7 @@ class _ScrollPickerState extends State<ScrollPicker> {
   void initState() {
     super.initState();
 
-    int initialItem =
-        (selectedValue == null) ? 0 : widget.values.indexOf(selectedValue!);
+    int initialItem = widget.items.indexOf(selectedValue);
     scrollController = FixedExtentScrollController(initialItem: initialItem);
   }
 
@@ -58,8 +61,7 @@ class _ScrollPickerState extends State<ScrollPicker> {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     TextStyle? defaultStyle = themeData.textTheme.bodyText2;
-    TextStyle? selectedStyle =
-        themeData.textTheme.headline5?.copyWith(color: themeData.accentColor);
+    TextStyle? selectedStyle = themeData.textTheme.headline5?.copyWith(color: themeData.accentColor);
 
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
@@ -70,20 +72,17 @@ class _ScrollPickerState extends State<ScrollPicker> {
             GestureDetector(
               onTapUp: _itemTapped,
               child: ListWheelScrollView.useDelegate(
-                childDelegate: ListWheelChildBuilderDelegate(
-                    builder: (BuildContext context, int index) {
+                childDelegate: ListWheelChildBuilderDelegate(builder: (BuildContext context, int index) {
                   if (index < 0 || index > widget.items.length - 1) {
                     return null;
                   }
 
-                  var value = widget.values[index];
-                  var item = widget.items[index];    
+                  var value = widget.items[index];
 
-                  final TextStyle? itemStyle =
-                      (value == selectedValue) ? selectedStyle : defaultStyle;
+                  final TextStyle? itemStyle = (value == selectedValue) ? selectedStyle : defaultStyle;
 
                   return Center(
-                    child: Text(item, style: itemStyle),
+                    child: Text('$value', style: itemStyle),
                   );
                 }),
                 controller: scrollController,
@@ -99,8 +98,7 @@ class _ScrollPickerState extends State<ScrollPicker> {
                 decoration: BoxDecoration(
                   border: Border(
                     top: BorderSide(color: themeData.accentColor, width: 1.0),
-                    bottom:
-                        BorderSide(color: themeData.accentColor, width: 1.0),
+                    bottom: BorderSide(color: themeData.accentColor, width: 1.0),
                   ),
                 ),
               ),
@@ -118,12 +116,11 @@ class _ScrollPickerState extends State<ScrollPicker> {
     double newPosition = scrollController.offset + changeBy;
 
     // animate to and center on the selected item
-    scrollController.animateTo(newPosition,
-        duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+    scrollController.animateTo(newPosition, duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
   }
 
   void _onSelectedItemChanged(int index) {
-    String newValue = widget.values[index];
+    T newValue = widget.items[index];
     if (newValue != selectedValue) {
       selectedValue = newValue;
       widget.onChanged(newValue);

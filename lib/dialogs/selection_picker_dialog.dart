@@ -4,19 +4,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/pickers/selection_picker.dart';
 
-import 'responsive_dialog.dart';
+import '../flutter_material_pickers.dart';
 import '../interfaces/common_dialog_properties.dart';
+import 'responsive_dialog.dart';
 
 /// This is a support widget that returns an Dialog with checkboxes as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
-class SelectionPickerDialog extends StatefulWidget
-    implements ICommonDialogProperties {
+class SelectionPickerDialog<T> extends StatefulWidget implements ICommonDialogProperties {
   SelectionPickerDialog({
     this.title,
     required this.items,
-    required this.values,
-    required this.initialValue,
-    this.icons,
+    required this.selectedItem,
+    this.transformer,
+    this.iconizer,
     this.headerColor,
     this.headerTextColor,
     this.backgroundColor,
@@ -27,12 +27,12 @@ class SelectionPickerDialog extends StatefulWidget
     this.cancelText,
   });
 
-  final List<String> items;
-  final List<String> values;
-  final String initialValue;
+  final List<T> items;
+  final T selectedItem;
+  final Transformer<T>? transformer;
+  final Iconizer<T>? iconizer;
   @override
   final String? title;
-  final List<Icon>? icons;
   @override
   final Color? headerColor;
   @override
@@ -51,14 +51,13 @@ class SelectionPickerDialog extends StatefulWidget
   final String? cancelText;
 
   @override
-  State<SelectionPickerDialog> createState() =>
-      _SelectionPickerDialogState(initialValue);
+  State<SelectionPickerDialog> createState() => _SelectionPickerDialogState<T>(selectedItem);
 }
 
-class _SelectionPickerDialogState extends State<SelectionPickerDialog> {
-  _SelectionPickerDialogState(this.selectedValue);
+class _SelectionPickerDialogState<T> extends State<SelectionPickerDialog<T>> {
+  _SelectionPickerDialogState(this.selectedItem);
 
-  String selectedValue;
+  T selectedItem;
 
   @override
   Widget build(BuildContext context) {
@@ -73,14 +72,14 @@ class _SelectionPickerDialogState extends State<SelectionPickerDialog> {
       maxShortSide: widget.maxLongSide,
       confirmText: widget.confirmText,
       cancelText: widget.cancelText,
-      child: SelectionPicker(
+      child: SelectionPicker<T>(
         items: widget.items,
-        values: widget.values,
-        initialValue: selectedValue,
-        icons: widget.icons,
-        onChanged: (value) => setState(() => selectedValue = value),
+        initialValue: selectedItem,
+        onChanged: (item) => setState(() => selectedItem = item),
+        transformer: widget.transformer,
+        iconizer: widget.iconizer,
       ),
-      okPressed: () => Navigator.of(context).pop(selectedValue),
+      okPressed: () => Navigator.of(context).pop(selectedItem),
     );
   }
 }

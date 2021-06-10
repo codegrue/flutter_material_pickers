@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/responsive_dialog.dart';
 
 /// Allows selection of a date.
-void showMaterialDatePicker({
+Future<DateTime?> showMaterialDatePicker({
   required BuildContext context,
   String? title,
   required DateTime firstDate,
@@ -23,7 +23,7 @@ void showMaterialDatePicker({
   VoidCallback? onConfirmed,
   VoidCallback? onCancelled,
 }) {
-  showDialog<DateTime>(
+  return showDialog<DateTime>(
     context: context,
     builder: (BuildContext context) {
       return OrientationBuilder(
@@ -53,8 +53,12 @@ void showMaterialDatePicker({
       );
     },
   ).then((selection) {
-    if (onChanged != null && selection != null) onChanged(selection);
-    if (onCancelled != null && selection == null) onCancelled();
-    if (onConfirmed != null && selection != null) onConfirmed();
+    if (selection != null) {
+      onChanged?.call(selection);
+      onConfirmed?.call();
+    } else {
+      onCancelled?.call();
+    }
+    return selection;
   });
 }

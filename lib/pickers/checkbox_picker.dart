@@ -4,33 +4,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import '../flutter_material_pickers.dart';
+
 /// This helper widget manages a scrollable checkbox list inside a picker widget.
-class CheckboxPicker extends StatefulWidget {
+class CheckboxPicker<T> extends StatefulWidget {
   CheckboxPicker({
     Key? key,
     required this.items,
-    required this.values,
-    required this.selectedValues,
+    required this.selectedItems,
+    this.transformer,
   }) : super(key: key);
 
   // Constants
   static const double defaultItemHeight = 40.0;
 
   // Variables
-  final List<String> items;
-  final List<String> values;
-  final List<String> selectedValues;
+  final List<T> items;
+  final List<T> selectedItems;
+
+  // Callbacks
+  final Transformer<T>? transformer;
 
   @override
   CheckboxPickerState createState() {
-    return CheckboxPickerState(selectedValues);
+    return CheckboxPickerState<T>(selectedItems);
   }
 }
 
-class CheckboxPickerState extends State<CheckboxPicker> {
+class CheckboxPickerState<T> extends State<CheckboxPicker<T>> {
   CheckboxPickerState(this.selectedValues);
 
-  List<String> selectedValues;
+  List<T> selectedValues;
 
   @override
   Widget build(BuildContext context) {
@@ -43,24 +47,23 @@ class CheckboxPickerState extends State<CheckboxPicker> {
         child: ListView.builder(
           itemCount: itemCount,
           itemBuilder: (BuildContext context, int index) {
-            bool isSelected = selectedValues.contains(widget.values[index]);
+            final item = widget.items[index];
+            bool isSelected = selectedValues.contains(item);
 
             return CheckboxListTile(
               activeColor: theme.accentColor,
               checkColor: theme.dialogBackgroundColor,
               title: Text(
-                widget.items[index],
-                style: (isSelected)
-                    ? TextStyle(color: theme.accentColor)
-                    : TextStyle(color: theme.textTheme.bodyText2?.color),
+                widget.transformer?.call(item) ?? '$item',
+                style: (isSelected) ? TextStyle(color: theme.accentColor) : TextStyle(color: theme.textTheme.bodyText2?.color),
               ),
               value: isSelected,
               onChanged: (bool? value) {
                 setState(() {
                   if (value == true) {
-                    selectedValues.add(widget.values[index]);
+                    selectedValues.add(item);
                   } else {
-                    selectedValues.remove(widget.values[index]);
+                    selectedValues.remove(item);
                   }
                 });
               },

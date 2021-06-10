@@ -4,13 +4,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/checkbox_picker_dialog.dart';
 
+import '../flutter_material_pickers.dart';
+
 /// Allows selection of many values from a checkbox list.
-void showMaterialCheckboxPicker({
+Future<List<T>?> showMaterialCheckboxPicker<T>({
   required BuildContext context,
   String? title,
-  required List<String> items,
-  List<String>? values,
-  List<String>? selectedValues,
+  required List<T> items,
+  List<T>? selectedItems,
   Color? headerColor,
   Color? headerTextColor,
   Color? backgroundColor,
@@ -19,22 +20,18 @@ void showMaterialCheckboxPicker({
   String? cancelText,
   double? maxLongSide,
   double? maxShortSide,
-  ValueChanged<List<String>>? onChanged,
+  ValueChanged<List<T>>? onChanged,
   VoidCallback? onConfirmed,
   VoidCallback? onCancelled,
+  Transformer<T>? transformer,
 }) {
-  assert(values == null || items.length == values.length);
-
-  if (values == null) values = items;
-
-  showDialog<List<String>>(
+  return showDialog<List<T>>(
     context: context,
     builder: (BuildContext context) {
-      return CheckboxPickerDialog(
+      return CheckboxPickerDialog<T>(
         title: title,
         items: items,
-        values: values!,
-        initialValues: selectedValues,
+        selectedItems: selectedItems,
         headerColor: headerColor,
         headerTextColor: headerTextColor,
         backgroundColor: backgroundColor,
@@ -43,11 +40,16 @@ void showMaterialCheckboxPicker({
         cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
+        transformer: transformer,
       );
     },
   ).then((selection) {
-    if (onChanged != null && selection != null) onChanged(selection);
-    if (onCancelled != null && selection == null) onCancelled();
-    if (onConfirmed != null && selection != null) onConfirmed();
+    if (selection != null) {
+      onChanged?.call(selection);
+      onConfirmed?.call();
+    } else {
+      onCancelled?.call();
+    }
+    return selection;
   });
 }

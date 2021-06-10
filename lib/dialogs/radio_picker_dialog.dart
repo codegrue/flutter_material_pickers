@@ -4,18 +4,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/pickers/radio_picker.dart';
 
-import 'responsive_dialog.dart';
+import '../flutter_material_pickers.dart';
 import '../interfaces/common_dialog_properties.dart';
+import 'responsive_dialog.dart';
 
 /// This is a support widget that returns an Dialog with checkboxes as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
-class RadioPickerDialog extends StatefulWidget
-    implements ICommonDialogProperties {
+class RadioPickerDialog<T> extends StatefulWidget implements ICommonDialogProperties {
   RadioPickerDialog({
     this.title,
     required this.items,
-    required this.values,
-    this.initialValue,
+    this.selectedItem,
+    this.transformer,
     this.headerColor,
     this.headerTextColor,
     this.backgroundColor,
@@ -27,9 +27,9 @@ class RadioPickerDialog extends StatefulWidget
   });
 
   // Variables
-  final List<String> items;
-  final List<String> values;
-  final String? initialValue;
+  final List<T> items;
+  final T? selectedItem;
+  final Transformer<T>? transformer;
   @override
   final String? title;
   @override
@@ -50,14 +50,13 @@ class RadioPickerDialog extends StatefulWidget
   final String? cancelText;
 
   @override
-  State<RadioPickerDialog> createState() =>
-      _RadioPickerDialogState(initialValue);
+  State<RadioPickerDialog> createState() => _RadioPickerDialogState<T>(selectedItem);
 }
 
-class _RadioPickerDialogState extends State<RadioPickerDialog> {
-  _RadioPickerDialogState(this.selectedValue);
+class _RadioPickerDialogState<T> extends State<RadioPickerDialog<T>> {
+  _RadioPickerDialogState(this.selectedItem);
 
-  String? selectedValue;
+  T? selectedItem;
 
   @override
   Widget build(BuildContext context) {
@@ -72,13 +71,13 @@ class _RadioPickerDialogState extends State<RadioPickerDialog> {
       maxShortSide: widget.maxLongSide,
       confirmText: widget.confirmText,
       cancelText: widget.cancelText,
-      child: RadioPicker(
+      child: RadioPicker<T>(
         items: widget.items,
-        values: widget.values,
-        initialValue: selectedValue,
-        onChanged: (value) => setState(() => selectedValue = value),
+        initialValue: selectedItem,
+        onChanged: (item) => setState(() => selectedItem = item),
+        transformer: widget.transformer,
       ),
-      okPressed: () => Navigator.of(context).pop(selectedValue),
+      okPressed: () => Navigator.of(context).pop(selectedItem),
     );
   }
 }

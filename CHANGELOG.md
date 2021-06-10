@@ -1,5 +1,19 @@
 # Releases
 
+## [3.0.0] - 2021-06-10
+
+There are some **breaking changes** in 3.0.0 (from 2.1.1).
+- Pickers accept generic types passed to pickers and helpers.
+- There's no need to pass several lists (items, values, icons), just pass
+  one list of generic type objects.
+- A selected item of generic type is passed as `selectedItem` not
+  `selectedValue` to match name of `items`.
+- To convert an item to a string displayed to a user either override
+  toString() in generic type class or pass transformer callback which
+  accepts an item and returns a String. (see examples)
+- To provide item's icon in SelectionPicker (and alikes), pass iconizer
+  callback which accepts an item and returns an Icon. (see example)
+
 ## [2.1.1] - 2021-4-13
 
 - Fixed item not showing on scroll picker [thanks elliotrtd]

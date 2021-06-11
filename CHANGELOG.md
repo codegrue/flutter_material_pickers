@@ -1,8 +1,13 @@
 # Releases
 
+## [3.1.0] - 2021-06-11
+
+- provided a standard `PickerModel` that can be used with all picker type controls
+
 ## [3.0.0] - 2021-06-10
 
 There are some **breaking changes** in 3.0.0 (from 2.1.1).
+
 - Pickers accept generic types passed to pickers and helpers.
 - There's no need to pass several lists (items, values, icons), just pass
   one list of generic type objects.

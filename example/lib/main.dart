@@ -44,7 +44,9 @@ class _TestPageState extends State<TestPage> {
           title: Text('Material Picker Examples'),
           actions: <Widget>[
             IconButton(
-              icon: Theme.of(context).brightness == Brightness.dark ? Icon(Icons.brightness_7) : Icon(Icons.brightness_4),
+              icon: Theme.of(context).brightness == Brightness.dark
+                  ? Icon(Icons.brightness_7)
+                  : Icon(Icons.brightness_4),
               onPressed: () => AdaptiveTheme.of(context).toggleThemeMode(),
             )
           ],
@@ -139,8 +141,11 @@ class _TestPageState extends State<TestPage> {
                       children: <TextSpan>[
                         TextSpan(text: '\n\n'),
                         TextSpan(
-                            text: 'This example has the button bar hidden, so you dismiss it by clicking outside the window.',
-                            style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.w300)),
+                            text:
+                                'This example has the button bar hidden, so you dismiss it by clicking outside the window.',
+                            style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w300)),
                         //TextSpan(text: 'your text',style: TextStyle(color: Colors.redAccent,fontSize: 38))
                       ],
                     ),
@@ -167,13 +172,14 @@ class _TestPageState extends State<TestPage> {
           width: 150.0,
           child: ElevatedButton(
             child: Text('Scroll Picker'),
-            onPressed: () => showMaterialScrollPicker<StateModel>(
+            onPressed: () => showMaterialScrollPicker<PickerModel>(
               context: context,
               title: 'Pick Your City',
               showDivider: false,
               items: ExampleModel.usStates,
               selectedItem: model.selectedUsState,
-              onChanged: (value) => setState(() => model.selectedUsState = value),
+              onChanged: (value) =>
+                  setState(() => model.selectedUsState = value),
               onCancelled: () => print('Scroll Picker cancelled'),
               onConfirmed: () => print('Scroll Picker confirmed'),
             ),
@@ -181,7 +187,7 @@ class _TestPageState extends State<TestPage> {
         ),
         Expanded(
           child: Text(
-            model.selectedUsState.toString(),
+            '${model.selectedUsState} (${model.selectedUsState.code})',
             textAlign: TextAlign.right,
           ),
         ),
@@ -226,12 +232,13 @@ class _TestPageState extends State<TestPage> {
           width: 150.0,
           child: ElevatedButton(
             child: Text('Checkbox Picker'),
-            onPressed: () => showMaterialCheckboxPicker<ToppingModel>(
+            onPressed: () => showMaterialCheckboxPicker<PickerModel>(
               context: context,
               title: 'Pick Your Toppings',
               items: ExampleModel.iceCreamToppings,
               selectedItems: model.selectedIceCreamToppings,
-              onChanged: (value) => setState(() => model.selectedIceCreamToppings = value),
+              onChanged: (value) =>
+                  setState(() => model.selectedIceCreamToppings = value),
             ),
           ),
         ),
@@ -252,18 +259,19 @@ class _TestPageState extends State<TestPage> {
           width: 150.0,
           child: ElevatedButton(
             child: Text('Radio Picker'),
-            onPressed: () => showMaterialRadioPicker<StateModel>(
+            onPressed: () => showMaterialRadioPicker<PickerModel>(
               context: context,
               title: 'Pick Your City',
               items: ExampleModel.usStates,
               selectedItem: model.selectedUsState,
-              onChanged: (value) => setState(() => model.selectedUsState = value),
+              onChanged: (value) =>
+                  setState(() => model.selectedUsState = value),
             ),
           ),
         ),
         Expanded(
           child: Text(
-            model.selectedUsState.toString(),
+            '${model.selectedUsState} (${model.selectedUsState.code})',
             textAlign: TextAlign.right,
           ),
         ),
@@ -278,7 +286,7 @@ class _TestPageState extends State<TestPage> {
           width: 150.0,
           child: ElevatedButton(
             child: Text('Selection Picker'),
-            onPressed: () => showMaterialSelectionPicker<SpeedModel>(
+            onPressed: () => showMaterialSelectionPicker<PickerModel>(
               context: context,
               title: 'Starship Speed',
               items: ExampleModel.speedOptions,
@@ -290,7 +298,7 @@ class _TestPageState extends State<TestPage> {
         ),
         Expanded(
           child: Text(
-            model.speed.name,
+            '${model.speed} (${model.speed.code})',
             textAlign: TextAlign.right,
           ),
         ),

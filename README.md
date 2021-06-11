@@ -53,6 +53,7 @@ All helpers implement an `onChange` handler to return picked option(s).
 All helpers return `Future<T>` with the picked option(s).
 
 There are some **breaking changes** in 3.0.0 (from 2.1.1).
+
 - Pickers accept generic types passed to pickers and helpers.
 - There's no need to pass several lists (items, values, icons), just pass
   one list of generic type objects.
@@ -307,6 +308,21 @@ showMaterialSwatchPicker(
   onChanged: (value) => setState(() => swatch = value),
 );
 ```
+
+## Picker Model
+
+If you don't already have or want to build a custom object to hold selction items, this library includes a general purpose one called `PickerModel` that you would use like this:
+
+```dart
+  static const List<PickerModel> items = <PickerModel>[
+    PickerModel('First', code: 1, icon: Icon(Icons.sort)),
+    PickerModel('Second', code: 2, icon: Icon(Icons.clear_all)),
+    PickerModel('Third', code: 3, icon: Icon(Icons.swap_calls)),
+    PickerModel('Fourth', code: 4, icon: Icon(Icons.select_all)),
+  ];
+```
+
+The `code` and `icon` fields are optional.
 
 ## Theming
 

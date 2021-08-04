@@ -1,5 +1,9 @@
 # Releases
 
+## [3.1.1] - 2021-08-04
+
+- Fixing `transformer` method not being called on `showMaterialScrollPicker`
+
 ## [3.1.0] - 2021-06-11
 
 - provided a standard `PickerModel` that can be used with all picker type controls

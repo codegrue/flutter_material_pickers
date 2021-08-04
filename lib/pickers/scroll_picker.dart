@@ -82,7 +82,7 @@ class _ScrollPickerState<T> extends State<ScrollPicker<T>> {
                   final TextStyle? itemStyle = (value == selectedValue) ? selectedStyle : defaultStyle;
 
                   return Center(
-                    child: Text('$value', style: itemStyle),
+                    child: Text(widget.transformer?.call(value) ?? '$value', style: itemStyle),
                   );
                 }),
                 controller: scrollController,
@@ -127,3 +127,4 @@ class _ScrollPickerState<T> extends State<ScrollPicker<T>> {
     }
   }
 }
+

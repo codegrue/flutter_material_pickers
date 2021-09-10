@@ -7,9 +7,9 @@ issue_tracker: https://github.com/codegrue/flutter_material_pickers/issues
 dependencies:
   flutter:
     sdk: flutter
-  flutter_colorpicker: ^0.4.0
+  flutter_colorpicker: ^0.6.0
   intl: ^0.17.0
-  file_picker: ^3.0.2+2
+  file_picker: ^4.0.2
 
 dev_dependencies:
   flutter_test:

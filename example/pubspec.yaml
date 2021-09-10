@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
   flutter_material_pickers:
     path: ../
-  adaptive_theme: ^2.0.0
+  adaptive_theme: ^2.2.0
   intl: ^0.17.0
 
 flutter:

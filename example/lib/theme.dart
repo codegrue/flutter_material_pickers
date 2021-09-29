@@ -9,7 +9,7 @@ ThemeData buildTheme(Brightness brightness) {
   // extract auto generated colors
   Color primaryColor = theme.primaryColor;
   Color backgroundColor = theme.backgroundColor;
-  Color accentColor = theme.accentColor;
+  Color accentColor = theme.colorScheme.secondary;
   Color textColor = theme.textTheme.headline1!.color!;
   Color headerTextColor = textColor;
 
@@ -28,8 +28,8 @@ ThemeData buildTheme(Brightness brightness) {
     colorScheme: theme.colorScheme.copyWith(
       primary: primaryColor, // new way to do title color
       surface: backgroundColor, // new way to do background color
+      secondary: accentColor, // color of controls and button bar text
     ),
-    accentColor: accentColor, // color of controls and button bar text
     dialogBackgroundColor: backgroundColor, // background color of the dialog
     primaryTextTheme: theme.primaryTextTheme.copyWith(
       headline6: theme.primaryTextTheme.headline6?.copyWith(

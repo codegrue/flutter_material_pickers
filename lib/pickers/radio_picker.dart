@@ -55,10 +55,12 @@ class RadioPickerState<T> extends State<RadioPicker<T>> {
 
             return RadioListTile<T>(
               groupValue: selectedValue,
-              activeColor: theme.accentColor,
+              activeColor: theme.colorScheme.secondary,
               title: Text(
                 widget.transformer?.call(item) ?? '$item',
-                style: (isSelectedItem) ? TextStyle(color: theme.accentColor) : TextStyle(color: theme.textTheme.bodyText2?.color),
+                style: (isSelectedItem)
+                    ? TextStyle(color: theme.colorScheme.secondary)
+                    : TextStyle(color: theme.textTheme.bodyText2?.color),
               ),
               value: item,
               onChanged: (T? value) {

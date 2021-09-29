@@ -54,9 +54,12 @@ class SelectionPickerState<T> extends State<SelectionPicker<T>> {
           itemBuilder: (BuildContext context, int index) {
             T item = widget.items[index];
             bool isSelected = (item == selectedValue);
-            Color? itemColor = (isSelected) ? theme.accentColor : theme.textTheme.bodyText2?.color;
+            Color? itemColor = (isSelected)
+                ? theme.colorScheme.secondary
+                : theme.textTheme.bodyText2?.color;
             Icon? icon = widget.iconizer?.call(item);
-            if (icon != null && icon.color == null) icon = Icon(icon.icon, color: itemColor);
+            if (icon != null && icon.color == null)
+              icon = Icon(icon.icon, color: itemColor);
 
             return ListTile(
               leading: icon,
@@ -64,7 +67,8 @@ class SelectionPickerState<T> extends State<SelectionPicker<T>> {
                 widget.transformer?.call(item) ?? '$item',
                 style: TextStyle(color: itemColor),
               ),
-              trailing: (isSelected) ? Icon(Icons.check, color: itemColor) : null,
+              trailing:
+                  (isSelected) ? Icon(Icons.check, color: itemColor) : null,
               onTap: () {
                 setState(() {
                   selectedValue = widget.items[index];

@@ -1,5 +1,10 @@
 # Releases
 
+## [3.1.2] - 2021-09-29
+
+- Updated `flutter_colorpicker` version
+- replaces `theme.accentColor` with `theme.colorScheme.secondary`
+
 ## [3.1.1] - 2021-08-04
 
 - Fixing `transformer` method not being called on `showMaterialScrollPicker`

@@ -51,11 +51,13 @@ class CheckboxPickerState<T> extends State<CheckboxPicker<T>> {
             bool isSelected = selectedValues.contains(item);
 
             return CheckboxListTile(
-              activeColor: theme.accentColor,
+              activeColor: theme.colorScheme.secondary,
               checkColor: theme.dialogBackgroundColor,
               title: Text(
                 widget.transformer?.call(item) ?? '$item',
-                style: (isSelected) ? TextStyle(color: theme.accentColor) : TextStyle(color: theme.textTheme.bodyText2?.color),
+                style: (isSelected)
+                    ? TextStyle(color: theme.colorScheme.secondary)
+                    : TextStyle(color: theme.textTheme.bodyText2?.color),
               ),
               value: isSelected,
               onChanged: (bool? value) {

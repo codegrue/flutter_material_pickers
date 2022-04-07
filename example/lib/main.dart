@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
@@ -6,9 +8,11 @@ import 'package:intl/intl.dart';
 import 'model.dart';
 import 'theme.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return AdaptiveTheme(
@@ -19,7 +23,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Material Picker Examples',
           theme: theme,
-          home: TestPage(),
+          home: const TestPage(),
         );
       },
     );
@@ -27,6 +31,8 @@ class MyApp extends StatelessWidget {
 }
 
 class TestPage extends StatefulWidget {
+  const TestPage({Key? key}) : super(key: key);
+
   @override
   _TestPageState createState() => _TestPageState();
 }
@@ -41,16 +47,16 @@ class _TestPageState extends State<TestPage> {
       child: Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-          title: Text('Material Picker Examples'),
+          title: const Text('Material Picker Examples'),
           actions: <Widget>[
             IconButton(
               icon: Theme.of(context).brightness == Brightness.dark
-                  ? Icon(Icons.brightness_7)
-                  : Icon(Icons.brightness_4),
+                  ? const Icon(Icons.brightness_7)
+                  : const Icon(Icons.brightness_4),
               onPressed: () => AdaptiveTheme.of(context).toggleThemeMode(),
             )
           ],
-          bottom: TabBar(
+          bottom: const TabBar(
             isScrollable: true,
             tabs: <Widget>[
               Tab(text: 'New Pickers'),
@@ -60,24 +66,24 @@ class _TestPageState extends State<TestPage> {
         ),
         body: SafeArea(
           child: Container(
-            margin: EdgeInsets.all(8.0),
+            margin: const EdgeInsets.all(8.0),
             child: TabBarView(
               children: <Widget>[
                 Card(
                   child: Container(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: ListView(
                       children: <Widget>[
                         buildEmptyRow(context),
-                        Divider(),
+                        const Divider(),
                         buildScrollRow(context),
-                        Divider(),
+                        const Divider(),
                         buildNumberRow(context),
-                        Divider(),
+                        const Divider(),
                         buildCheckboxRow(context),
-                        Divider(),
+                        const Divider(),
                         buildRadioRow(context),
-                        Divider(),
+                        const Divider(),
                         buildSelectionRow(context),
                       ],
                     ),
@@ -85,19 +91,19 @@ class _TestPageState extends State<TestPage> {
                 ),
                 Card(
                   child: Container(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: ListView(
                       children: <Widget>[
                         buildTimeRow(context),
-                        Divider(),
+                        const Divider(),
                         buildDateRow(context),
-                        Divider(),
+                        const Divider(),
                         buildColorRow(context),
-                        Divider(),
+                        const Divider(),
                         buildPaletteRow(context),
-                        Divider(),
+                        const Divider(),
                         buildSwatchRow(context),
-                        Divider(),
+                        const Divider(),
                         buildFileRow(context),
                       ],
                     ),
@@ -114,10 +120,10 @@ class _TestPageState extends State<TestPage> {
   Row buildEmptyRow(BuildContext context) {
     return Row(
       children: <Widget>[
-        Container(
+        SizedBox(
           width: 150.0,
           child: ElevatedButton(
-            child: Text('Empty Dialog'),
+            child: const Text('Empty Dialog'),
             onPressed: () => showMaterialResponsiveDialog<void>(
               context: context,
               hideButtons: false,
@@ -127,10 +133,10 @@ class _TestPageState extends State<TestPage> {
               onCancelled: () => print('Dialog cancelled'),
               child: Center(
                 child: Container(
-                  padding: EdgeInsets.all(30.0),
+                  padding: const EdgeInsets.all(30.0),
                   child: RichText(
                     textAlign: TextAlign.center,
-                    text: TextSpan(
+                    text: const TextSpan(
                       text:
                           'This is the base dialog widget for the pickers. Unlike the off-the-shelf Dialog widget, it handles landscape orientations. You may place any content here you desire.',
                       style: TextStyle(
@@ -155,7 +161,7 @@ class _TestPageState extends State<TestPage> {
             ),
           ),
         ),
-        Expanded(
+        const Expanded(
           child: Text(
             'n/a',
             textAlign: TextAlign.right,
@@ -168,10 +174,10 @@ class _TestPageState extends State<TestPage> {
   Row buildScrollRow(BuildContext context) {
     return Row(
       children: <Widget>[
-        Container(
+        SizedBox(
           width: 150.0,
           child: ElevatedButton(
-            child: Text('Scroll Picker'),
+            child: const Text('Scroll Picker'),
             onPressed: () => showMaterialScrollPicker<PickerModel>(
               context: context,
               title: 'Pick Your City',
@@ -198,10 +204,10 @@ class _TestPageState extends State<TestPage> {
   Row buildNumberRow(BuildContext context) {
     return Row(
       children: <Widget>[
-        Container(
+        SizedBox(
           width: 150.0,
           child: ElevatedButton(
-            child: Text('Number Picker'),
+            child: const Text('Number Picker'),
             onPressed: () => showMaterialNumberPicker(
               context: context,
               title: 'Pick a Number',
@@ -228,10 +234,10 @@ class _TestPageState extends State<TestPage> {
   Row buildCheckboxRow(BuildContext context) {
     return Row(
       children: <Widget>[
-        Container(
+        SizedBox(
           width: 150.0,
           child: ElevatedButton(
-            child: Text('Checkbox Picker'),
+            child: const Text('Checkbox Picker'),
             onPressed: () => showMaterialCheckboxPicker<PickerModel>(
               context: context,
               title: 'Pick Your Toppings',
@@ -255,10 +261,10 @@ class _TestPageState extends State<TestPage> {
   Row buildRadioRow(BuildContext context) {
     return Row(
       children: <Widget>[
-        Container(
+        SizedBox(
           width: 150.0,
           child: ElevatedButton(
-            child: Text('Radio Picker'),
+            child: const Text('Radio Picker'),
             onPressed: () => showMaterialRadioPicker<PickerModel>(
               context: context,
               title: 'Pick Your City',
@@ -282,10 +288,10 @@ class _TestPageState extends State<TestPage> {
   Row buildSelectionRow(BuildContext context) {
     return Row(
       children: <Widget>[
-        Container(
+        SizedBox(
           width: 150.0,
           child: ElevatedButton(
-            child: Text('Selection Picker'),
+            child: const Text('Selection Picker'),
             onPressed: () => showMaterialSelectionPicker<PickerModel>(
               context: context,
               title: 'Starship Speed',
@@ -309,10 +315,10 @@ class _TestPageState extends State<TestPage> {
   Row buildTimeRow(BuildContext context) {
     return Row(
       children: <Widget>[
-        Container(
+        SizedBox(
           width: 150.0,
           child: ElevatedButton(
-            child: Text('Time Picker'),
+            child: const Text('Time Picker'),
             onPressed: () => showMaterialTimePicker(
               context: context,
               selectedTime: model.time,
@@ -333,10 +339,10 @@ class _TestPageState extends State<TestPage> {
   Row buildDateRow(BuildContext context) {
     return Row(
       children: <Widget>[
-        Container(
+        SizedBox(
           width: 150.0,
           child: ElevatedButton(
-            child: Text('Date Picker'),
+            child: const Text('Date Picker'),
             onPressed: () => showMaterialDatePicker(
               title: 'Pick a date',
               firstDate: DateTime(1990, 1, 1),
@@ -360,10 +366,10 @@ class _TestPageState extends State<TestPage> {
   Row buildColorRow(BuildContext context) {
     return Row(
       children: <Widget>[
-        Container(
+        SizedBox(
           width: 150.0,
           child: ElevatedButton(
-            child: Text('Color Picker'),
+            child: const Text('Color Picker'),
             onPressed: () => showMaterialColorPicker(
               context: context,
               selectedColor: model.color,
@@ -386,10 +392,10 @@ class _TestPageState extends State<TestPage> {
   Row buildPaletteRow(BuildContext context) {
     return Row(
       children: <Widget>[
-        Container(
+        SizedBox(
           width: 150.0,
           child: ElevatedButton(
-            child: Text('Palette Picker'),
+            child: const Text('Palette Picker'),
             onPressed: () => showMaterialPalettePicker(
               context: context,
               selectedColor: model.palette,
@@ -412,10 +418,10 @@ class _TestPageState extends State<TestPage> {
   Row buildSwatchRow(BuildContext context) {
     return Row(
       children: <Widget>[
-        Container(
+        SizedBox(
           width: 150.0,
           child: ElevatedButton(
-            child: Text('Swatch Picker'),
+            child: const Text('Swatch Picker'),
             onPressed: () => showMaterialSwatchPicker(
               context: context,
               selectedColor: model.swatch,
@@ -438,10 +444,10 @@ class _TestPageState extends State<TestPage> {
   Row buildFileRow(BuildContext context) {
     return Row(
       children: <Widget>[
-        Container(
+        SizedBox(
           width: 150.0,
           child: ElevatedButton(
-            child: Text('File Picker'),
+            child: const Text('File Picker'),
             onPressed: () => showMaterialFilePicker(
               context: context,
               fileType: FileType.image,

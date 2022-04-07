@@ -1,5 +1,9 @@
 # Releases
 
+## [3.1.3] - 2022-04-07
+
+- Updated dependency versions
+
 ## [3.1.2] - 2021-09-29
 
 - Updated `flutter_colorpicker` version

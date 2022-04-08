@@ -10,7 +10,8 @@ import 'responsive_dialog.dart';
 
 /// This is a support widget that returns an Dialog with checkboxes as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
-class CheckboxPickerDialog<T> extends StatefulWidget implements ICommonDialogProperties {
+class CheckboxPickerDialog<T> extends StatefulWidget
+    implements ICommonDialogProperties {
   CheckboxPickerDialog({
     this.title,
     required this.items,
@@ -50,13 +51,16 @@ class CheckboxPickerDialog<T> extends StatefulWidget implements ICommonDialogPro
   final String? cancelText;
 
   @override
-  State<CheckboxPickerDialog> createState() => _CheckboxPickerDialogState<T>(selectedItems);
+  State<CheckboxPickerDialog> createState() =>
+      _CheckboxPickerDialogState<T>(selectedItems);
 }
 
 class _CheckboxPickerDialogState<T> extends State<CheckboxPickerDialog<T>> {
   _CheckboxPickerDialogState(List<T>? selectedItems) {
     // make a shallow copy so we don't modify the original list
-    this.selectedItems = (selectedItems == null) ? List<T>.empty(growable: true) : List<T>.from(selectedItems);
+    this.selectedItems = (selectedItems == null)
+        ? List<T>.empty(growable: true)
+        : List<T>.from(selectedItems);
   }
 
   late List<T> selectedItems;

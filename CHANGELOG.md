@@ -1,5 +1,10 @@
 # Releases
 
+## [3.1.4] - 2022-04-08
+
+- added example back in
+- improved documentation
+
 ## [3.1.3] - 2022-04-07
 
 - Updated dependency versions

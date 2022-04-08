@@ -10,7 +10,8 @@ import 'responsive_dialog.dart';
 
 /// This is a support widget that returns an Dialog with checkboxes as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
-class ScrollPickerDialog<T> extends StatefulWidget implements ICommonDialogProperties {
+class ScrollPickerDialog<T> extends StatefulWidget
+    implements ICommonDialogProperties {
   ScrollPickerDialog({
     this.title,
     required this.items,
@@ -53,7 +54,8 @@ class ScrollPickerDialog<T> extends StatefulWidget implements ICommonDialogPrope
   final bool showDivider;
 
   @override
-  State<ScrollPickerDialog> createState() => _ScrollPickerDialogState<T>(selectedItem ?? items[0]);
+  State<ScrollPickerDialog> createState() =>
+      _ScrollPickerDialogState<T>(selectedItem ?? items[0]);
 }
 
 class _ScrollPickerDialogState<T> extends State<ScrollPickerDialog<T>> {

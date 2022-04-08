@@ -1,2 +1,10 @@
 .vscode/*
-images
+
+images/*
+
+example/test/*
+example/build/*
+example/ios/*
+example/android/*
+example/web/*
+example/windows/*

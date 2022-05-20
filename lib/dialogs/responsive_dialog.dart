@@ -28,6 +28,7 @@ class ResponsiveDialog extends StatefulWidget
     this.cancelPressed,
     this.confirmText,
     this.cancelText,
+    this.cancelButtonVisible = true,
   })  : title = title ?? "Title Here",
         child = child ?? Text("Content Here"),
         maxLongSide = maxLongSide ?? 600,
@@ -56,6 +57,7 @@ class ResponsiveDialog extends StatefulWidget
   final String? confirmText;
   @override
   final String? cancelText;
+  final bool cancelButtonVisible;
 
   // Events
   final VoidCallback? cancelPressed;
@@ -108,15 +110,17 @@ class _ResponsiveDialogState extends State<ResponsiveDialog> {
         ),
         child: ButtonBar(
           children: <Widget>[
-            TextButton(
-              child: Text(
-                widget.cancelText ?? localizations.cancelButtonLabel,
-                style: TextStyle(color: _buttonTextColor),
-              ),
-              onPressed: () => (widget.cancelPressed == null)
-                  ? Navigator.of(context).pop()
-                  : widget.cancelPressed!(),
-            ),
+            widget.cancelButtonVisible
+                ? TextButton(
+                    child: Text(
+                      widget.cancelText ?? localizations.cancelButtonLabel,
+                      style: TextStyle(color: _buttonTextColor),
+                    ),
+                    onPressed: () => (widget.cancelPressed == null)
+                        ? Navigator.of(context).pop()
+                        : widget.cancelPressed!(),
+                  )
+                : Container(),
             TextButton(
               child: Text(
                 widget.confirmText ?? localizations.okButtonLabel,

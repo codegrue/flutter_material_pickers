@@ -45,11 +45,15 @@ Future<Color?> showMaterialColorPicker({
   /// Function that gets called when the confirm button is pressed
   VoidCallback? onConfirmed,
 
+  /// Whether to display a cancel button
+  bool cancellable = true,
+
   /// Function that gets called when the cancel button is pressed
   VoidCallback? onCancelled,
 }) {
   return showDialog<Color>(
     context: context,
+    barrierDismissible: cancellable,
     builder: (BuildContext context) {
       return OrientationBuilder(
         builder: (context, orientation) {
@@ -65,6 +69,7 @@ Future<Color?> showMaterialColorPicker({
             maxLongSide: maxLongSide,
             maxShortSide: maxLongSide,
             forcePortrait: true,
+            cancelButtonVisible: cancellable,
             child: SingleChildScrollView(
               child: ColorPicker(
                 pickerColor: selectedColor,

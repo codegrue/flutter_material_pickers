@@ -2,6 +2,7 @@
 // is governed by the MIT license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_material_pickers/models/select_all_config.dart';
 
 import '../flutter_material_pickers.dart';
 
@@ -12,6 +13,8 @@ class CheckboxPicker<T> extends StatefulWidget {
     required this.items,
     required this.selectedItems,
     this.transformer,
+    this.onSelectionChanged,
+    this.selectAllConfig,
   }) : super(key: key);
 
   // Constants
@@ -23,6 +26,9 @@ class CheckboxPicker<T> extends StatefulWidget {
 
   // Callbacks
   final Transformer<T>? transformer;
+
+  final ValueChanged<List<T>>? onSelectionChanged;
+  final SelectAllConfig? selectAllConfig;
 
   @override
   CheckboxPickerState createState() {
@@ -39,14 +45,32 @@ class CheckboxPickerState<T> extends State<CheckboxPicker<T>> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
 
-    int itemCount = widget.items.length;
+    bool selectAll = widget.selectAllConfig != null;
+    int itemCount = widget.items.length + (selectAll ? 1 : 0);
 
     return Container(
       child: Scrollbar(
         child: ListView.builder(
           itemCount: itemCount,
           itemBuilder: (BuildContext context, int index) {
-            final item = widget.items[index];
+            if (selectAll && index == 0) {
+              return TextButton(
+                  onPressed: () => selectedValues.length < itemCount - 1
+                      ? setState(() {
+                          selectedValues
+                            ..clear()
+                            ..addAll(widget.items);
+                          widget.onSelectionChanged?.call(selectedValues);
+                        })
+                      : setState(() {
+                          selectedValues.clear();
+                          widget.onSelectionChanged?.call(selectedValues);
+                        }),
+                  child: selectedValues.length < itemCount - 1
+                      ? widget.selectAllConfig!.selectAllLabel
+                      : widget.selectAllConfig!.deselectAllLabel);
+            }
+            final item = widget.items[index - (selectAll ? 1 : 0)];
             bool isSelected = selectedValues.contains(item);
 
             return CheckboxListTile(
@@ -66,6 +90,7 @@ class CheckboxPickerState<T> extends State<CheckboxPicker<T>> {
                   } else {
                     selectedValues.remove(item);
                   }
+                  widget.onSelectionChanged?.call(selectedValues);
                 });
               },
             );

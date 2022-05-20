@@ -30,6 +30,9 @@ Future<Color?> showMaterialPalettePicker({
   /// Text to display in the confirm button
   String? confirmText,
 
+  /// Whether to display a cancel button
+  bool cancellable = true,
+
   /// Text to display in the cancel button
   String? cancelText,
 
@@ -50,6 +53,7 @@ Future<Color?> showMaterialPalettePicker({
 }) {
   return showDialog<Color>(
     context: context,
+    barrierDismissible: cancellable,
     builder: (BuildContext context) {
       return OrientationBuilder(
         builder: (context, orientation) {

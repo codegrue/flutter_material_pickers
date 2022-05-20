@@ -34,6 +34,9 @@ Future<T?> showMaterialSelectionPicker<T>({
   /// Text to display in the confirm button
   String? confirmText,
 
+  /// Whether to display a cancel button
+  bool cancellable = true,
+
   /// Text to display in the cancel button
   String? cancelText,
 
@@ -61,6 +64,7 @@ Future<T?> showMaterialSelectionPicker<T>({
 }) {
   return showDialog<T>(
     context: context,
+    barrierDismissible: cancellable,
     builder: (BuildContext context) {
       return SelectionPickerDialog<T>(
         items: items,
@@ -71,6 +75,7 @@ Future<T?> showMaterialSelectionPicker<T>({
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
         confirmText: confirmText,
+        cancelButtonVisible: cancellable,
         cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,

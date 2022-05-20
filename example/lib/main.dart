@@ -239,13 +239,17 @@ class _TestPageState extends State<TestPage> {
           child: ElevatedButton(
             child: const Text('Checkbox Picker'),
             onPressed: () => showMaterialCheckboxPicker<PickerModel>(
-              context: context,
-              title: 'Pick Your Toppings',
-              items: ExampleModel.iceCreamToppings,
-              selectedItems: model.selectedIceCreamToppings,
-              onChanged: (value) =>
-                  setState(() => model.selectedIceCreamToppings = value),
-            ),
+                context: context,
+                title: 'Pick Your Toppings',
+                items: ExampleModel.iceCreamToppings,
+                selectedItems: model.selectedIceCreamToppings,
+                onChanged: (value) =>
+                    setState(() => model.selectedIceCreamToppings = value),
+                selectAllConfig: SelectAllConfig(
+                  const Text('Select All'),
+                  const Text('Deselect All'),
+                ),
+                cancellable: false),
           ),
         ),
         Expanded(

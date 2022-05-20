@@ -32,6 +32,9 @@ Future<T?> showMaterialResponsiveDialog<T>({
   /// Text to display in the confirm button
   String? confirmText,
 
+  /// Whether to display a cancel button
+  bool cancelButtonVisible = true,
+
   /// Text to display in the cancel button
   String? cancelText,
 
@@ -59,6 +62,7 @@ Future<T?> showMaterialResponsiveDialog<T>({
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
         confirmText: confirmText,
+        cancelButtonVisible: cancelButtonVisible,
         cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxShortSide,

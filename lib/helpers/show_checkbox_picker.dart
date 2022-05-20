@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/checkbox_picker_dialog.dart';
+import 'package:flutter_material_pickers/models/select_all_config.dart';
 
 import '../flutter_material_pickers.dart';
 
@@ -34,6 +35,9 @@ Future<List<T>?> showMaterialCheckboxPicker<T>({
   /// Text to display in the confirm button
   String? confirmText,
 
+  /// Whether to display a cancel button
+  bool cancellable = true,
+
   /// Text to display in the cancel button
   String? cancelText,
 
@@ -45,6 +49,12 @@ Future<List<T>?> showMaterialCheckboxPicker<T>({
 
   /// Function that gets called when the value is changed
   ValueChanged<List<T>>? onChanged,
+
+  /// Function that gets called each time the selection changes
+  ValueChanged<List<T>>? onSelectionChanged,
+
+  /// If enabled, adds a Select All / Deselect All button at the top
+  SelectAllConfig? selectAllConfig,
 
   /// Function that gets called when the confirm button is pressed
   VoidCallback? onConfirmed,
@@ -58,6 +68,7 @@ Future<List<T>?> showMaterialCheckboxPicker<T>({
 }) {
   return showDialog<List<T>>(
     context: context,
+    barrierDismissible: cancellable,
     builder: (BuildContext context) {
       return CheckboxPickerDialog<T>(
         title: title,
@@ -72,6 +83,9 @@ Future<List<T>?> showMaterialCheckboxPicker<T>({
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
         transformer: transformer,
+        onSelectionChanged: onSelectionChanged,
+        selectAllConfig: selectAllConfig,
+        cancelButtonVisible: cancellable,
       );
     },
   ).then((selection) {

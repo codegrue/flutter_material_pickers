@@ -26,6 +26,7 @@ class SelectionPickerDialog<T> extends StatefulWidget
     this.maxShortSide,
     this.confirmText,
     this.cancelText,
+    this.cancelButtonVisible = true,
   });
 
   final List<T> items;
@@ -50,6 +51,7 @@ class SelectionPickerDialog<T> extends StatefulWidget
   final String? confirmText;
   @override
   final String? cancelText;
+  final bool cancelButtonVisible;
 
   @override
   State<SelectionPickerDialog> createState() =>
@@ -74,6 +76,7 @@ class _SelectionPickerDialogState<T> extends State<SelectionPickerDialog<T>> {
       maxShortSide: widget.maxLongSide,
       confirmText: widget.confirmText,
       cancelText: widget.cancelText,
+      cancelButtonVisible: widget.cancelButtonVisible,
       child: SelectionPicker<T>(
         items: widget.items,
         initialValue: selectedItem,

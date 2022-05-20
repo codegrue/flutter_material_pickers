@@ -34,6 +34,9 @@ Future<T?> showMaterialRadioPicker<T>({
   /// Text to display in the confirm button
   String? confirmText,
 
+  /// Whether to display a cancel button
+  bool cancellable = true,
+
   /// Text to display in the cancel button
   String? cancelText,
 
@@ -58,6 +61,7 @@ Future<T?> showMaterialRadioPicker<T>({
 }) {
   return showDialog<T>(
     context: context,
+    barrierDismissible: cancellable,
     builder: (BuildContext context) {
       return RadioPickerDialog<T>(
         items: items,
@@ -68,6 +72,7 @@ Future<T?> showMaterialRadioPicker<T>({
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
         confirmText: confirmText,
+        cancelButtonVisible: cancellable,
         cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,

@@ -3,7 +3,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/dialogs/checkbox_picker_dialog.dart';
-import 'package:flutter_material_pickers/models/select_all_config.dart';
 
 import '../flutter_material_pickers.dart';
 

@@ -2,7 +2,6 @@
 // is governed by the MIT license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_material_pickers/models/select_all_config.dart';
 import 'package:flutter_material_pickers/pickers/checkbox_picker.dart';
 
 import '../flutter_material_pickers.dart';

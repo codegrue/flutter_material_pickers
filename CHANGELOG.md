@@ -1,5 +1,12 @@
 # Releases
 
+## [3.2.0] - 2022-10-24
+
+- Updated pubspec.yaml with file_picker v^5.2.1 to resolve version conflicts on other packages
+- Added option to disable cancellation for most picker / dialog types (Issue: #42)
+- Added an optional Select All / Deselect All option to the checkbox picker
+- Added an optional "onSelectionChanged" to the checkbox dialog, which calls back each time a selection changes, but before submission.
+
 ## [3.1.4+1] - 2022-04-08
 
 - formatting

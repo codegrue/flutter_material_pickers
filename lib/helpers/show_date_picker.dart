@@ -35,6 +35,9 @@ Future<DateTime?> showMaterialDatePicker({
   /// Text to display in the confirm button
   String? confirmText,
 
+  /// Whether to display a cancel button
+  bool cancellable = true,
+
   /// Text to display in the cancel button
   String? cancelText,
 
@@ -55,6 +58,7 @@ Future<DateTime?> showMaterialDatePicker({
 }) {
   return showDialog<DateTime>(
     context: context,
+    barrierDismissible: cancellable,
     builder: (BuildContext context) {
       return OrientationBuilder(
         builder: (context, orientation) {
@@ -69,6 +73,7 @@ Future<DateTime?> showMaterialDatePicker({
             cancelText: cancelText,
             maxLongSide: maxLongSide,
             maxShortSide: maxLongSide,
+            cancelButtonVisible: cancellable,
             child: SingleChildScrollView(
               child: CalendarDatePicker(
                 initialDate: selectedDate,

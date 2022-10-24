@@ -25,6 +25,7 @@ class RadioPickerDialog<T> extends StatefulWidget
     this.maxShortSide,
     this.confirmText,
     this.cancelText,
+    this.cancelButtonVisible = true,
   });
 
   // Variables
@@ -49,6 +50,7 @@ class RadioPickerDialog<T> extends StatefulWidget
   final String? confirmText;
   @override
   final String? cancelText;
+  final bool cancelButtonVisible;
 
   @override
   State<RadioPickerDialog> createState() =>
@@ -73,6 +75,7 @@ class _RadioPickerDialogState<T> extends State<RadioPickerDialog<T>> {
       maxShortSide: widget.maxLongSide,
       confirmText: widget.confirmText,
       cancelText: widget.cancelText,
+      cancelButtonVisible: widget.cancelButtonVisible,
       child: RadioPicker<T>(
         items: widget.items,
         initialValue: selectedItem,

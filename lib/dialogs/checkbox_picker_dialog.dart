@@ -2,6 +2,7 @@
 // is governed by the MIT license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_material_pickers/models/select_all_config.dart';
 import 'package:flutter_material_pickers/pickers/checkbox_picker.dart';
 
 import '../flutter_material_pickers.dart';
@@ -12,20 +13,22 @@ import 'responsive_dialog.dart';
 /// It is designed to be used in the showDialog method of other fields.
 class CheckboxPickerDialog<T> extends StatefulWidget
     implements ICommonDialogProperties {
-  CheckboxPickerDialog({
-    this.title,
-    required this.items,
-    required this.selectedItems,
-    this.transformer,
-    this.headerColor,
-    this.headerTextColor,
-    this.backgroundColor,
-    this.buttonTextColor,
-    this.maxLongSide,
-    this.maxShortSide,
-    this.confirmText,
-    this.cancelText,
-  });
+  CheckboxPickerDialog(
+      {this.title,
+      required this.items,
+      required this.selectedItems,
+      this.transformer,
+      this.headerColor,
+      this.headerTextColor,
+      this.backgroundColor,
+      this.buttonTextColor,
+      this.maxLongSide,
+      this.maxShortSide,
+      this.confirmText,
+      this.cancelButtonVisible = true,
+      this.cancelText,
+      this.onSelectionChanged,
+      this.selectAllConfig});
 
   // Variables
   final List<T> items;
@@ -49,6 +52,9 @@ class CheckboxPickerDialog<T> extends StatefulWidget
   final String? confirmText;
   @override
   final String? cancelText;
+  final ValueChanged<List<T>>? onSelectionChanged;
+  final SelectAllConfig? selectAllConfig;
+  final bool cancelButtonVisible;
 
   @override
   State<CheckboxPickerDialog> createState() =>
@@ -78,10 +84,13 @@ class _CheckboxPickerDialogState<T> extends State<CheckboxPickerDialog<T>> {
       maxShortSide: widget.maxLongSide,
       confirmText: widget.confirmText,
       cancelText: widget.cancelText,
+      cancelButtonVisible: widget.cancelButtonVisible,
       child: CheckboxPicker<T>(
         items: widget.items,
         selectedItems: selectedItems,
         transformer: widget.transformer,
+        onSelectionChanged: widget.onSelectionChanged,
+        selectAllConfig: widget.selectAllConfig,
       ),
       okPressed: () => Navigator.of(context).pop(selectedItems),
     );

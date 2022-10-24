@@ -36,6 +36,9 @@ Future<T?> showMaterialScrollPicker<T>({
   /// Text to display in the confirm button
   String? confirmText,
 
+  /// Whether to display a cancel button
+  bool cancellable = true,
+
   /// Text to display in the cancel button
   String? cancelText,
 
@@ -70,6 +73,7 @@ Future<T?> showMaterialScrollPicker<T>({
         backgroundColor: backgroundColor,
         buttonTextColor: buttonTextColor,
         confirmText: confirmText,
+        cancelButtonVisible: cancellable,
         cancelText: cancelText,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,

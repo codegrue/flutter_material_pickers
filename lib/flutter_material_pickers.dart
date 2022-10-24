@@ -18,6 +18,7 @@ export 'package:flutter_material_pickers/helpers/show_responsive_dialog.dart';
 
 /// Models
 export 'package:flutter_material_pickers/models/picker_model.dart';
+export 'package:flutter_material_pickers/models/select_all_config.dart';
 
 /// Helpers
 export 'package:flutter_material_pickers/helpers/show_scroll_picker.dart';

@@ -26,6 +26,7 @@ class ScrollPickerDialog<T> extends StatefulWidget
     this.showDivider: true,
     this.confirmText,
     this.cancelText,
+    this.cancelButtonVisible = true,
   });
 
   // Variables
@@ -50,6 +51,7 @@ class ScrollPickerDialog<T> extends StatefulWidget
   final String? confirmText;
   @override
   final String? cancelText;
+  final bool cancelButtonVisible;
 
   final bool showDivider;
 
@@ -76,6 +78,7 @@ class _ScrollPickerDialogState<T> extends State<ScrollPickerDialog<T>> {
       maxShortSide: widget.maxLongSide,
       confirmText: widget.confirmText,
       cancelText: widget.cancelText,
+      cancelButtonVisible: widget.cancelButtonVisible,
       child: ScrollPicker<T>(
         items: widget.items,
         selectedItem: selectedItem,

@@ -40,6 +40,9 @@ Future<int?> showMaterialNumberPicker({
   /// Text to display in the confirm button
   String? confirmText,
 
+  /// Whether to display a cancel button
+  bool cancellable = true,
+
   /// Text to display in the cancel button
   String? cancelText,
 
@@ -70,6 +73,7 @@ Future<int?> showMaterialNumberPicker({
 
   return showDialog<int>(
     context: context,
+    barrierDismissible: cancellable,
     builder: (BuildContext context) {
       return ScrollPickerDialog<int>(
         items: items,
@@ -81,6 +85,7 @@ Future<int?> showMaterialNumberPicker({
         buttonTextColor: buttonTextColor,
         confirmText: confirmText,
         cancelText: cancelText,
+        cancelButtonVisible: cancellable,
         maxLongSide: maxLongSide,
         maxShortSide: maxLongSide,
       );

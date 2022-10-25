@@ -17,7 +17,7 @@ Future<T?> showMaterialSelectionPicker<T>({
   required List<T> items,
 
   /// The item that will be initially selected
-  required T selectedItem,
+  T? selectedItem,
 
   /// The dialog header color (overrides theme)
   Color? headerColor,
@@ -60,7 +60,7 @@ Future<T?> showMaterialSelectionPicker<T>({
   Transformer<T>? transformer,
 
   /// An external function used to provide icons
-  Iconizer<T>? iconizer,
+  Iconizer<T?>? iconizer,
 }) {
   return showDialog<T>(
     context: context,

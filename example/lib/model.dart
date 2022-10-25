@@ -90,7 +90,8 @@ class ExampleModel {
     PickerModel('Ludicrous', code: 3, icon: Icon(Icons.swap_calls)),
     PickerModel('Plaid', code: 4, icon: Icon(Icons.select_all)),
   ];
-  PickerModel speed = speedOptions[2];
+  // ignore: avoid_init_to_null
+  PickerModel? speed = null; // intentionally testing null
 
   // Number Picker Model
   var age = 25;

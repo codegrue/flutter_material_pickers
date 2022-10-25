@@ -301,14 +301,14 @@ class _TestPageState extends State<TestPage> {
               title: 'Starship Speed',
               items: ExampleModel.speedOptions,
               selectedItem: model.speed,
-              iconizer: (item) => item.icon,
+              iconizer: (item) => item?.icon,
               onChanged: (value) => setState(() => model.speed = value),
             ),
           ),
         ),
         Expanded(
           child: Text(
-            '${model.speed} (${model.speed.code})',
+            '${model.speed} (${model.speed?.code})',
             textAlign: TextAlign.right,
           ),
         ),

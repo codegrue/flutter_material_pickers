@@ -1,5 +1,9 @@
 # Releases
 
+## [3.3.0] - 2022-10-25
+
+- Enabled `SelectionPicker` to have a null `selectedItem` property
+
 ## [3.2.0] - 2022-10-24
 
 - Updated pubspec.yaml with file_picker v^5.2.1 to resolve version conflicts on other packages

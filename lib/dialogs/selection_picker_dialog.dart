@@ -15,7 +15,7 @@ class SelectionPickerDialog<T> extends StatefulWidget
   SelectionPickerDialog({
     this.title,
     required this.items,
-    required this.selectedItem,
+    this.selectedItem,
     this.transformer,
     this.iconizer,
     this.headerColor,
@@ -30,9 +30,9 @@ class SelectionPickerDialog<T> extends StatefulWidget
   });
 
   final List<T> items;
-  final T selectedItem;
+  final T? selectedItem;
   final Transformer<T>? transformer;
-  final Iconizer<T>? iconizer;
+  final Iconizer<T?>? iconizer;
   @override
   final String? title;
   @override
@@ -55,7 +55,7 @@ class SelectionPickerDialog<T> extends StatefulWidget
 
   @override
   State<SelectionPickerDialog> createState() =>
-      _SelectionPickerDialogState<T>(selectedItem);
+      _SelectionPickerDialogState<T?>(selectedItem);
 }
 
 class _SelectionPickerDialogState<T> extends State<SelectionPickerDialog<T>> {

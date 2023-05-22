@@ -1,5 +1,10 @@
 # Releases
 
+## [3.4.0] - 2023-05-22
+
+- Upgraded `intl` to 0.18.0
+- Upgraded `file_picker` to 5.3.0
+
 ## [3.3.0] - 2022-10-25
 
 - Enabled `SelectionPicker` to have a null `selectedItem` property

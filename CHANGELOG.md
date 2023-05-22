@@ -1,5 +1,10 @@
 # Releases
 
+## [3.5.0] - 2023-05-22
+
+- Implemented `dart fix` automated changes
+- Added support for SDK 3.0.0
+
 ## [3.4.0] - 2023-05-22
 
 - Upgraded `intl` to 0.18.0

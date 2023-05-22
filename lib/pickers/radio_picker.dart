@@ -59,7 +59,7 @@ class RadioPickerState<T> extends State<RadioPicker<T>> {
                 widget.transformer?.call(item) ?? '$item',
                 style: (isSelectedItem)
                     ? TextStyle(color: theme.colorScheme.secondary)
-                    : TextStyle(color: theme.textTheme.bodyText2?.color),
+                    : TextStyle(color: theme.textTheme.bodyMedium?.color),
               ),
               value: item,
               onChanged: (T? value) {

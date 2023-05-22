@@ -55,7 +55,7 @@ class SelectionPickerState<T> extends State<SelectionPicker<T>> {
             bool isSelected = (item == selectedValue);
             Color? itemColor = (isSelected)
                 ? theme.colorScheme.secondary
-                : theme.textTheme.bodyText2?.color;
+                : theme.textTheme.bodyMedium?.color;
             Icon? icon = widget.iconizer?.call(item);
             if (icon != null && icon.color == null)
               icon = Icon(icon.icon, color: itemColor);

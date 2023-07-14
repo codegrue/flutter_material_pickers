@@ -1,5 +1,9 @@
 # Releases
 
+## [3.6.0] - 2023-07-14
+
+- Updated `file_picker` to 5.3.2
+
 ## [3.5.0] - 2023-05-22
 
 - Implemented `dart fix` automated changes

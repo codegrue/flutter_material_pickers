@@ -45,7 +45,7 @@ class _TestPageState extends State<TestPage> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: AppBar(
           title: const Text('Material Picker Examples'),
           actions: <Widget>[

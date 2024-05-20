@@ -8,7 +8,7 @@ ThemeData buildTheme(Brightness brightness) {
 
   // extract auto generated colors
   Color primaryColor = theme.primaryColor;
-  Color backgroundColor = theme.colorScheme.background;
+  Color backgroundColor = theme.colorScheme.surface;
   Color accentColor = theme.colorScheme.secondary;
   Color textColor = theme.textTheme.displayLarge!.color!;
   Color headerTextColor = textColor;
@@ -47,7 +47,7 @@ ThemeData buildTheme(Brightness brightness) {
           surface: backgroundColor, // new way to do background color
           secondary: accentColor, // color of controls and button bar text
         )
-        .copyWith(background: backgroundColor),
+        .copyWith(surface: backgroundColor),
   );
 
   return theme;

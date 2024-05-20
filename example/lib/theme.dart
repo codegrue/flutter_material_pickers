@@ -40,11 +40,14 @@ ThemeData buildTheme(Brightness brightness) {
     ),
     timePickerTheme: theme.timePickerTheme.copyWith(
       backgroundColor: backgroundColor,
-    ), colorScheme: theme.colorScheme.copyWith(
-      primary: primaryColor, // new way to do title color
-      surface: backgroundColor, // new way to do background color
-      secondary: accentColor, // color of controls and button bar text
-    ).copyWith(background: backgroundColor),
+    ),
+    colorScheme: theme.colorScheme
+        .copyWith(
+          primary: primaryColor, // new way to do title color
+          surface: backgroundColor, // new way to do background color
+          secondary: accentColor, // color of controls and button bar text
+        )
+        .copyWith(background: backgroundColor),
   );
 
   return theme;

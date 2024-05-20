@@ -1,5 +1,11 @@
 # Releases
 
+## [3.7.0] - 2024-05-26
+
+- Updated `intl` to 0.19.0
+- for `showMaterialScrollPicker`, defaulting `showDivider` to false
+- for `showMaterialNumberPicker`, defaulting `showDivider` to false
+
 ## [3.6.0] - 2023-07-14
 
 - Updated `file_picker` to 5.3.2

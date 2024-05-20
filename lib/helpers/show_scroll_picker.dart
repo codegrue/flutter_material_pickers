@@ -19,7 +19,7 @@ Future<T?> showMaterialScrollPicker<T>({
   required T selectedItem,
 
   /// flag to show or hide divider lines
-  bool showDivider = true,
+  bool showDivider = false,
 
   /// The dialog header color (overrides theme)
   Color? headerColor,

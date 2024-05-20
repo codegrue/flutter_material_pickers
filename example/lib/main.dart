@@ -122,8 +122,11 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         SizedBox(
           width: 150.0,
-          child: ElevatedButton(
-            child: const Text('Empty Dialog'),
+          child: TextButton(
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Empty Dialog'),
+            ),
             onPressed: () => showMaterialResponsiveDialog<void>(
               context: context,
               hideButtons: false,
@@ -176,12 +179,14 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         SizedBox(
           width: 150.0,
-          child: ElevatedButton(
-            child: const Text('Scroll Picker'),
+          child: TextButton(
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Scroll Picker'),
+            ),
             onPressed: () => showMaterialScrollPicker<PickerModel>(
               context: context,
               title: 'Pick Your City',
-              showDivider: false,
               items: ExampleModel.usStates,
               selectedItem: model.selectedUsState,
               onChanged: (value) =>
@@ -206,8 +211,11 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         SizedBox(
           width: 150.0,
-          child: ElevatedButton(
-            child: const Text('Number Picker'),
+          child: TextButton(
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Number Picker'),
+            ),
             onPressed: () => showMaterialNumberPicker(
               context: context,
               title: 'Pick a Number',
@@ -236,8 +244,11 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         SizedBox(
           width: 150.0,
-          child: ElevatedButton(
-            child: const Text('Checkbox Picker'),
+          child: TextButton(
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Checkbox Picker'),
+            ),
             onPressed: () => showMaterialCheckboxPicker<PickerModel>(
                 context: context,
                 title: 'Pick Your Toppings',
@@ -267,8 +278,11 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         SizedBox(
           width: 150.0,
-          child: ElevatedButton(
-            child: const Text('Radio Picker'),
+          child: TextButton(
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Radio Picker'),
+            ),
             onPressed: () => showMaterialRadioPicker<PickerModel>(
               context: context,
               title: 'Pick Your City',
@@ -294,8 +308,11 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         SizedBox(
           width: 150.0,
-          child: ElevatedButton(
-            child: const Text('Selection Picker'),
+          child: TextButton(
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Selection Picker'),
+            ),
             onPressed: () => showMaterialSelectionPicker<PickerModel>(
               context: context,
               title: 'Starship Speed',
@@ -321,8 +338,11 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         SizedBox(
           width: 150.0,
-          child: ElevatedButton(
-            child: const Text('Time Picker'),
+          child: TextButton(
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Time Picker'),
+            ),
             onPressed: () => showMaterialTimePicker(
               context: context,
               selectedTime: model.time,
@@ -345,8 +365,11 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         SizedBox(
           width: 150.0,
-          child: ElevatedButton(
-            child: const Text('Date Picker'),
+          child: TextButton(
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Date Picker'),
+            ),
             onPressed: () => showMaterialDatePicker(
               title: 'Pick a date',
               firstDate: DateTime(1990, 1, 1),
@@ -372,8 +395,11 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         SizedBox(
           width: 150.0,
-          child: ElevatedButton(
-            child: const Text('Color Picker'),
+          child: TextButton(
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Color Picker'),
+            ),
             onPressed: () => showMaterialColorPicker(
               context: context,
               selectedColor: model.color,
@@ -398,8 +424,11 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         SizedBox(
           width: 150.0,
-          child: ElevatedButton(
-            child: const Text('Palette Picker'),
+          child: TextButton(
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Palette Picker'),
+            ),
             onPressed: () => showMaterialPalettePicker(
               context: context,
               selectedColor: model.palette,
@@ -424,8 +453,11 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         SizedBox(
           width: 150.0,
-          child: ElevatedButton(
-            child: const Text('Swatch Picker'),
+          child: TextButton(
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Swatch Picker'),
+            ),
             onPressed: () => showMaterialSwatchPicker(
               context: context,
               selectedColor: model.swatch,
@@ -450,8 +482,11 @@ class _TestPageState extends State<TestPage> {
       children: <Widget>[
         SizedBox(
           width: 150.0,
-          child: ElevatedButton(
-            child: const Text('File Picker'),
+          child: TextButton(
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: Text('File Picker'),
+            ),
             onPressed: () => showMaterialFilePicker(
               context: context,
               fileType: FileType.image,

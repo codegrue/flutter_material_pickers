@@ -3,6 +3,7 @@
 ## [3.7.0] - 2024-05-26
 
 - Updated `intl` to 0.19.0
+- Updated `file_picker` to 8.0.3
 - for `showMaterialScrollPicker`, defaulting `showDivider` to false
 - for `showMaterialNumberPicker`, defaulting `showDivider` to false
 - fixed missing `title` on Time Picker

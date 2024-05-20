@@ -33,6 +33,7 @@ Future<TimeOfDay?> showMaterialTimePicker({
     initialTime: selectedTime,
     cancelText: cancelText,
     confirmText: confirmText,
+    helpText: title,
   ).then((selection) {
     if (selection != null) {
       onChanged?.call(selection);

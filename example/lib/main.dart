@@ -346,6 +346,7 @@ class _TestPageState extends State<TestPage> {
             onPressed: () => showMaterialTimePicker(
               context: context,
               selectedTime: model.time,
+              title: "Select a Time",
               onChanged: (value) => setState(() => model.time = value),
             ),
           ),

@@ -5,6 +5,7 @@
 - Updated `intl` to 0.19.0
 - for `showMaterialScrollPicker`, defaulting `showDivider` to false
 - for `showMaterialNumberPicker`, defaulting `showDivider` to false
+- fixed missing `title` on Time Picker
 
 ## [3.6.0] - 2023-07-14
 

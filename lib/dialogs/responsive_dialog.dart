@@ -142,7 +142,8 @@ class _ResponsiveDialogState extends State<ResponsiveDialog> {
     _headerColor = widget.headerColor ?? theme.primaryColor;
     _headerTextColor =
         widget.headerTextColor ?? theme.primaryTextTheme.titleLarge?.color;
-    _buttonTextColor = widget.buttonTextColor ?? theme.textTheme.labelLarge?.color;
+    _buttonTextColor =
+        widget.buttonTextColor ?? theme.textTheme.labelLarge?.color;
     _backgroundColor = widget.backgroundColor ?? theme.dialogBackgroundColor;
 
     final Orientation orientation = MediaQuery.of(context).orientation;
